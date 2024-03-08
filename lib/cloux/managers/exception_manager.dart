@@ -16,7 +16,7 @@ class ExceptionManager {
 
   /// Dio exception
   void dioException(DioException ex, dynamic instance) {
-    ExceptionOutput.details('RESPONSE BODY', ex.response?.data);
+    // ExceptionOutput.details('RESPONSE BODY', ex.response?.data);
 
     /// On error
     if (instance is OnError && ex.response?.data != null) {

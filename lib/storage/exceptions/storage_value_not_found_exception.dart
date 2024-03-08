@@ -1,0 +1,1 @@
+class StorageValueNotFoundException implements Exception {}
