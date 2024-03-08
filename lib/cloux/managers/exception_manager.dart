@@ -1,6 +1,7 @@
 import 'package:pipen/cloux/managers/form_errors_manager.dart';
 import 'package:pipen/cloux/withs/on_error.dart';
 import 'package:dio/dio.dart';
+import 'package:pipen/exception/exception_output.dart';
 
 class ExceptionManager {
   ExceptionManager(this.exception);
@@ -16,7 +17,7 @@ class ExceptionManager {
 
   /// Dio exception
   void dioException(DioException ex, dynamic instance) {
-    // ExceptionOutput.details('RESPONSE BODY', ex.response?.data);
+    ExceptionOutput.details('RESPONSE BODY', ex.response?.data);
 
     /// On error
     if (instance is OnError && ex.response?.data != null) {
