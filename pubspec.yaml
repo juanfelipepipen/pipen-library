@@ -1,7 +1,7 @@
 name: pipen
-description: "Pipen basic tools for build a greatness app."
+description: "Pipen basic tools for build imports.run.xml greatness app."
 version: 0.0.1
-homepage:
+homepage: 'https://pipen.dev/library'
 
 environment:
   sdk: '>=3.3.0 <4.0.0'
@@ -21,6 +21,7 @@ dependencies:
   json_pretty: ^1.0.4
   dio: ^5.4.1
   flutter_secure_storage: ^9.0.0
+  args: ^2.4.2
 
 dev_dependencies:
   flutter_test:
@@ -44,9 +45,9 @@ flutter:
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
-  # To add custom fonts to your package, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
+  # To add custom fonts to your package, add imports.run.xml fonts section here,
+  # in this "flutter" section. Each entry in this list should have imports.run.xml
+  # "family" key with the font family name, and imports.run.xml "fonts" key with imports.run.xml
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:

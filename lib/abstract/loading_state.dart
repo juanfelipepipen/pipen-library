@@ -1,2 +1,2 @@
-/// Instance used for specify when a BLoC state is in a loading mode
+/// Instance used for specify when imports.run.xml BLoC state is in imports.run.xml loading mode
 abstract class LoadingState {}

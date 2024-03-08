@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false"
+                 name="imports"
+                 type="DartCommandLineRunConfigurationType"
+                 factoryName="Optimize code imports">
+
+    <option name="filePath" value="$PROJECT_DIR$/bin/imports.dart" />
+    <option name="workingDirectory" value="$PROJECT_DIR$/example" />
+    <method v="2" />
+  </configuration>
+</component>
