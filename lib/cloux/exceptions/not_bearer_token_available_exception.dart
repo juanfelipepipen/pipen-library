@@ -1,0 +1,1 @@
+class NotBearerTokenAvailableException implements Exception {}
