@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 class PipenBuilderWhen<W> extends StatelessWidget {
   const PipenBuilderWhen({
     super.key,
+    this.deny,
     this.height,
     this.skeleton,
     this.loading = false,
@@ -11,8 +12,8 @@ class PipenBuilderWhen<W> extends StatelessWidget {
     required this.value,
   });
 
+  final Widget? skeleton, deny;
   final Function(W on) child;
-  final Widget? skeleton;
   final double? height;
   final dynamic value;
   final bool loading;
@@ -30,6 +31,6 @@ class PipenBuilderWhen<W> extends StatelessWidget {
               )
             : buildNow
                 ? child.call(value as W)
-                : const SizedBox.shrink(),
+                : deny ?? const SizedBox.shrink(),
       );
 }

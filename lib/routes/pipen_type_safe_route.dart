@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter/widgets.dart';
 
-abstract class TypeSafeRoute {
+abstract class PipenTypeSafeRoute {
   @protected
   late Map<String, dynamic> queryParameters;
   @protected
@@ -11,7 +11,7 @@ abstract class TypeSafeRoute {
   @protected
   Object? extra;
 
-  TypeSafeRoute({
+  PipenTypeSafeRoute({
     required this.name,
     required this.path,
     Map<String, String>? pathParameters,
