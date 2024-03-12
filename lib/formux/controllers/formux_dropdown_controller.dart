@@ -57,17 +57,24 @@ class FormuxDropdownController {
 
   /// Open cupertino picker
   @protected
-  void openCupertinoPicker({required List<Valuable> items, required int selectedItem}) =>
-      builder(FormuxUiDropdownCupertino(onChange: _onChange, selectedItem: selectedItem, items: items));
+  void openCupertinoPicker({required List<Valuable> items, required int selectedItem}) => builder(
+        FormuxUiDropdownCupertino(
+          onChange: _onChange,
+          selectedItem: selectedItem,
+          items: items,
+        ),
+      );
 
   /// Show cupertino modal popup
   @protected
   void builder(Widget child) => showCupertinoModalPopup<void>(
-      context: context,
-      builder: (context) => FormuxUiDropdownBody(
+        context: context,
+        builder: (context) => FormuxUiDropdownBody(
           onAccept: _onAccept,
           cancelLabel: _cancelLabel,
           acceptLabel: _acceptLabel,
           buttonsColor: _buttonsColor,
-          child: child));
+          child: child,
+        ),
+      );
 }

@@ -8,19 +8,27 @@ class DatePickerController {
   DatePickerController.of(this.context);
 
   /// Open picker
-  void open({DateTime? date, required FormuxPickerStyle style, required Function(DateTime? date) onChange}) => display(
-      style: style,
-      child: CupertinoDatePicker(
-        initialDateTime: date,
-        onDateTimeChanged: onChange,
-        mode: CupertinoDatePickerMode.date,
-      ));
+  void open({
+    DateTime? date,
+    required FormuxPickerStyle style,
+    required Function(DateTime? date) onChange,
+  }) =>
+      display(
+        style: style,
+        child: CupertinoDatePicker(
+          initialDateTime: date,
+          onDateTimeChanged: onChange,
+          mode: CupertinoDatePickerMode.date,
+        ),
+      );
 
   /// Display picker
   @protected
-  void display({required Widget child, required FormuxPickerStyle style}) => showCupertinoModalPopup<void>(
-      context: context,
-      builder: (BuildContext context) => CupertinoPopupSurface(
-            child: FormuxPickerHeader(style: style, child: child),
-          ));
+  void display({required Widget child, required FormuxPickerStyle style}) =>
+      showCupertinoModalPopup<void>(
+        context: context,
+        builder: (context) => CupertinoPopupSurface(
+          child: FormuxPickerHeader(style: style, child: child),
+        ),
+      );
 }

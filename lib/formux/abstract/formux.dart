@@ -4,6 +4,13 @@ import '../../valuable/valuable.dart';
 import 'formux_input.dart';
 
 abstract class Formux {
+
+  Formux({bool loading = false}) {
+    if (loading) {
+      this.loading();
+    }
+  }
+
   bool get hasId => id != null;
 
   String? id;

@@ -5,4 +5,6 @@ class Valuable {
   Valuable({required this.title, required this.value});
 
   Valuable.glass(this.title, this.value);
+
+  Valuable copyWith() => Valuable(title: title, value: value);
 }

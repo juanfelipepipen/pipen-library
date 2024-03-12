@@ -12,6 +12,7 @@ abstract class PipenTypeSafeRoute {
   Object? extra;
 
   PipenTypeSafeRoute({
+    this.extra,
     required this.name,
     required this.path,
     Map<String, String>? pathParameters,
