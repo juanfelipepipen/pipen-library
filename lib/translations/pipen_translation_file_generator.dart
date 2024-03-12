@@ -10,7 +10,7 @@ class PipenTranslationFileGenerator {
   String mapToStr() {
     String output = '';
     translations.forEach((key, value) {
-      output += '\n"$key":"$value",';
+      output += '\n"$key":r"$value",';
     });
     return output;
   }

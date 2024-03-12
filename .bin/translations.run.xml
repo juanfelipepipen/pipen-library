@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false"
+                 name="translations"
+                 type="DartCommandLineRunConfigurationType"
+                 factoryName="Translate enums">
+
+    <option name="filePath" value="$PROJECT_DIR$/bin/translations.dart" />
+    <option name="workingDirectory" value="$PROJECT_DIR$/example" />
+    <method v="2" />
+  </configuration>
+</component>
