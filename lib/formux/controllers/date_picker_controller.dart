@@ -24,11 +24,13 @@ class DatePickerController {
 
   /// Display picker
   @protected
-  void display({required Widget child, required FormuxPickerStyle style}) =>
-      showCupertinoModalPopup<void>(
-        context: context,
-        builder: (context) => CupertinoPopupSurface(
-          child: FormuxPickerHeader(style: style, child: child),
-        ),
-      );
+  void display({required Widget child, required FormuxPickerStyle style}) {
+    FocusScope.of(context).unfocus();
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (context) => CupertinoPopupSurface(
+        child: FormuxPickerHeader(style: style, child: child),
+      ),
+    );
+  }
 }

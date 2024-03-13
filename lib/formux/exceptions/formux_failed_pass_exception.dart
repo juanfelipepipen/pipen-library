@@ -1,1 +1,1 @@
-class FormuxFailedPassException {}
+class FormuxFailedPassException implements Exception {}

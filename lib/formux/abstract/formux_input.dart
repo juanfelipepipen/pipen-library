@@ -1,3 +1,5 @@
+import 'package:pipen/formux/exceptions/formux_input_failed_pass_exception.dart';
+
 abstract class FormuxInput<T> {
   String? get error => _messages.isNotEmpty ? _messages.first : null;
 
@@ -41,6 +43,13 @@ abstract class FormuxInput<T> {
     _messages = [];
     validator();
     errors = true;
+  }
+
+  /// Throw if input isn't pass
+  void passer() {
+    if (!pass) {
+      throw FormuxInputFailedPassException();
+    }
   }
 
   /// Add custom error
