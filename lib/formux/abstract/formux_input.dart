@@ -4,7 +4,7 @@ abstract class FormuxInput<T> {
   String? get error => _messages.isNotEmpty ? _messages.first : null;
 
   /// Display error
-  bool get display => !pass && errors && required;
+  bool get display => !pass && errors && required && !isLoading;
   bool required, errors = false, _loading = false, displayOnUpdate;
 
   /// Error messages

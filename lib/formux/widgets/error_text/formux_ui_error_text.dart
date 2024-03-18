@@ -5,17 +5,19 @@ import 'package:flutter/material.dart';
 class FormuxUiErrorText extends StatefulWidget {
   const FormuxUiErrorText({
     super.key,
-    required this.input,
     this.fontWeight,
     this.letterSpacing,
+    this.errors = true,
     this.color = Colors.red,
     this.align = TextAlign.left,
+    required this.input,
   });
 
   final FontWeight? fontWeight;
   final double? letterSpacing;
   final FormuxInput input;
   final TextAlign align;
+  final bool errors;
   final Color color;
 
   @override
@@ -46,7 +48,7 @@ class _FormuxUiErrorTextState extends State<FormuxUiErrorText> {
 
   @override
   Widget build(BuildContext context) => PipenSliceFromUp(
-        show: widget.input.display,
+        show: widget.input.display && widget.errors,
         duration: const Duration(milliseconds: 400),
         child: Row(
           mainAxisAlignment: switch (widget.align) {
