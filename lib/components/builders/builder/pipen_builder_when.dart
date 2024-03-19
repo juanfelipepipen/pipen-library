@@ -8,12 +8,12 @@ class PipenBuilderWhen<W> extends StatelessWidget {
     this.height,
     this.skeleton,
     this.loading = false,
-    required this.child,
     required this.value,
+    required this.child,
   });
 
+  final Widget Function(W on) child;
   final Widget? skeleton, deny;
-  final Function(W on) child;
   final double? height;
   final dynamic value;
   final bool loading;
