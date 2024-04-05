@@ -1,32 +1,40 @@
 import 'package:pipen/formux/abstract/formux_input.dart';
 
-extension FormuxInputListExtension on List<FormuxInput> {
+extension FormuxInputListExtension on List {
   /// Loading inputs
   void loading() {
-    for (FormuxInput input in this) {
-      input.loading();
+    for (var input in this) {
+      if (input is FormuxInput) {
+        input.loading();
+      }
     }
   }
 
   /// Loaded inputs
   void loaded() {
-    for (FormuxInput input in this) {
-      input.loaded();
+    for (var input in this) {
+      if (input is FormuxInput) {
+        input.loaded();
+      }
     }
   }
 
   /// Clear inputs
   void clearInputs() {
-    for (FormuxInput input in this) {
-      input.clear();
+    for (var input in this) {
+      if (input is FormuxInput) {
+        input.clear();
+      }
     }
   }
 
   /// Required
   void required([bool isRequired = true]) {
-    for (FormuxInput input in this) {
-      input.required = isRequired;
-      input.clear();
+    for (var input in this) {
+      if (input is FormuxInput) {
+        input.required = isRequired;
+        input.clear();
+      }
     }
   }
 
