@@ -1,19 +1,19 @@
+import 'package:pipen/abstract/models/pipen_bloc_listener_ignore_exceptions.dart';
+import 'package:pipen/abstract/models/pipen_bloc_listener_exceptions.dart';
 import 'package:pipen/abstract/fail_state.dart';
+import 'package:pipen/models/fail_result.dart';
 import 'package:flutter/widgets.dart';
 
 abstract class PipenBlocListenerManager<T> {
-  PipenBlocListenerManager(this.context, this.state, {this.interceptExceptions = false}) {
+  PipenBlocListenerManager(this.context, this.state) {
     /// Handle listen action on state change
     listen();
 
     /// Handle exceptions manager
-    if (!interceptExceptions && state is FailState) {
-      exceptions(state as FailState);
+    if (state case FailState state) {
+      _isException(state);
     }
   }
-
-  /// Flag for handle exceptions or intercept manually
-  final bool interceptExceptions;
 
   /// Parent context
   final BuildContext context;
@@ -21,8 +21,8 @@ abstract class PipenBlocListenerManager<T> {
   /// Current state on BLoC
   final T state;
 
-  /// [Abstract] Handle exception managers
-  void exceptions(FailState state);
+  /// [Getter] Handle exception managers
+  Function(FailResult fail) get onExceptions;
 
   /// [Abstract] Listen changes on BLoC state
   void listen();
@@ -43,4 +43,20 @@ abstract class PipenBlocListenerManager<T> {
 
   /// [Event] Navigator pop
   void pop() => Navigator.of(context).pop();
+
+  /// [Event] Handle on exceptions
+  void fail() {
+    if (state case FailState state) {
+      onExceptions(state.fail);
+    }
+  }
+
+  /// Handle exceptions manager or use case
+  void _isException(FailState state) {
+    if (this case PipenBlocListenerExceptions instance) {
+      instance.exception(state.fail.exception);
+    } else if (this is! PipenBlocListenerIgnoreExceptions) {
+      onExceptions(state.fail);
+    }
+  }
 }
