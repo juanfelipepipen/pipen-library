@@ -7,6 +7,7 @@ class PipenInkWellContainer extends StatelessWidget {
     this.margin,
     this.padding,
     this.borderRadius,
+    this.disabled = false,
     required this.child,
     required this.onTap,
   });
@@ -14,6 +15,7 @@ class PipenInkWellContainer extends StatelessWidget {
   final EdgeInsets? margin, padding;
   final BorderRadius? borderRadius;
   final VoidCallback onTap;
+  final bool disabled;
   final Widget child;
   final double? size;
 
@@ -21,8 +23,8 @@ class PipenInkWellContainer extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
         padding: margin ?? EdgeInsets.zero,
         child: InkWell(
-          onTap: onTap,
           borderRadius: borderRadius,
+          onTap: disabled ? null : onTap,
           child: SizedBox(
             width: size,
             height: size,
