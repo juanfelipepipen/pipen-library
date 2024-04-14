@@ -1,7 +1,6 @@
 import '../managers/exception_manager.dart';
 import '../managers/headers_manager.dart';
 import '../abstract/cloux_client.dart';
-import '../withs/print_response.dart';
 import '../abstract/cloux_base.dart';
 
 import 'package:dio/dio.dart';
@@ -12,10 +11,8 @@ abstract class ClouxGet<R> extends ClouxClient implements ClouxBase<R> {
     try {
       Dio client = getDioClient();
       client.options.headers = HeadersManager.headersFromInstance(this);
-      Response response = await client.get(path, data: params);
-      if (this is PrintResponse) {
-        output(response.data);
-      }
+      Response response = await client.get(path, data: params, queryParameters: queryParams());
+      printResponse(response);
       return this.response(response.data);
     } catch (e) {
       ExceptionManager(e).handle(this);

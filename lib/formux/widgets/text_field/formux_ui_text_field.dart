@@ -101,6 +101,7 @@ class _SimpleTextFieldRawState extends State<FormuxUiTextField> {
           isCollapsed: true,
           enabled: widget.enable,
           border: InputBorder.none,
+          alignLabelWithHint: true,
           hintText: widget.hintText,
           counter: const Offstage(),
           contentPadding: EdgeInsets.only(

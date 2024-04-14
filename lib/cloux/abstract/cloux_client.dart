@@ -1,4 +1,6 @@
+import 'package:pipen/cloux/abstract/cloux_query_params.dart';
 import 'package:pipen/cloux/configs/cloux_config.dart';
+import 'package:pipen/cloux/withs/print_response.dart';
 import 'package:json_pretty/json_pretty.dart';
 import 'package:flutter/widgets.dart';
 import 'package:dio/dio.dart';
@@ -13,6 +15,21 @@ class ClouxClient {
       receiveTimeout: const Duration(seconds: 5),
     );
     return Dio(options);
+  }
+
+  /// Get query params
+  Map<String, dynamic>? queryParams() {
+    if (this case ClouxQueryParams instance) {
+      return instance.queryParameters;
+    }
+    return null;
+  }
+
+  /// Print response
+  void printResponse(Response response) {
+    if (this is PrintResponse) {
+      output(response.data);
+    }
   }
 
   /// Print response JSON output
