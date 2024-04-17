@@ -1,3 +1,3 @@
 abstract class ClouxQueryParams {
-  Map<String, dynamic>? queryParameters;
+  Map<String, dynamic> get queryParameters;
 }
