@@ -4,17 +4,17 @@ class PipenInkWellContainer extends StatelessWidget {
   const PipenInkWellContainer({
     super.key,
     this.size,
+    this.onTap,
     this.margin,
     this.padding,
     this.borderRadius,
     this.disabled = false,
     required this.child,
-    required this.onTap,
   });
 
   final EdgeInsets? margin, padding;
   final BorderRadius? borderRadius;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final bool disabled;
   final Widget child;
   final double? size;

@@ -38,6 +38,14 @@ abstract class PipenTypeSafeRoute {
         queryParameters: queryParameters,
       );
 
+  /// Push and replace the route
+  void pushReplacementNamed(BuildContext context) => context.pushReplacementNamed(
+        name,
+        extra: extra,
+        pathParameters: pathParameters,
+        queryParameters: queryParameters,
+      );
+
   /// Back or go
   void back(BuildContext context) =>
       Navigator.of(context).canPop() ? Navigator.of(context).pop() : go(context);
