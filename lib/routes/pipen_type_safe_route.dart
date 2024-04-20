@@ -15,11 +15,16 @@ abstract class PipenTypeSafeRoute {
     this.extra,
     required this.name,
     required this.path,
+    Map<String, dynamic>? extraParams,
     Map<String, String>? pathParameters,
     Map<String, dynamic>? queryParameters,
   }) {
     this.pathParameters = pathParameters ?? {};
     this.queryParameters = queryParameters ?? {};
+
+    if (extraParams != null) {
+      this.extra = extraParams;
+    }
   }
 
   /// Go to the route
