@@ -1,5 +1,6 @@
 import 'package:pipen/formux/abstract/type/formux_input_id.dart';
 import 'package:pipen/cloux/managers/models/input_error.dart';
+import 'package:pipen/formux/abstract/formux_input.dart';
 
 class InputErrorsException implements Exception {
   InputErrorsException({required this.errors});
@@ -15,6 +16,16 @@ class InputErrorsException implements Exception {
         form.ids[field]?.addError(error);
         errors.removeAt(index);
       }
+    }
+  }
+
+  /// Error on input
+  void input(FormuxInput input, String key) {
+    int index = errors.indexWhere((element) => element.field == key);
+    if (index > -1) {
+      String error = errors[index].errors.first;
+      input.addError(error);
+      errors.removeAt(index);
     }
   }
 }
