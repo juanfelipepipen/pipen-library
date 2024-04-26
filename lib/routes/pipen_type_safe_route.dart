@@ -23,7 +23,7 @@ abstract class PipenTypeSafeRoute {
     this.queryParameters = queryParameters ?? {};
 
     if (extraParams != null) {
-      this.extra = extraParams;
+      extra = extraParams;
     }
   }
 
@@ -50,6 +50,12 @@ abstract class PipenTypeSafeRoute {
         pathParameters: pathParameters,
         queryParameters: queryParameters,
       );
+
+  /// Push and pop the current route
+  void pushAndPop(BuildContext context) {
+    Navigator.of(context).pop();
+    push(context);
+  }
 
   /// Back or go
   void back(BuildContext context) =>

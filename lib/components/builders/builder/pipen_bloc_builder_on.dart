@@ -11,8 +11,8 @@ class PipenBlocBuilderOn<E> extends StatelessWidget {
   @override
   Widget build(BuildContext context) => builder.builder((context, state) {
         if (state is E) {
-          return child.call(state as E);
+          return child.call(state);
         }
-        return difference ?? SizedBox.shrink();
+        return difference ?? const SizedBox.shrink();
       });
 }
