@@ -1,5 +1,6 @@
 import 'package:pipen/cloux/abstract/cloux_query_params.dart';
 import 'package:pipen/cloux/configs/cloux_config.dart';
+import 'package:pipen/cloux/withs/params_without_null.dart';
 import 'package:pipen/cloux/withs/print_response.dart';
 import 'package:json_pretty/json_pretty.dart';
 import 'package:flutter/widgets.dart';
@@ -38,4 +39,19 @@ class ClouxClient {
           jsonEncode(response),
         ),
       );
+
+  /// Sanitize params
+  Map<String, dynamic> paramsSanitize(Map<String, dynamic> params) {
+    if (this is ParamsWithoutNull) {
+      Map<String, dynamic> sanitize = {};
+
+      for (String key in params.keys) {
+        if (params[key] != null) {
+          sanitize[key] = params[key];
+        }
+      }
+    }
+
+    return params;
+  }
 }

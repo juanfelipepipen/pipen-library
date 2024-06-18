@@ -11,7 +11,11 @@ abstract class ClouxPost<R> extends ClouxClient implements ClouxBase<R> {
     try {
       Dio client = getDioClient();
       client.options.headers = HeadersManager.headersFromInstance(this);
-      Response response = await client.post(path, data: params, queryParameters: queryParams());
+      Response response = await client.post(
+        path,
+        data: paramsSanitize(params),
+        queryParameters: queryParams(),
+      );
       printResponse(response);
       return this.response(response.data);
     } catch (e) {
