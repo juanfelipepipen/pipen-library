@@ -1,8 +1,9 @@
 import 'package:graphql/client.dart';
-import 'package:pipen/pipen_graphql/graphql_client.dart';
+import 'package:pipen/pipen_graphql/pipen_graphql_client.dart';
 import 'package:pipen/pipen_graphql/graphql_interface.dart';
+import 'package:pipen/pipen_graphql/pipen_graphql_error.dart';
 
-abstract class GraphqlMutationService<T> implements GraphQlInterface<T> {
+abstract class PipenGraphqlMutation<T> implements GraphQlInterface<T> {
   /// [Getter] Get mutation options
   Future<MutationOptions<Object?>> get options async => MutationOptions(
         document: gql(document),
@@ -16,7 +17,7 @@ abstract class GraphqlMutationService<T> implements GraphQlInterface<T> {
 
     try {
       if (result.exception case OperationException exception) {
-        // RequestFail.printOutError(exception);
+        RequestFail.printOutError(exception);
         // RequestFail.decode(exception);
       }
       return await onSuccess(result.data ?? {});
