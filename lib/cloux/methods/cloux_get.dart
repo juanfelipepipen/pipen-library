@@ -2,7 +2,6 @@ import '../managers/exception_manager.dart';
 import '../managers/headers_manager.dart';
 import '../abstract/cloux_client.dart';
 import '../abstract/cloux_base.dart';
-
 import 'package:dio/dio.dart';
 
 abstract class ClouxGet<R> extends ClouxClient implements ClouxBase<R> {
