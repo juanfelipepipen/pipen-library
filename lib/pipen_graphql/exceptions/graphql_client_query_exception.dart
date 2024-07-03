@@ -1,0 +1,1 @@
+class GraphqlClientQueryException implements Exception {}

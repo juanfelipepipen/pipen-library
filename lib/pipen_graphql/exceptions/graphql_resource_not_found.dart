@@ -1,0 +1,1 @@
+class GraphqlResourceNotFound implements Exception {}

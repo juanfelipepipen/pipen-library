@@ -1,0 +1,1 @@
+class GraphQlConnectivityException implements Exception {}
