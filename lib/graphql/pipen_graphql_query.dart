@@ -1,6 +1,6 @@
-import 'package:pipen/pipen_graphql/pipen_graphql_request_fail.dart';
-import 'package:pipen/pipen_graphql/pipen_graphql_client.dart';
-import 'package:pipen/pipen_graphql/graphql_interface.dart';
+import 'package:pipen/graphql/pipen_graphql_request_fail.dart';
+import 'package:pipen/graphql/pipen_graphql_client.dart';
+import 'package:pipen/graphql/graphql_interface.dart';
 import 'package:graphql/client.dart';
 
 abstract class PipenGraphqlQuery<T> implements GraphQlInterface<T> {

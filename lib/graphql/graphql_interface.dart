@@ -1,4 +1,4 @@
-import 'package:pipen/pipen_graphql/base/graphql_types.dart';
+import 'package:pipen/graphql/base/graphql_types.dart';
 
 abstract class GraphQlInterface<T> {
   /// GraphQl request query
