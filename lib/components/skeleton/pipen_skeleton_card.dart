@@ -1,5 +1,5 @@
 import 'package:pipen/components/skeleton/pipen_skeleton_list.dart';
-import 'package:skeletons/skeletons.dart';
+import 'package:flutter_skeleton_ui/flutter_skeleton_ui.dart';
 import 'package:flutter/widgets.dart';
 
 class PipenSkeletonCard extends StatelessWidget {

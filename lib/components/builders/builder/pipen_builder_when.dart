@@ -1,4 +1,4 @@
-import 'package:skeletons/skeletons.dart';
+import 'package:flutter_skeleton_ui/flutter_skeleton_ui.dart';
 import 'package:flutter/widgets.dart';
 
 class PipenBuilderWhen<W> extends StatelessWidget {
