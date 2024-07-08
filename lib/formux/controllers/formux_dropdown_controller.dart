@@ -59,9 +59,9 @@ class FormuxDropdownController {
   @protected
   void openCupertinoPicker({required List<Valuable> items, required int selectedItem}) => builder(
         FormuxUiDropdownCupertino(
+          items: items,
           onChange: _onChange,
           selectedItem: selectedItem,
-          items: items,
         ),
       );
 

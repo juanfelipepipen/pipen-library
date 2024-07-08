@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 extension ContextExtension on BuildContext {
   /// Context height
@@ -6,4 +6,13 @@ extension ContextExtension on BuildContext {
 
   /// Context width
   double get width => MediaQuery.sizeOf(this).width;
+
+  /// Check if current theme is dark mode
+  bool get isDark => Theme.of(this).brightness == Brightness.dark;
+
+  /// Get the current theme data
+  ThemeData get theme => Theme.of(this);
+
+  /// Get the theme colors scheme
+  ColorScheme get themeColors => Theme.of(this).colorScheme;
 }

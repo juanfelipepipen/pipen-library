@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pipen/extensions/context_extension.dart';
 
 class FormuxUiTextField extends StatefulWidget {
   const FormuxUiTextField({
@@ -18,6 +19,7 @@ class FormuxUiTextField extends StatefulWidget {
     this.autofocus = false,
     this.obscureText = false,
     this.contentPaddingLeft = 8,
+    this.hintColor = Colors.grey,
     super.key,
   });
 
@@ -30,6 +32,7 @@ class FormuxUiTextField extends StatefulWidget {
   final Function()? onSubmitted;
   final FocusNode? focusNode;
   final String? hintText;
+  final Color hintColor;
   final bool autofocus;
   final String value;
 
@@ -84,7 +87,7 @@ class _SimpleTextFieldRawState extends State<FormuxUiTextField> {
         cursorHeight: 20,
         autocorrect: false,
         controller: controller,
-        cursorColor: Colors.black,
+        cursorColor: context.themeColors.primary,
         maxLength: widget.maxLength,
         maxLines: widget.maxLines ?? 1,
         obscureText: widget.obscureText,
@@ -111,7 +114,7 @@ class _SimpleTextFieldRawState extends State<FormuxUiTextField> {
           hintStyle: TextStyle(
             fontSize: widget.textSize,
             fontWeight: widget.hintFontWeight,
-            color: widget.enable ? Colors.grey : Colors.grey.withOpacity(0.4),
+            color: widget.enable ? widget.hintColor : widget.hintColor.withOpacity(0.4),
           ),
         ),
       );

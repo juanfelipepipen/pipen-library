@@ -1,7 +1,7 @@
 name: pipen
 description: "Pipen basic tools for build imports.run.xml greatness app."
 version: 0.0.1
-homepage: 'https://pipen.dev/library'
+homepage: 'https://library.pipen.dev'
 
 environment:
   sdk: '>=3.3.0 <4.0.0'

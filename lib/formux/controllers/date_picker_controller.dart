@@ -32,7 +32,7 @@ class DatePickerController extends ContextController {
       builder: (context) => CupertinoPopupSurface(
         child: Container(
           height: context.height * 0.4,
-          color: CupertinoColors.white,
+          color: context.themeColors.surface,
           child: PipenColumn(
             children: [
               FormuxPickerHeader(style: style),

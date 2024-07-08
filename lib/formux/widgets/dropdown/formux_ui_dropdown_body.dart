@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:pipen/extensions/context_extension.dart';
 
 class FormuxUiDropdownBody extends StatelessWidget {
   const FormuxUiDropdownBody(
@@ -16,28 +17,48 @@ class FormuxUiDropdownBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-      height: 260,
-      padding: const EdgeInsets.only(top: 6.0),
-      color: CupertinoColors.systemBackground.resolveFrom(context),
-      margin: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-      child: SafeArea(
+        height: 260,
+        color: context.themeColors.surface,
+        padding: const EdgeInsets.only(top: 6.0),
+        margin: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: SafeArea(
           top: false,
-          child: Column(children: [
-            Row(children: [
-              Expanded(
+          child: Column(
+            children: [
+              Row(children: [
+                Expanded(
                   child: CupertinoButton(
-                      alignment: Alignment.topLeft,
-                      onPressed: Navigator.of(context).pop,
-                      child: Text(cancelLabel, style: TextStyle(color: buttonsColor)))),
-              Expanded(
+                    alignment: Alignment.topLeft,
+                    onPressed: Navigator.of(context).pop,
+                    child: Text(
+                      cancelLabel,
+                      style: TextStyle(
+                        color: buttonsColor,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
                   child: CupertinoButton(
-                      onPressed: () {
-                        onAccept?.call();
-                        Navigator.of(context).pop();
-                      },
-                      alignment: Alignment.topRight,
-                      child: Text(acceptLabel, style: TextStyle(color: buttonsColor))))
-            ]),
-            Expanded(child: child)
-          ])));
+                    onPressed: () {
+                      onAccept?.call();
+                      Navigator.of(context).pop();
+                    },
+                    alignment: Alignment.topRight,
+                    child: Text(
+                      acceptLabel,
+                      style: TextStyle(
+                        color: buttonsColor,
+                      ),
+                    ),
+                  ),
+                )
+              ]),
+              Expanded(child: child)
+            ],
+          ),
+        ),
+      );
 }
