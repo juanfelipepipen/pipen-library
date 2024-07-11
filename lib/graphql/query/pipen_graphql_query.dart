@@ -1,4 +1,4 @@
-import 'package:pipen/graphql/pipen_graphql_request_fail.dart';
+import 'package:pipen/graphql/pipen_graphql_response.dart';
 import 'package:pipen/graphql/pipen_graphql_client.dart';
 import 'package:pipen/graphql/graphql_interface.dart';
 import 'package:graphql/client.dart';
@@ -16,11 +16,8 @@ abstract class PipenGraphqlQuery<T> implements GraphQlInterface<T> {
     QueryResult result = await PipenGraphqlClient.client.query(options);
 
     try {
-      if (result.exception case OperationException exception) {
-        PipenGraphqlRequestFail.printOutError(exception);
-        PipenGraphqlRequestFail.decode(exception);
-      }
-      return await onSuccess(result.data ?? {});
+      PipenGraphqlResponse response = PipenGraphqlResponse<T>(instance: this, result: result);
+      return await response.process(onSuccess);
     } catch (e) {
       rethrow;
     }
