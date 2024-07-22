@@ -9,3 +9,12 @@
 ## 0.0.3
 
 * Internal corrections.
+
+## 0.0.4
+
+* FormuxInputErrorCodes for associate an error code to an input
+
+## 0.0.5
+
+* Alignment arg for PipenBuildWhen
+* Formux error from code support
