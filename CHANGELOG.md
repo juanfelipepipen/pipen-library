@@ -18,3 +18,7 @@
 
 * Alignment arg for PipenBuildWhen
 * Formux error from code support
+
+## 0.0.6
+
+* Storage contract reading problems on iOS solved

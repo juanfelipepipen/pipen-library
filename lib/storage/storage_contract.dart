@@ -3,7 +3,12 @@ import 'exceptions/storage_value_not_found_exception.dart';
 import 'package:meta/meta.dart';
 
 abstract class StorageContract<T> {
-  final _storage = const FlutterSecureStorage();
+  final _storage = const FlutterSecureStorage(
+    iOptions: IOSOptions(
+      synchronizable: true,
+      accessibility: KeychainAccessibility.unlocked_this_device,
+    ),
+  );
 
   FlutterSecureStorage get storage => _storage;
 
@@ -37,7 +42,7 @@ abstract class StorageContract<T> {
     String? value = await storage.read(key: key);
 
     if (value == null) {
-      throw StorageValueNotFoundException();
+      throw StorageValueNotFoundException(key);
     }
 
     return value;
@@ -46,8 +51,7 @@ abstract class StorageContract<T> {
   @protected
   Future<void> write(String? value) async {
     if (value != null) {
-      const iosOptions = IOSOptions(accessibility: KeychainAccessibility.unlocked_this_device);
-      await storage.write(key: key, value: value, iOptions: iosOptions);
+      await storage.write(key: key, value: value);
     } else {
       await clear();
     }
