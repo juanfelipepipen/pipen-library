@@ -6,6 +6,7 @@ class PipenBuilderWhen<W> extends StatelessWidget {
     super.key,
     this.deny,
     this.height,
+    this.width,
     this.margin,
     this.skeleton,
     this.alignment,
@@ -16,9 +17,9 @@ class PipenBuilderWhen<W> extends StatelessWidget {
 
   final Widget Function(W on) child;
   final Widget? skeleton, deny;
+  final double? height, width;
   final Alignment? alignment;
   final EdgeInsets? margin;
-  final double? height;
   final dynamic value;
   final bool loading;
 
@@ -26,6 +27,7 @@ class PipenBuilderWhen<W> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
+        width: width,
         height: height,
         alignment: alignment,
         margin: margin ?? EdgeInsets.zero,
