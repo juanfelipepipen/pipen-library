@@ -30,3 +30,7 @@
 ## 0.0.8
 
 * PipenBuildWhen in If widget
+
+## 0.0.9
+
+* When component from PipenBuildWhen
