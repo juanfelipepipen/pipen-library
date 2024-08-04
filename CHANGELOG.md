@@ -22,3 +22,11 @@
 ## 0.0.6
 
 * Storage contract reading problems on iOS solved
+
+## 0.0.7
+
+* Width in PipenBuildWhen
+
+## 0.0.8
+
+* PipenBuildWhen in If widget
