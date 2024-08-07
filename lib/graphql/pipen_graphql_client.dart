@@ -1,16 +1,26 @@
+import 'package:pipen/graphql/exceptions/graphql_client_not_found.dart';
+import 'package:pipen/graphql/base/pipen_graphql_authentication.dart';
 import 'package:graphql/client.dart';
 
 class PipenGraphqlClient {
-  static GraphQLClient Function()? _builder;
+  /// Graphql client with auth credentials
+  static Future<GraphQLClient> Function()? withAuth;
 
-  static GraphQLClient get client {
-    if (_builder case GraphQLClient Function() builder) {
-      return builder();
+  /// Graphql client without authentication
+  static Future<GraphQLClient> Function()? withoutAuth;
+
+  /// Get the GraphQL client from parent instance
+  static Future<GraphQLClient> getFromInstance(dynamic instance) async {
+    GraphQLClient? client = await PipenGraphqlClient.withoutAuth?.call();
+
+    if (instance is PipenGraphqlAuthentication) {
+      client = await PipenGraphqlClient.withAuth?.call();
     }
-    throw Exception('GraphQL client not available');
-  }
 
-  static set builder(GraphQLClient Function() builder) {
-    _builder = builder;
+    if (client == null) {
+      throw GraphqlClientNotFound();
+    }
+
+    return client;
   }
 }

@@ -13,7 +13,8 @@ abstract class PipenGraphqlMutation<T> implements GraphQlInterface<T> {
   /// [Event] Send request query
   Future<T> request() async {
     MutationOptions<Object?> options = await this.options;
-    QueryResult result = await PipenGraphqlClient.client.mutate(options);
+    GraphQLClient client = await PipenGraphqlClient.getFromInstance(this);
+    QueryResult result = await client.mutate(options);
 
     try {
       PipenGraphqlResponse response = PipenGraphqlResponse<T>(instance: this, result: result);

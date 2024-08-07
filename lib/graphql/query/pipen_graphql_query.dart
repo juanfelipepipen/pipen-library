@@ -13,7 +13,8 @@ abstract class PipenGraphqlQuery<T> implements GraphQlInterface<T> {
   /// Execute query
   Future<T> request() async {
     QueryOptions<Object?> options = await this.options;
-    QueryResult result = await PipenGraphqlClient.client.query(options);
+    GraphQLClient client = await PipenGraphqlClient.getFromInstance(this);
+    QueryResult result = await client.query(options);
 
     try {
       PipenGraphqlResponse response = PipenGraphqlResponse<T>(instance: this, result: result);

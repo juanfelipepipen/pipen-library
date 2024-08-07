@@ -1,0 +1,1 @@
+class GraphqlClientNotFound implements Exception {}
