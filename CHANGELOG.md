@@ -34,3 +34,7 @@
 ## 0.0.9
 
 * When component from PipenBuildWhen
+
+## 0.0.10
+
+* GraphQL with authentication support
