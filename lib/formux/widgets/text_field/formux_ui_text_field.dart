@@ -11,6 +11,7 @@ class FormuxUiTextField extends StatefulWidget {
     this.fontWeight,
     this.onSubmitted,
     this.keyboardType,
+    this.textInputAction,
     this.hintFontWeight,
     required this.value,
     this.textSize = 16,
@@ -26,6 +27,7 @@ class FormuxUiTextField extends StatefulWidget {
   final FontWeight? fontWeight, hintFontWeight;
   final double textSize, contentPaddingLeft;
   final bool required, obscureText, enable;
+  final TextInputAction? textInputAction;
   final Function(String)? onChanged;
   final TextInputType? keyboardType;
   final int? maxLength, maxLines;
@@ -87,12 +89,13 @@ class _SimpleTextFieldRawState extends State<FormuxUiTextField> {
         cursorHeight: 20,
         autocorrect: false,
         controller: controller,
-        cursorColor: context.themeColors.primary,
         maxLength: widget.maxLength,
         maxLines: widget.maxLines ?? 1,
         obscureText: widget.obscureText,
         keyboardType: widget.keyboardType,
+        textInputAction: widget.textInputAction,
         focusNode: widget.focusNode ?? focusNode,
+        cursorColor: context.themeColors.primary,
         onSubmitted: (value) => widget.onSubmitted?.call(),
         onChanged: (value) => widget.onChanged?.call(value),
         style: TextStyle(

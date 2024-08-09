@@ -4,26 +4,27 @@ import '../../valuable/valuable.dart';
 import 'formux_input.dart';
 
 abstract class Formux {
-
+  /// Constructor
   Formux({bool loading = false}) {
     if (loading) {
       this.loading();
     }
   }
 
-  bool get hasId => id != null;
-
+  /// [Abstract] Form id
   String? id;
 
-  /// [Getter] All inputs passed
-  bool get passed => inputs.every((input) {
-        if (input.required) {
-          return input.pass;
-        }
-        return true;
-      });
-
+  /// [Abstract] Form inputs
   List<FormuxInput> get inputs;
+
+  /// [Getter] All inputs passed
+  bool get passed => inputs.every((input) => input.required ? input.pass : true);
+
+  /// All inputs is loading
+  bool get isLoading => inputs.every((input) => input.isLoading);
+
+  /// Form has id assigned
+  bool get hasId => id != null;
 
   /// Check if form pass validations
   void pass() {
