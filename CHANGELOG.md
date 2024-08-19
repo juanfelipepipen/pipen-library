@@ -38,3 +38,11 @@
 ## 0.0.10
 
 * GraphQL with authentication support
+
+## 0.0.11
+
+* PipenSkeleton component added
+
+## 0.0.12
+
+* PipenRow/PipenColumn iterable support
