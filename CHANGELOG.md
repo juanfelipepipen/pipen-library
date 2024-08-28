@@ -1,48 +1,49 @@
-## 0.0.1
+## 0.0.12
 
-* Initial release.
+* PipenRow/PipenColumn iterable support
 
-## 0.0.2
+## 0.0.11
 
-* Internal corrections.
+* PipenSkeleton component added
 
-## 0.0.3
+## 0.0.10
 
-* Internal corrections.
+* GraphQL with authentication support
 
-## 0.0.4
+## 0.0.9
 
-* FormuxInputErrorCodes for associate an error code to an input
+* When component from PipenBuildWhen
+
+## 0.0.8
+
+* PipenBuildWhen in If widget
+
+## 0.0.7
+
+* Width in PipenBuildWhen
+
+## 0.0.6
+
+* Storage contract reading problems on iOS solved
+  tErrorCodes for associate an error code to an input
 
 ## 0.0.5
 
 * Alignment arg for PipenBuildWhen
 * Formux error from code support
 
-## 0.0.6
+## 0.0.4
 
-* Storage contract reading problems on iOS solved
+* FormuxInput
 
-## 0.0.7
+## 0.0.3
 
-* Width in PipenBuildWhen
+* Internal corrections.
 
-## 0.0.8
+## 0.0.2
 
-* PipenBuildWhen in If widget
+* Internal corrections.
 
-## 0.0.9
+* ## 0.0.1
 
-* When component from PipenBuildWhen
-
-## 0.0.10
-
-* GraphQL with authentication support
-
-## 0.0.11
-
-* PipenSkeleton component added
-
-## 0.0.12
-
-* PipenRow/PipenColumn iterable support
+* Initial release.

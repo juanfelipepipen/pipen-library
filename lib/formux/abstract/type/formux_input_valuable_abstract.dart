@@ -20,13 +20,19 @@ abstract class FormuxInputValuableAbstract extends FormuxInput<Valuable?> {
   }
 
   /// Add items to items list from valuable values
-  void addItemValues({required String title, required String value}) => items.add(Valuable(title: title, value: value));
+  void addItemValues({required String title, required String value}) {
+    items.add(Valuable(title: title, value: value));
+  }
 
   /// Clear items list
-  void clearItems() => items = [];
+  void clearItems() {
+    items = [];
+  }
 
   /// Get item from index
-  Valuable? getItem(int index) => items.length >= index ? items[index] : null;
+  Valuable? getItem(int index) {
+    return items.length >= index ? items[index] : null;
+  }
 
   /// Update from id
   void update(String id) {

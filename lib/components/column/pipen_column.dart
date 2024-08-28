@@ -4,7 +4,7 @@ class PipenColumn extends StatelessWidget {
   PipenColumn({
     super.key,
     this.child,
-    this.padding,
+    this.margin,
     this.vertical,
     this.children,
     this.listable,
@@ -25,7 +25,7 @@ class PipenColumn extends StatelessWidget {
       PipenColumn(
         key: key,
         child: child,
-        padding: padding,
+        margin: padding,
         listable: listable,
         children: children,
         mainAxisSize: mainAxisSize,
@@ -44,7 +44,7 @@ class PipenColumn extends StatelessWidget {
       PipenColumn(
         key: key,
         child: child,
-        padding: padding,
+        margin: padding,
         children: children,
         listable: listable,
         mainAxisSize: mainAxisSize,
@@ -57,7 +57,7 @@ class PipenColumn extends StatelessWidget {
   final Iterable<Widget>? listable;
   final MainAxisSize? mainAxisSize;
   final List<Widget>? children;
-  final EdgeInsets? padding;
+  final EdgeInsets? margin;
   final Widget? child;
 
   List<Widget> get _children {
@@ -72,7 +72,7 @@ class PipenColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: padding ?? EdgeInsets.zero,
+        padding: margin ?? EdgeInsets.zero,
         child: Column(
           mainAxisSize: mainAxisSize ?? MainAxisSize.max,
           mainAxisAlignment: vertical ?? MainAxisAlignment.start,

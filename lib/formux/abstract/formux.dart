@@ -1,6 +1,6 @@
 import '../exceptions/formux_failed_pass_exception.dart';
-import 'package:flutter/foundation.dart';
 import '../../valuable/valuable.dart';
+import 'package:flutter/foundation.dart';
 import 'formux_input.dart';
 
 abstract class Formux {
@@ -27,10 +27,12 @@ abstract class Formux {
   bool get hasId => id != null;
 
   /// Check if form pass validations
-  void pass() {
+  void pass({VoidCallback? onPassed}) {
     if (!passed) {
       showErrors();
       throw FormuxFailedPassException();
+    } else {
+      onPassed?.call();
     }
   }
 

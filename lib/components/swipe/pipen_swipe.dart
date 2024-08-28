@@ -51,7 +51,7 @@ class _PipenSwipeState extends State<PipenSwipe> {
         },
         children: [
           PipenColumn(
-            padding: widget.padding,
+            margin: widget.padding,
             children: widget.children ?? [widget.child!],
           ),
           SizedBox(

@@ -5,10 +5,10 @@ effort to create functionalities that can be crucial in any application.
 
 - ✅ Form validations
 - 🧩 BLoC complements
-- 🌎 REST client
-- 🕹️ GraphQL client
+- 🌎 REST client wrapper
+- 🕹️ GraphQL client wrapper
 - 🪄 Imports ordering
-- 📦 Storage local
+- 📦 Local Storage wrapper
 - 🗣️ Translation enum tools
 - ⛓️‍💥 Routes type-safe
 

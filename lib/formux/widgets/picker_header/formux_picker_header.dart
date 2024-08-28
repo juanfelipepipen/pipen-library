@@ -9,7 +9,7 @@ class FormuxPickerHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => PipenRow(
-        padding: const EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 5),
         children: [
           Expanded(
             child: CupertinoButton(
