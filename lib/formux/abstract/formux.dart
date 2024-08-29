@@ -28,11 +28,14 @@ abstract class Formux {
 
   /// Check if form pass validations
   void pass({VoidCallback? onPassed}) {
-    if (!passed) {
-      showErrors();
+    bool pass = valid();
+
+    if (!pass && onPassed == null) {
       throw FormuxFailedPassException();
-    } else {
-      onPassed?.call();
+    }
+
+    if (pass && onPassed != null) {
+      onPassed();
     }
   }
 
@@ -46,10 +49,11 @@ abstract class Formux {
 
   /// Check if form is invalid, show errors and return status
   bool valid() {
-    if (!passed) {
+    bool pass = passed;
+    if (!pass) {
       showErrors();
     }
-    return passed;
+    return pass;
   }
 
   /// Is loading form

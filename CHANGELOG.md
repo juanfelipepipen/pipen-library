@@ -1,3 +1,11 @@
+## 0.0.14
+
+* Formux onPass event
+
+## 0.0.13
+
+* PipenLottie wrapper
+
 ## 0.0.12
 
 * PipenRow/PipenColumn iterable support
