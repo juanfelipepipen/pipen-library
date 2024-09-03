@@ -1,3 +1,7 @@
+## 0.0.15
+
+* Vibration support on PipenGestureTap
+
 ## 0.0.14
 
 * Formux onPass event

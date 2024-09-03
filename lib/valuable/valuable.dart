@@ -1,3 +1,5 @@
+typedef ValuableList = List<Valuable>;
+
 /// Base instance at valuable
 class Valuable {
   String title, value;
