@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 
 class FormuxUiTextField extends StatefulWidget {
   const FormuxUiTextField({
-    this.hintText,
-    this.focusNode,
+    this.style,
     this.maxLines,
+    this.hintText,
+    this.hintStyle,
+    this.focusNode,
     this.onChanged,
     this.maxLength,
     this.fontWeight,
@@ -30,6 +32,7 @@ class FormuxUiTextField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final Function(String)? onChanged;
   final TextInputType? keyboardType;
+  final TextStyle? style, hintStyle;
   final int? maxLength, maxLines;
   final Function()? onSubmitted;
   final FocusNode? focusNode;
@@ -98,10 +101,11 @@ class _SimpleTextFieldRawState extends State<FormuxUiTextField> {
         cursorColor: context.themeColors.primary,
         onSubmitted: (value) => widget.onSubmitted?.call(),
         onChanged: (value) => widget.onChanged?.call(value),
-        style: TextStyle(
-          fontSize: widget.textSize,
-          fontWeight: widget.fontWeight,
-        ),
+        style: widget.style ??
+            TextStyle(
+              fontSize: widget.textSize,
+              fontWeight: widget.fontWeight,
+            ),
         decoration: InputDecoration(
           isDense: true,
           isCollapsed: true,
@@ -114,11 +118,12 @@ class _SimpleTextFieldRawState extends State<FormuxUiTextField> {
             top: 4,
             left: widget.contentPaddingLeft,
           ),
-          hintStyle: TextStyle(
-            fontSize: widget.textSize,
-            fontWeight: widget.hintFontWeight,
-            color: widget.enable ? widget.hintColor : widget.hintColor.withOpacity(0.4),
-          ),
+          hintStyle: widget.hintStyle ??
+              TextStyle(
+                fontSize: widget.textSize,
+                fontWeight: widget.hintFontWeight,
+                color: widget.enable ? widget.hintColor : widget.hintColor.withOpacity(0.4),
+              ),
         ),
       );
 }

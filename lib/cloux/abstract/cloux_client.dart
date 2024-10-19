@@ -3,7 +3,6 @@ import 'package:pipen/cloux/withs/params_without_null.dart';
 import 'package:pipen/cloux/configs/cloux_config.dart';
 import 'package:pipen/cloux/withs/print_response.dart';
 import 'package:json_pretty/json_pretty.dart';
-import 'package:flutter/widgets.dart';
 import 'package:dio/dio.dart';
 import 'dart:convert';
 
@@ -34,10 +33,8 @@ class ClouxClient {
   }
 
   /// Print response JSON output
-  void output(Map<dynamic, dynamic> response) => debugPrint(
-        prettyPrintJson(
-          jsonEncode(response),
-        ),
+  void output(Map<dynamic, dynamic> response) => prettyPrintJson(
+        jsonEncode(response),
       );
 
   /// Sanitize params

@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="imports" type="DartCommandLineRunConfigurationType"
+            factoryName="Create route type-safe">
+
+        <option name="filePath" value="$PROJECT_DIR$/bin/create_route.dart" />
+        <option name="workingDirectory" value="$PROJECT_DIR$/example" />
+        <method v="2" />
+    </configuration>
+</component>
