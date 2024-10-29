@@ -5,6 +5,8 @@ import 'package:async/async.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
+part 'fetch_state.dart';
+
 abstract class CubitFetch<R> extends Cubit<FetchState<R>> {
   CubitFetch() : super(FetchLoading<R>());
 
@@ -62,22 +64,4 @@ abstract class CubitFetchResolver<R> extends Cubit<FetchState<R>> {
     _resolver?.cancel();
     return super.close();
   }
-}
-
-@immutable
-sealed class FetchState<R> {}
-
-final class FetchLoading<R> extends FetchState<R> implements LoadingState {}
-
-final class FetchSuccess<R> extends FetchState<R> implements LoadingState {
-  FetchSuccess(this.result);
-
-  final R result;
-}
-
-final class FetchFail<R> extends FetchState<R> implements FailState {
-  FetchFail(this.fail);
-
-  @override
-  final FailResult fail;
 }

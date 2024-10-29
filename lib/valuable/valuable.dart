@@ -10,6 +10,14 @@ class Valuable {
 
   Valuable copyWith() => Valuable(title: title, value: value);
 
+  static Valuable fromJson(
+    Map<dynamic, dynamic> params, {
+    String titleKey = 'name',
+    String valueKey = 'id',
+  }) {
+    return Valuable.glass(params[titleKey], params[valueKey]);
+  }
+
   static List<Valuable> fromList(
     List<dynamic>? list, {
     String title = 'name',
