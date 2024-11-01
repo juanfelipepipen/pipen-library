@@ -5,7 +5,9 @@ sealed class FetchState<R> {}
 
 final class FetchLoading<R> extends FetchState<R> implements LoadingState {}
 
-final class FetchSuccess<R> extends FetchState<R> implements LoadingState {
+final class FetchPending<R> extends FetchState<R> {}
+
+final class FetchSuccess<R> extends FetchState<R> {
   FetchSuccess(this.result);
 
   final R result;
@@ -19,3 +21,5 @@ final class FetchFail<R> extends FetchState<R> implements FailState {
   @override
   final FailResult fail;
 }
+
+abstract class InitOnFetchPending {}
