@@ -3,7 +3,7 @@ import '../../valuable/valuable.dart';
 import 'package:flutter/foundation.dart';
 import 'formux_input.dart';
 
-abstract class Formux {
+abstract class Formux<F> {
   /// Constructor
   Formux({bool loading = false}) {
     if (loading) {
