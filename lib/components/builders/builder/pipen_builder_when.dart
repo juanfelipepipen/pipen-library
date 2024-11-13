@@ -1,5 +1,9 @@
 import 'package:flutter_skeleton_ui/flutter_skeleton_ui.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pipen/cubit/cubit_fetch.dart';
+
+typedef When<T> = PipenBuilderWhen<T>;
+typedef WhenFetchSuccess<T> = PipenBuilderWhen<FetchSuccess<T>>;
 
 class PipenBuilderWhen<W> extends StatelessWidget {
   const PipenBuilderWhen({

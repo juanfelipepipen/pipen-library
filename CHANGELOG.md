@@ -1,3 +1,11 @@
+## 0.0.17
+
+* BLoC fetch builders
+
+## 0.0.16
+
+* Minimal corrections
+
 ## 0.0.15
 
 * Vibration support on PipenGestureTap

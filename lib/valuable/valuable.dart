@@ -1,4 +1,5 @@
 typedef ValuableList = List<Valuable>;
+typedef ValuableFetch = Future<ValuableList>;
 
 /// Base instance at valuable
 class Valuable {

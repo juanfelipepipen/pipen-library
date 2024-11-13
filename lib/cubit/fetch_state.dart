@@ -1,5 +1,7 @@
 part of 'cubit_fetch.dart';
 
+typedef FetchBlocStreamable<S> = StateStreamable<FetchState<S>>;
+
 @immutable
 sealed class FetchState<R> {}
 
@@ -21,5 +23,3 @@ final class FetchFail<R> extends FetchState<R> implements FailState {
   @override
   final FailResult fail;
 }
-
-abstract class InitOnFetchPending {}
