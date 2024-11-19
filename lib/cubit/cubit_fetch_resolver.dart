@@ -29,7 +29,3 @@ abstract class CubitFetchResolver<R> extends Cubit<FetchState<R>> {
     return super.close();
   }
 }
-
-abstract class CubitFetchResolverPending<R> extends CubitFetchResolver<R> {
-  CubitFetchResolverPending() : super(pending: true);
-}

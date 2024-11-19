@@ -6,8 +6,8 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
 part 'fetch_state.dart';
-
 part 'cubit_fetch_resolver.dart';
+part 'cubit_fetch_resolver_pending.dart';
 
 abstract class CubitFetch<R> extends Cubit<FetchState<R>> {
   CubitFetch({bool pending = false}) : super(pending ? FetchPending<R>() : FetchLoading<R>());
@@ -17,20 +17,36 @@ abstract class CubitFetch<R> extends Cubit<FetchState<R>> {
   @protected
   Future<R> get resolver;
 
+  /// Future resolver async
   CancelableOperation<R>? _resolver;
 
   /// Fetch resolver
   void fetch() {
     if (state is! LoadingState || !init) {
       init = true;
-      emit(FetchLoading<R>());
+      loading();
       _resolver = CancelableOperation.fromFuture(resolver);
       _resolver?.value.then((result) {
-        emit(FetchSuccess<R>(result));
+        success(result);
       }).catchError((e, s) {
-        emit(FetchFail<R>(FailResult(e, s)));
+        fail(e, s);
       });
     }
+  }
+
+  /// Emit loading state
+  void loading() {
+    emit(FetchLoading<R>());
+  }
+
+  /// Emit success state
+  void success(R result) {
+    emit(FetchSuccess<R>(result));
+  }
+
+  /// Emit fail state
+  void fail(dynamic e, StackTrace s) {
+    emit(FetchFail<R>(FailResult(e, s)));
   }
 
   @override

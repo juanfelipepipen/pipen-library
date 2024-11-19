@@ -11,16 +11,14 @@ class Valuable {
 
   Valuable copyWith() => Valuable(title: title, value: value);
 
-  static Valuable fromJson(
-    Map<dynamic, dynamic> params, {
+  static Valuable fromJson(Map<dynamic, dynamic> params, {
     String titleKey = 'name',
     String valueKey = 'id',
   }) {
-    return Valuable.glass(params[titleKey], params[valueKey]);
+    return Valuable.glass(params[titleKey].toString(), params[valueKey].toString());
   }
 
-  static List<Valuable> fromList(
-    List<dynamic>? list, {
+  static List<Valuable> fromList(List<dynamic>? list, {
     String title = 'name',
     String value = 'id',
   }) {
@@ -28,6 +26,6 @@ class Valuable {
       return [];
     }
 
-    return list.map((e) => Valuable(title: e[title], value: e[value])).toList();
+    return list.map((e) => Valuable(title: e[title], value: e[value].toString())).toList();
   }
 }

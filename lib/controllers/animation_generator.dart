@@ -12,11 +12,16 @@ class AnimationGeneration {
 
   /// Generate animation controller
   @protected
-  AnimationController generateAnimationController() =>
-      AnimationController(vsync: ticker, duration: duration, reverseDuration: duration);
+  AnimationController generateAnimationController() => AnimationController(
+        vsync: ticker,
+        duration: duration,
+        reverseDuration: duration,
+      );
 
   /// Generate animation
   @protected
-  CurvedAnimation generateAnimation(AnimationController controller) =>
-      CurvedAnimation(parent: controller, curve: Curves.fastLinearToSlowEaseIn);
+  CurvedAnimation generateAnimation(AnimationController controller) => CurvedAnimation(
+        parent: controller,
+        curve: Curves.fastLinearToSlowEaseIn,
+      );
 }

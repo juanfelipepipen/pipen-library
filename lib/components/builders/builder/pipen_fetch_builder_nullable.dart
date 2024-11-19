@@ -8,14 +8,15 @@ typedef BlocFetchBuilderNullable<B extends FetchBlocStreamable<S>, S>
 class PipenFetchBuilderNullable<B extends FetchBlocStreamable<S>, S> extends StatelessWidget {
   const PipenFetchBuilderNullable({super.key, required this.builder});
 
-  final Function(BuildContext context, S? state, B bloc) builder;
+  final Function(BuildContext context, FetchState<S> state, B bloc, S? result) builder;
 
   @override
   Widget build(BuildContext context) => BlocBuilder<B, FetchState<S>>(
         builder: (context, state) => builder(
           context,
-          state is FetchSuccess<S> ? (state).result : null,
+          state,
           context.read<B>(),
+          state is FetchSuccess<S> ? (state).result : null,
         ),
       );
 }
