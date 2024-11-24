@@ -1,3 +1,7 @@
+## 0.0.20
+
+* Formux dependency removed
+
 ## 0.0.19
 
 * Cloux moved to single project

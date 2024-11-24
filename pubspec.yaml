@@ -1,5 +1,5 @@
 name: pipen
-version: 0.0.19
+version: 0.0.20
 homepage: 'https://library.pipen.dev'
 description: "Essential development tools for great apps."
 repository: 'https://github.com/juanfelipepipen/pipen-library'
@@ -30,7 +30,6 @@ dependencies:
   lottie: ^3.0.0
   vibration: ^2.0.0
   expandable_page_view: ^1.0.17
-  formux: ^0.0.5
 
 dev_dependencies:
   flutter_test:

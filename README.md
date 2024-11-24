@@ -3,10 +3,7 @@ effort to create functionalities that can be crucial in any application.
 
 ## Features
 
-- ✅ Form validations
 - 🧩 BLoC complements
-- 🌎 REST client wrapper
-- 🕹️ GraphQL client wrapper
 - 🪄 Imports ordering
 - 📦 Local Storage wrapper
 - 🗣️ Translation enum tools
