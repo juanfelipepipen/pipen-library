@@ -1,3 +1,7 @@
+## 0.0.19
+
+* Cloux moved to single project
+
 ## 0.0.18
 
 * Obsoletes components removed
