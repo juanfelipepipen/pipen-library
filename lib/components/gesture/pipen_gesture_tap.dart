@@ -1,5 +1,5 @@
-import 'package:flutter/widgets.dart';
 import 'package:vibration/vibration.dart';
+import 'package:flutter/widgets.dart';
 
 class PipenGestureTap extends StatelessWidget {
   const PipenGestureTap({

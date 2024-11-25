@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_skeleton_ui/flutter_skeleton_ui.dart';
 import 'package:pipen/abstract/loading_state.dart';
+import 'package:flutter/cupertino.dart';
 
 class PipenSkeleton extends StatelessWidget {
   const PipenSkeleton({

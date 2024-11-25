@@ -1,10 +1,11 @@
-import 'package:pipen/components/provider/pipen_bloc_provider.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart' as flutter_bloc;
+import 'package:pipen/bloc/provider/bloc_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/widgets.dart';
 
-class PipenBlocProviderListener<B extends StateStreamableSource<S>, S> extends StatelessWidget {
-  PipenBlocProviderListener({
+class BlocProviderListener<B extends flutter_bloc.StateStreamableSource<S>, S>
+    extends StatelessWidget {
+  BlocProviderListener({
     super.key,
     this.init,
     this.child,
@@ -22,10 +23,10 @@ class PipenBlocProviderListener<B extends StateStreamableSource<S>, S> extends S
   final Widget? child;
 
   @override
-  Widget build(BuildContext context) => PipenBlocProvider<B, S>(
+  Widget build(BuildContext context) => BlocProvider<B, S>(
         init: init,
         create: create,
-        builder: (context, state, bloc) => BlocListener<B, S>(
+        builder: (context, state, bloc) => flutter_bloc.BlocListener<B, S>(
           listener: listener,
           child: child ?? builder!.call(context, state, bloc),
         ),

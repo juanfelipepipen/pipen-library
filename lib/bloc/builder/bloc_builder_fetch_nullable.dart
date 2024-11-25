@@ -3,10 +3,10 @@ import 'package:pipen/cubit/cubit_fetch.dart';
 import 'package:flutter/cupertino.dart';
 
 typedef BlocFetchBuilderNullable<B extends FetchBlocStreamable<S>, S>
-    = PipenFetchBuilderNullable<B, S>;
+    = BlocBuilderFetchNullable<B, S>;
 
-class PipenFetchBuilderNullable<B extends FetchBlocStreamable<S>, S> extends StatelessWidget {
-  const PipenFetchBuilderNullable({super.key, required this.builder});
+class BlocBuilderFetchNullable<B extends FetchBlocStreamable<S>, S> extends StatelessWidget {
+  const BlocBuilderFetchNullable({super.key, required this.builder});
 
   final Function(BuildContext context, FetchState<S> state, B bloc, S? result) builder;
 

@@ -1,10 +1,10 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/widgets.dart';
 
 typedef ListenerSingle<E> = Function(BuildContext context, E state);
 
-class PipenBlocListenOn<B extends StateStreamable<S>, S, E> extends BlocListener<B, S> {
-  PipenBlocListenOn({
+class BlocListenOn<B extends StateStreamable<S>, S, E> extends BlocListener<B, S> {
+  BlocListenOn({
     super.key,
     super.child,
     required ListenerSingle<E> listener,
