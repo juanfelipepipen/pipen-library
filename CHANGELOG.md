@@ -1,3 +1,11 @@
+## 0.0.22
+
+* BLoC short typedef's removed
+
+## 0.0.21
+
+* BLoC components namespaces changed
+
 ## 0.0.20
 
 * Formux dependency removed
