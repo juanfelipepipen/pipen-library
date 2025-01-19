@@ -5,6 +5,7 @@ class PipenColumn extends StatelessWidget {
     super.key,
     this.child,
     this.margin,
+    this.spacing,
     this.vertical,
     this.children,
     this.listable,
@@ -17,6 +18,7 @@ class PipenColumn extends StatelessWidget {
   factory PipenColumn.center({
     Key? key,
     Widget? child,
+    double? spacing,
     EdgeInsets? padding,
     List<Widget>? children,
     MainAxisSize? mainAxisSize,
@@ -26,6 +28,7 @@ class PipenColumn extends StatelessWidget {
         key: key,
         child: child,
         margin: padding,
+        spacing: spacing,
         listable: listable,
         children: children,
         mainAxisSize: mainAxisSize,
@@ -36,6 +39,7 @@ class PipenColumn extends StatelessWidget {
   factory PipenColumn.end({
     Key? key,
     Widget? child,
+    double? spacing,
     EdgeInsets? padding,
     List<Widget>? children,
     MainAxisSize? mainAxisSize,
@@ -45,8 +49,9 @@ class PipenColumn extends StatelessWidget {
         key: key,
         child: child,
         margin: padding,
-        children: children,
+        spacing: spacing,
         listable: listable,
+        children: children,
         mainAxisSize: mainAxisSize,
         vertical: MainAxisAlignment.end,
         horizontal: CrossAxisAlignment.end,
@@ -58,6 +63,7 @@ class PipenColumn extends StatelessWidget {
   final MainAxisSize? mainAxisSize;
   final List<Widget>? children;
   final EdgeInsets? margin;
+  final double? spacing;
   final Widget? child;
 
   List<Widget> get _children {
@@ -74,6 +80,7 @@ class PipenColumn extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
         padding: margin ?? EdgeInsets.zero,
         child: Column(
+          spacing: spacing ?? 0,
           mainAxisSize: mainAxisSize ?? MainAxisSize.max,
           mainAxisAlignment: vertical ?? MainAxisAlignment.start,
           crossAxisAlignment: horizontal ?? CrossAxisAlignment.start,

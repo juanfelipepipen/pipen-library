@@ -7,6 +7,7 @@ class PipenRow extends StatelessWidget {
     this.margin,
     this.vertical,
     this.children,
+    this.spacing,
     this.listable,
     this.horizontal,
     this.mainAxisSize,
@@ -19,6 +20,7 @@ class PipenRow extends StatelessWidget {
     this.child,
     this.margin,
     this.listable,
+    this.spacing,
     this.children,
     this.mainAxisSize,
     this.vertical = CrossAxisAlignment.end,
@@ -30,6 +32,7 @@ class PipenRow extends StatelessWidget {
     this.child,
     this.margin,
     this.children,
+    this.spacing,
     this.listable,
     this.mainAxisSize,
     this.vertical = CrossAxisAlignment.center,
@@ -42,6 +45,7 @@ class PipenRow extends StatelessWidget {
   final MainAxisSize? mainAxisSize;
   final List<Widget>? children;
   final EdgeInsets? margin;
+  final double? spacing;
   final Widget? child;
 
   List<Widget> get _children {
@@ -58,6 +62,7 @@ class PipenRow extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
         padding: margin ?? EdgeInsets.zero,
         child: Row(
+          spacing: spacing ?? 0,
           mainAxisSize: mainAxisSize ?? MainAxisSize.max,
           crossAxisAlignment: vertical ?? CrossAxisAlignment.start,
           mainAxisAlignment: horizontal ?? MainAxisAlignment.start,

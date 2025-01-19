@@ -16,6 +16,6 @@ class PipenDivider extends StatelessWidget {
         height: 1,
         margin: margin,
         padding: padding,
-        color: color ?? Theme.of(context).colorScheme.secondary.withOpacity(0.08),
+        color: color ?? Theme.of(context).colorScheme.secondary.withValues(alpha: 0.08),
       );
 }
