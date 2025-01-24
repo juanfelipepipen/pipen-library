@@ -1,3 +1,7 @@
+## 0.0.25
+
+* Components corrections
+
 ## 0.0.24
 
 * ListenerState
