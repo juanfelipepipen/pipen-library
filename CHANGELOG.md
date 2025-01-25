@@ -1,3 +1,7 @@
+## 0.0.26
+
+* Camera removed
+
 ## 0.0.25
 
 * Components corrections
