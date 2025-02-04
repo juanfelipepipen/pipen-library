@@ -1,4 +1,4 @@
-import 'package:pipen/graphql/base/pipen_graphql_response_output.dart';
+import 'package:pipen/graphql/base/graphql_response_output.dart';
 import 'package:pipen/graphql/pipen_graphql_request_fail.dart';
 import 'package:pipen/graphql/base/graphql_types.dart';
 import 'package:json_pretty/json_pretty.dart';
@@ -39,7 +39,7 @@ class PipenGraphqlResponse<T> {
 
   /// Output response
   void _output(Map<dynamic, dynamic>? response) {
-    if (instance is PipenGraphqlResponseOutput && response != null) {
+    if (instance is GraphqlResponseOutput && response != null) {
       debugPrint(
         prettyPrintJson(
           jsonEncode(response),

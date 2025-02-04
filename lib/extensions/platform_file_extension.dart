@@ -5,8 +5,32 @@ import 'package:mime/mime.dart';
 
 extension PlatformFileExtension on PlatformFile {
   /// [Getter] Multipart file
-  Future<MultipartFile> multipartFile(String field) async {
+  Future<MultipartFile> multipartFile(String field, {bool fromBytes = false}) async {
+    if (fromBytes) {
+      return multipartFromBytes(field);
+    }
+
     String mediaType = lookupMimeType(path!)!;
     return await MultipartFile.fromPath(field, path!, contentType: MediaType.parse(mediaType));
+  }
+
+  /// Create a Multipart from file bytes
+  MultipartFile multipartFromBytes(String field) {
+    String? mediaType = lookupMimeType(field, headerBytes: bytes);
+
+    if (mediaType == null) {
+      throw Exception('MIME type not found');
+    }
+
+    if (bytes == null) {
+      throw Exception('File bytes empty');
+    }
+
+    return MultipartFile.fromBytes(
+      field,
+      bytes!,
+      filename: name,
+      contentType: MediaType.parse(mediaType),
+    );
   }
 }

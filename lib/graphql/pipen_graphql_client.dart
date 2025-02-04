@@ -1,5 +1,5 @@
 import 'package:pipen/graphql/exceptions/graphql_client_not_found.dart';
-import 'package:pipen/graphql/base/pipen_graphql_authentication.dart';
+import 'package:pipen/graphql/base/graphql_authenticate.dart';
 import 'package:pipen/graphql/base/graphql_timeout.dart';
 import 'package:graphql/client.dart';
 
@@ -15,7 +15,7 @@ class PipenGraphqlClient {
     Duration timeout = Duration(seconds: 5);
     GraphQLClient? client;
 
-    if (instance is PipenGraphqlAuthentication) {
+    if (instance is GraphqlAuthenticate) {
       client = await PipenGraphqlClient.withAuth?.call();
     } else {
       client = await PipenGraphqlClient.withoutAuth?.call();
@@ -29,11 +29,18 @@ class PipenGraphqlClient {
       timeout = graphqlTimeout.duration;
     }
 
-    return GraphQLClient(
+    print('LIMIT: ' + client.queryManager.requestTimeout.inSeconds.toString());
+
+    return client;
+
+    final cl = GraphQLClient(
       link: client.link,
       cache: client.cache,
-      queryRequestTimeout: timeout,
+      queryRequestTimeout: Duration(seconds: 120),
       defaultPolicies: client.defaultPolicies,
     );
+    print('CLIENT GENERATED');
+    print(cl.queryManager.requestTimeout.toString());
+    return cl;
   }
 }
