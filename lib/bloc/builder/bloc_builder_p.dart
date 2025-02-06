@@ -2,12 +2,12 @@ import 'package:pipen/components/builders/container/pipen_builder_container.dart
 import 'package:flutter_bloc/flutter_bloc.dart' as bloc;
 import 'package:flutter/widgets.dart';
 
-class BlocBuilder<B extends bloc.StateStreamable<S>, S> extends StatelessWidget {
+class BlocBuilderP<B extends bloc.StateStreamable<S>, S> extends StatelessWidget {
   final Widget Function(BuildContext context, S state, B bloc)? builder;
   final Function(BuildContext context, B bloc)? init;
   final Widget? child;
 
-  BlocBuilder({required this.builder, this.init, super.key, this.child}) {
+  BlocBuilderP({required this.builder, this.init, super.key, this.child}) {
     assert(child != null || builder != null);
   }
 

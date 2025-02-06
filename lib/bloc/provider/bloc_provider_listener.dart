@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart' as flutter_bloc;
-import 'package:pipen/bloc/provider/bloc_provider.dart';
+import 'package:pipen/bloc/provider/bloc_provider_p.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/widgets.dart';
 
@@ -23,7 +23,7 @@ class BlocProviderListener<B extends flutter_bloc.StateStreamableSource<S>, S>
   final Widget? child;
 
   @override
-  Widget build(BuildContext context) => BlocProvider<B, S>(
+  Widget build(BuildContext context) => BlocProviderP<B, S>(
         init: init,
         create: create,
         builder: (context, state, bloc) => flutter_bloc.BlocListener<B, S>(
