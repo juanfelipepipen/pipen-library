@@ -1,3 +1,7 @@
+## 0.0.28
+
+* BlocListen and BlocListenFetch
+
 ## 0.0.27
 
 * Some bloc components renamed for solving dependency problems with flutter_bloc

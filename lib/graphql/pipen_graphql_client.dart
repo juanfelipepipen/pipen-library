@@ -4,11 +4,8 @@ import 'package:pipen/graphql/base/graphql_timeout.dart';
 import 'package:graphql/client.dart';
 
 class PipenGraphqlClient {
-  /// Graphql client with auth credentials
-  static Future<GraphQLClient> Function()? withAuth;
-
-  /// Graphql client without authentication
-  static Future<GraphQLClient> Function()? withoutAuth;
+  /// Graphql clients with auth and without credentials
+  static Future<GraphQLClient> Function()? withAuth, withoutAuth;
 
   /// Get the GraphQL client from parent instance
   static Future<GraphQLClient> getFromInstance(dynamic instance) async {
@@ -29,18 +26,11 @@ class PipenGraphqlClient {
       timeout = graphqlTimeout.duration;
     }
 
-    print('LIMIT: ' + client.queryManager.requestTimeout.inSeconds.toString());
-
-    return client;
-
-    final cl = GraphQLClient(
+    return GraphQLClient(
       link: client.link,
       cache: client.cache,
-      queryRequestTimeout: Duration(seconds: 120),
+      queryRequestTimeout: timeout,
       defaultPolicies: client.defaultPolicies,
     );
-    print('CLIENT GENERATED');
-    print(cl.queryManager.requestTimeout.toString());
-    return cl;
   }
 }
