@@ -10,7 +10,8 @@ import 'package:flutter/widgets.dart';
 typedef Listen<T> = (BuildContext context, T state);
 
 abstract class BlocListen<T> {
-  BlocListen({required Listen<T> listen}) {
+  /// Execute listen actions
+  void handle({required Listen<T> listen}) {
     /// Handle listen action on state change
     _listen = listen;
     this.listen();

@@ -4,8 +4,6 @@ import 'package:pipen/cubit/cubit_fetch.dart';
 import 'package:flutter/foundation.dart';
 
 abstract class BlocListenFetch<T> extends BlocListen<FetchState<T>> {
-  BlocListenFetch({required super.listen});
-
   VoidCallback? loading;
   Function(T result)? success;
   Function<A>(A error)? errors;
