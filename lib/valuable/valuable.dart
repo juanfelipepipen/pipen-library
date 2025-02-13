@@ -1,5 +1,7 @@
 typedef ValuableList = List<Valuable>;
-typedef ValuableFetch = Future<ValuableList>;
+typedef ValuableListFetch = Future<ValuableList>;
+typedef ValuableListFetchCallback = ValuableListFetch Function();
+typedef ValuableFetchCallback = Future<Valuable> Function();
 
 /// Base instance at valuable
 class Valuable {
@@ -11,14 +13,16 @@ class Valuable {
 
   Valuable copyWith() => Valuable(title: title, value: value);
 
-  static Valuable fromJson(Map<dynamic, dynamic> params, {
+  static Valuable fromJson(
+    Map<dynamic, dynamic> params, {
     String titleKey = 'name',
     String valueKey = 'id',
   }) {
     return Valuable.glass(params[titleKey].toString(), params[valueKey].toString());
   }
 
-  static List<Valuable> fromList(List<dynamic>? list, {
+  static List<Valuable> fromList(
+    List<dynamic>? list, {
     String title = 'name',
     String value = 'id',
   }) {

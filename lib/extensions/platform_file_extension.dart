@@ -16,7 +16,13 @@ extension PlatformFileExtension on PlatformFile {
 
   /// Create a Multipart from file bytes
   MultipartFile multipartFromBytes(String field) {
-    String? mediaType = lookupMimeType(field, headerBytes: bytes);
+    String? mediaType;
+
+    if (extension case String extension) {
+      mediaType = lookupMimeType('file.$extension');
+    }
+
+    mediaType ??= lookupMimeType(field, headerBytes: bytes);
 
     if (mediaType == null) {
       throw Exception('MIME type not found');
