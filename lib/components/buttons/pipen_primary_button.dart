@@ -1,5 +1,5 @@
 import 'package:pipen/extensions/context_extension.dart';
-import 'package:pipen/abstract/loading_state.dart';
+import 'package:pipen_bloc/abstract/loading_state.dart';
 import 'package:flutter/material.dart';
 
 class PipenPrimaryButton extends StatelessWidget {
