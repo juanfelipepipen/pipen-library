@@ -20,8 +20,8 @@ class PipenPrimaryButtonBordered extends StatelessWidget {
   Widget build(BuildContext context) => PipenPrimaryButton(
         title: title,
         onPressed: onPressed,
-        textColor: borderColor ?? context.themeColors.primary,
         backgroundColor: Colors.white,
+        textColor: borderColor ?? context.themeColors.primary,
         side: BorderSide(
           width: 2,
           color: borderColor ?? context.themeColors.primary,
