@@ -7,16 +7,10 @@ class PipenFillBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => CustomScrollView(
-        physics: const ClampingScrollPhysics(),
-        slivers: [
-          SliverToBoxAdapter(
-            child: top,
-          ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            fillOverscroll: false,
-            child: bottom,
-          )
-        ],
-      );
+    physics: const ClampingScrollPhysics(),
+    slivers: [
+      SliverToBoxAdapter(child: top),
+      SliverFillRemaining(hasScrollBody: false, fillOverscroll: false, child: bottom),
+    ],
+  );
 }

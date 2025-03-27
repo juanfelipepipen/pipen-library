@@ -40,35 +40,29 @@ class PipenPrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-        height: 40,
-        width: _maxSize ? double.infinity : null,
-        child: ElevatedButton.icon(
-          onPressed: onPressed,
-          iconAlignment: IconAlignment.end,
-          style: ElevatedButton.styleFrom(
-            side: side,
-            alignment: Alignment.center,
-            backgroundColor: backgroundColor ?? context.themeColors.primary,
-          ),
-          label: !isLoading
+    height: 40,
+    width: _maxSize ? double.infinity : null,
+    child: ElevatedButton.icon(
+      onPressed: onPressed,
+      iconAlignment: IconAlignment.end,
+      style: ElevatedButton.styleFrom(
+        side: side,
+        alignment: Alignment.center,
+        backgroundColor: backgroundColor ?? context.themeColors.primary,
+      ),
+      label:
+          !isLoading
               ? Text(
-                  title,
-                  style: context.textTheme.titleMedium?.copyWith(
-                    color: textColor ?? context.themeColors.surface,
-                  ),
-                )
-              : SizedBox.square(
-                  dimension: 18,
-                  child: CircularProgressIndicator(
-                    color: textColor ?? context.themeColors.surface,
-                  ),
-                ),
-          icon: !isLoading
-              ? Icon(
-                  icon,
+                title,
+                style: context.textTheme.titleMedium?.copyWith(
                   color: textColor ?? context.themeColors.surface,
-                )
-              : null,
-        ),
-      );
+                ),
+              )
+              : SizedBox.square(
+                dimension: 18,
+                child: CircularProgressIndicator(color: textColor ?? context.themeColors.surface),
+              ),
+      icon: !isLoading ? Icon(icon, color: textColor ?? context.themeColors.surface) : null,
+    ),
+  );
 }
