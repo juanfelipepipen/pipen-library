@@ -8,9 +8,12 @@ class PipenPrimaryButton extends StatelessWidget {
     this.icon,
     this.side,
     this.state,
+    this.shape,
     this.height,
+    this.textStyle,
     this.textColor,
     this.onPressed,
+    this.borderRadius,
     this.iconAlignment,
     required this.title,
     this.backgroundColor,
@@ -21,9 +24,12 @@ class PipenPrimaryButton extends StatelessWidget {
     this.icon,
     this.side,
     this.state,
+    this.shape,
     this.height,
     this.textColor,
     this.onPressed,
+    this.textStyle,
+    this.borderRadius,
     this.iconAlignment,
     required this.title,
     this.backgroundColor,
@@ -32,6 +38,9 @@ class PipenPrimaryButton extends StatelessWidget {
   final Color? backgroundColor, textColor;
   final IconAlignment? iconAlignment;
   final VoidCallback? onPressed;
+  final OutlinedBorder? shape;
+  final TextStyle? textStyle;
+  final double? borderRadius;
   final BorderSide? side;
   final IconData? icon;
   final double? height;
@@ -41,6 +50,15 @@ class PipenPrimaryButton extends StatelessWidget {
 
   bool get isLoading => state is LoadingState;
 
+  OutlinedBorder? get border {
+    if (shape != null) {
+      return shape;
+    }
+    return borderRadius != null
+        ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius!))
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) => SizedBox(
     height: height ?? 40,
@@ -48,8 +66,10 @@ class PipenPrimaryButton extends StatelessWidget {
     child: ElevatedButton.icon(
       onPressed: onPressed,
       iconAlignment: IconAlignment.end,
+      icon: !isLoading ? Icon(icon, color: textColor ?? context.themeColors.surface) : null,
       style: ElevatedButton.styleFrom(
         side: side,
+        shape: border,
         alignment: Alignment.center,
         backgroundColor: backgroundColor ?? context.themeColors.primary,
       ),
@@ -57,15 +77,16 @@ class PipenPrimaryButton extends StatelessWidget {
           !isLoading
               ? Text(
                 title,
-                style: context.textTheme.titleMedium?.copyWith(
-                  color: textColor ?? context.themeColors.surface,
-                ),
+                style:
+                    textStyle?.copyWith(color: textColor ?? context.themeColors.surface) ??
+                    context.textTheme.titleMedium?.copyWith(
+                      color: textColor ?? context.themeColors.surface,
+                    ),
               )
               : SizedBox.square(
                 dimension: 18,
                 child: CircularProgressIndicator(color: textColor ?? context.themeColors.surface),
               ),
-      icon: !isLoading ? Icon(icon, color: textColor ?? context.themeColors.surface) : null,
     ),
   );
 }

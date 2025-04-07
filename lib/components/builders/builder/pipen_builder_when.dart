@@ -34,9 +34,9 @@ class PipenBuilderWhen<W> extends StatelessWidget {
   Widget build(BuildContext context) => Container(
     width: width,
     alignment: alignment,
+    margin: margin ?? EdgeInsets.zero,
     height: minHeight == null ? height : null,
     constraints: height == null && minHeight != null ? BoxConstraints(minHeight: minHeight!) : null,
-    margin: margin ?? EdgeInsets.zero,
     child:
         skeleton != null
             ? Skeleton(
