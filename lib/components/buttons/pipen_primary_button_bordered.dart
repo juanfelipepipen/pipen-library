@@ -6,6 +6,7 @@ class PipenPrimaryButtonBordered extends StatelessWidget {
   const PipenPrimaryButtonBordered({
     super.key,
     this.state,
+    this.height,
     this.onPressed,
     this.borderColor,
     required this.title,
@@ -13,18 +14,17 @@ class PipenPrimaryButtonBordered extends StatelessWidget {
 
   final VoidCallback? onPressed;
   final Color? borderColor;
+  final double? height;
   final dynamic state;
   final String title;
 
   @override
   Widget build(BuildContext context) => PipenPrimaryButton(
-        title: title,
-        onPressed: onPressed,
-        backgroundColor: Colors.white,
-        textColor: borderColor ?? context.themeColors.primary,
-        side: BorderSide(
-          width: 2,
-          color: borderColor ?? context.themeColors.primary,
-        ),
-      );
+    title: title,
+    height: height,
+    onPressed: onPressed,
+    backgroundColor: Colors.white,
+    textColor: borderColor ?? context.themeColors.primary,
+    side: BorderSide(width: 2, color: borderColor ?? context.themeColors.primary),
+  );
 }

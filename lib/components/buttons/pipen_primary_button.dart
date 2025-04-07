@@ -8,6 +8,7 @@ class PipenPrimaryButton extends StatelessWidget {
     this.icon,
     this.side,
     this.state,
+    this.height,
     this.textColor,
     this.onPressed,
     this.iconAlignment,
@@ -20,6 +21,7 @@ class PipenPrimaryButton extends StatelessWidget {
     this.icon,
     this.side,
     this.state,
+    this.height,
     this.textColor,
     this.onPressed,
     this.iconAlignment,
@@ -32,6 +34,7 @@ class PipenPrimaryButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final BorderSide? side;
   final IconData? icon;
+  final double? height;
   final dynamic state;
   final bool _maxSize;
   final String title;
@@ -40,7 +43,7 @@ class PipenPrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-    height: 40,
+    height: height ?? 40,
     width: _maxSize ? double.infinity : null,
     child: ElevatedButton.icon(
       onPressed: onPressed,
