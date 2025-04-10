@@ -17,9 +17,7 @@ extension TableExtension on List<TableRow> {
 
   /// Add spacer between every row in a table
   List<TableRow> topSpacer(double size) {
-    List<TableRow> rows = [...this];
-
-    for (final row in rows) {
+    for (final row in this) {
       for (int i = 0; i < row.children.length; i++) {
         row.children[i] = Padding(
           padding: EdgeInsets.symmetric(vertical: size),
@@ -27,28 +25,38 @@ extension TableExtension on List<TableRow> {
         );
       }
     }
-
-    return rows;
+    return this;
   }
 
-  List<TableRow> divider({Color? color}) {
-    if (isEmpty && length < 2) return this;
+  List<TableRow> divider({Color? color, int lastIndex = -1}) {
+    if (isEmpty && length < 1) return this;
+
     final separator = TableRow(
-      children:
-          Iterable.generate(
-            first.children.length,
-            (_) => Container(
-              height: 1,
-              width: double.infinity,
-              color: (color ?? Colors.black).withValues(alpha: 0.2),
-            ),
-          ).toList(),
+      children: [
+        ...Iterable.generate(
+          first.children.length,
+          (_) => Container(
+            height: 1,
+            width: double.infinity,
+            color: (color ?? Colors.black).withValues(alpha: 0.2),
+          ),
+        ),
+      ],
     );
 
-    return [
-      first,
-      for (int i = 1; i < length; i++) ...[if (i != 1) separator, this[i]],
-    ];
+    int inserts = length - 1;
+
+    while (inserts > 0) {
+      inserts--;
+      lastIndex = lastIndex + 2;
+      insert(lastIndex, separator);
+    }
+
+    return this;
+  }
+
+  List<TableRow> tableDivider() {
+    return divider(lastIndex: 0);
   }
 
   /// Add skeleton line on rows
