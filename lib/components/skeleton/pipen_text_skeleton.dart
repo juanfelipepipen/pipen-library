@@ -61,14 +61,9 @@ class _PipenTextSkeletonState extends State<PipenTextSkeleton> {
   double? height;
 
   @override
-  void initState() {
-    super.initState();
-    textStyle = widget.style ?? context.textTheme.bodyMedium;
-  }
-
-  @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    textStyle = widget.style ?? context.textTheme.bodyMedium;
     calculateSize();
   }
 
