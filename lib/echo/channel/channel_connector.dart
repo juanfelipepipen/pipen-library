@@ -1,7 +1,6 @@
-
 import 'package:dart_pusher_channels/dart_pusher_channels.dart';
 import 'package:pipen/echo/channel/laravel_channel.dart';
-import 'package:pipen/echo/channel/pusher_service.dart';
+import 'package:pipen/echo/pusher/pusher_service.dart';
 
 class ChannelConnector {
   final LaravelPrivateChannel _channel;
@@ -13,10 +12,14 @@ class ChannelConnector {
 
   /// Connect to channel
   Future<void> connect() async {
+    print('CONECTING');
     client.onConnectionEstablished.listen((_) {
+      print('EA');
       _connectChannel();
     });
-    client.pusherErrorEventStream.listen((_) {});
+    client.pusherErrorEventStream.listen((_) {
+      print('FAIL');
+    });
     await client.connect();
   }
 
@@ -30,8 +33,12 @@ class ChannelConnector {
     channel!.whenSubscriptionSucceeded().listen((data) {
       print('CHANNEL CONNECTED');
     });
-    channel!.onSubscriptionError().listen((data) {});
-    channel!.onAuthenticationSubscriptionFailed().listen((data) {});
+    channel!.onSubscriptionError().listen((data) {
+      print(data);
+    });
+    channel!.onAuthenticationSubscriptionFailed().listen((data) {
+      print(data);
+    });
     channel!.subscribe();
     _bindEvents();
   }
