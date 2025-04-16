@@ -38,7 +38,6 @@ dependencies:
 
   pipen_bloc:
     path: ../../Dev/pipen_bloc
-  dart_pusher_channels: ^1.2.3
 
 dev_dependencies:
   flutter_test:

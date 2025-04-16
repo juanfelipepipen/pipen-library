@@ -1,3 +1,4 @@
+import 'package:pipen/config/typedef.dart';
 import 'package:pipen/graphql/exceptions/graphql_client_not_found.dart';
 import 'package:pipen/graphql/base/graphql_authenticate.dart';
 import 'package:pipen/graphql/base/graphql_timeout.dart';
@@ -6,6 +7,9 @@ import 'package:graphql/client.dart';
 class PipenGraphqlClient {
   /// Graphql clients with auth and without credentials
   static Future<GraphQLClient> Function()? withAuth, withoutAuth;
+
+  /// Intercept params previous to send request
+  static JsonMap Function(JsonMap params, dynamic instance)? paramsInterceptor;
 
   /// Get the GraphQL client from parent instance
   static Future<GraphQLClient> getFromInstance(dynamic instance) async {

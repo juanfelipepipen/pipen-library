@@ -1,2 +1,4 @@
-typedef GraphqlSuccessResponse<T> = Future<T> Function(Map<String, dynamic> params);
-typedef GraphqlParams = Future<Map<String, dynamic>>;
+import 'package:pipen/config/typedef.dart';
+
+typedef GraphqlSuccessResponse<T> = Future<T> Function(JsonMap params);
+typedef GraphqlParams = Future<JsonMap>;
