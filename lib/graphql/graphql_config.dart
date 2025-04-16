@@ -1,25 +1,28 @@
-import 'package:pipen/config/typedef.dart';
 import 'package:pipen/graphql/exceptions/graphql_client_not_found.dart';
 import 'package:pipen/graphql/base/graphql_authenticate.dart';
 import 'package:pipen/graphql/base/graphql_timeout.dart';
+import 'package:pipen/config/typedef.dart';
 import 'package:graphql/client.dart';
 
-class PipenGraphqlClient {
+class GraphqlConfig {
   /// Graphql clients with auth and without credentials
   static Future<GraphQLClient> Function()? withAuth, withoutAuth;
 
   /// Intercept params previous to send request
   static JsonMap Function(JsonMap params, dynamic instance)? paramsInterceptor;
 
+  /// Default timeout
+  static Duration defaultTimeout = Duration(seconds: 5);
+
   /// Get the GraphQL client from parent instance
   static Future<GraphQLClient> getFromInstance(dynamic instance) async {
-    Duration timeout = Duration(seconds: 5);
     GraphQLClient? client;
+    Duration? timeout;
 
     if (instance is GraphqlAuthenticate) {
-      client = await PipenGraphqlClient.withAuth?.call();
+      client = await GraphqlConfig.withAuth?.call();
     } else {
-      client = await PipenGraphqlClient.withoutAuth?.call();
+      client = await GraphqlConfig.withoutAuth?.call();
     }
 
     /// GraphQL client not found
@@ -33,8 +36,8 @@ class PipenGraphqlClient {
     return GraphQLClient(
       link: client.link,
       cache: client.cache,
-      queryRequestTimeout: timeout,
       defaultPolicies: client.defaultPolicies,
+      queryRequestTimeout: timeout ?? defaultTimeout,
     );
   }
 }
