@@ -1,5 +1,5 @@
 import 'package:pipen/src/graphql/base/graphql_response_output.dart';
-import 'package:pipen/src/graphql/pipen_graphql_request_fail.dart';
+import 'package:pipen/src/graphql/graphql_request_fail.dart';
 import 'package:pipen/src/graphql/base/graphql_types.dart';
 import 'package:json_pretty/json_pretty.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,8 +33,8 @@ class PipenGraphqlResponse<T> {
 
   /// Process exception
   void _exception(OperationException exception) {
-    PipenGraphqlRequestFail.printOutError(exception);
-    PipenGraphqlRequestFail.decode(exception);
+    GraphqlRequestFail.printOutError(exception);
+    GraphqlRequestFail.decode(exception);
   }
 
   /// Output response

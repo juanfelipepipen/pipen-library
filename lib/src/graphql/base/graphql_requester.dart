@@ -1,4 +1,3 @@
-import 'package:pipen/src/graphql/graphql_interface.dart';
 import 'package:pipen/config/typedef.dart';
 import 'package:pipen/graphql.dart';
 

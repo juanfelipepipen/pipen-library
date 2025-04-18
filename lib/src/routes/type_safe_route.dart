@@ -1,9 +1,10 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pipen/config/typedef.dart';
 
-abstract class PipenTypeSafeRoute {
+abstract class TypeSafeRoute {
   @protected
-  late Map<String, dynamic> queryParameters;
+  late JsonMap queryParameters;
   @protected
   late Map<String, String> pathParameters;
   @protected
@@ -11,13 +12,13 @@ abstract class PipenTypeSafeRoute {
   @protected
   Object? extra;
 
-  PipenTypeSafeRoute({
+  TypeSafeRoute({
     this.extra,
     required this.name,
     required this.path,
-    Map<String, dynamic>? extraParams,
+    JsonMap? extraParams,
     Map<String, String>? pathParameters,
-    Map<String, dynamic>? queryParameters,
+    JsonMap? queryParameters,
   }) {
     this.pathParameters = pathParameters ?? {};
     this.queryParameters = queryParameters ?? {};
@@ -29,27 +30,27 @@ abstract class PipenTypeSafeRoute {
 
   /// Go to the route
   void go(BuildContext context) => context.goNamed(
-        name,
-        extra: extra,
-        pathParameters: pathParameters,
-        queryParameters: queryParameters,
-      );
+    name,
+    extra: extra,
+    pathParameters: pathParameters,
+    queryParameters: queryParameters,
+  );
 
   /// Push the route
   void push(BuildContext context) => context.pushNamed(
-        name,
-        extra: extra,
-        pathParameters: pathParameters,
-        queryParameters: queryParameters,
-      );
+    name,
+    extra: extra,
+    pathParameters: pathParameters,
+    queryParameters: queryParameters,
+  );
 
   /// Push and replace the route
   void pushReplacementNamed(BuildContext context) => context.pushReplacementNamed(
-        name,
-        extra: extra,
-        pathParameters: pathParameters,
-        queryParameters: queryParameters,
-      );
+    name,
+    extra: extra,
+    pathParameters: pathParameters,
+    queryParameters: queryParameters,
+  );
 
   /// Push and pop the current route
   void pushAndPop(BuildContext context) {

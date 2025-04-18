@@ -2,9 +2,11 @@ library;
 
 /// Mutations
 export 'src/graphql/mutation/graphql_mutation.dart';
+export 'src/graphql/mutation/graphql_mutation_void.dart';
 
 /// Queries
 export 'src/graphql/query/graphql_query.dart';
+export 'src/graphql/query/graphql_query_void.dart';
 
 /// Base
 export 'src/graphql/base/graphql_variables.dart';
@@ -14,6 +16,8 @@ export 'src/graphql/base/graphql_on_error_with_variables_event.dart';
 export 'src/graphql/base/graphql_response_output.dart';
 export 'src/graphql/base/graphql_timeout.dart';
 export 'src/graphql/base/graphql_types.dart';
+export 'src/graphql/graphql_interface.dart';
+export 'src/graphql/graphql_request_fail.dart';
 
 /// Exceptions
 export 'src/graphql/exceptions/graphql_client_not_found.dart';

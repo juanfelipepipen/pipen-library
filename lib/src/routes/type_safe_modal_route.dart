@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-abstract class PipenTypeSafeModalRoute {
+abstract class TypeSafeModalRoute {
   Widget get modal;
 }

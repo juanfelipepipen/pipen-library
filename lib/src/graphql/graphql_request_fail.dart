@@ -2,7 +2,7 @@ import 'package:pipen/request_fail/pipen_request_fail_error.dart';
 import 'package:flutter/foundation.dart';
 import 'package:graphql/client.dart';
 
-class PipenGraphqlRequestFail {
+class GraphqlRequestFail {
   static List<PipenRequestFailError> errors = [];
 
   /// Decode exception
