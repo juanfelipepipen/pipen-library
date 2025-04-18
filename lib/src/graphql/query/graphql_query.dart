@@ -1,6 +1,6 @@
-import 'package:pipen/graphql/base/graphql_requester.dart';
-import 'package:pipen/graphql/pipen_graphql_response.dart';
-import 'package:pipen/graphql/graphql_config.dart';
+import 'package:pipen/src/graphql/base/graphql_requester.dart';
+import 'package:pipen/src/graphql/pipen_graphql_response.dart';
+import 'package:pipen/src/graphql/graphql_config.dart';
 import 'package:graphql/client.dart';
 
 abstract class GraphqlQuery<T> extends GraphqlRequester<T> {

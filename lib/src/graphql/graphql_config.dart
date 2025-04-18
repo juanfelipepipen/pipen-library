@@ -1,6 +1,6 @@
-import 'package:pipen/graphql/exceptions/graphql_client_not_found.dart';
-import 'package:pipen/graphql/base/graphql_authenticate.dart';
-import 'package:pipen/graphql/base/graphql_timeout.dart';
+import 'package:pipen/src/graphql/exceptions/graphql_client_not_found.dart';
+import 'package:pipen/src/graphql/base/graphql_authenticate.dart';
+import 'package:pipen/src/graphql/base/graphql_timeout.dart';
 import 'package:pipen/config/typedef.dart';
 import 'package:graphql/client.dart';
 
