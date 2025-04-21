@@ -18,6 +18,7 @@ export 'src/graphql/base/graphql_timeout.dart';
 export 'src/graphql/base/graphql_types.dart';
 export 'src/graphql/graphql_interface.dart';
 export 'src/graphql/graphql_request_fail.dart';
+export 'src/graphql/base/graphql_document_vars.dart';
 
 /// Exceptions
 export 'src/graphql/exceptions/graphql_client_not_found.dart';

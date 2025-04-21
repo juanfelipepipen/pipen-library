@@ -6,7 +6,7 @@ import 'package:graphql/client.dart';
 abstract class GraphqlQuery<T> extends GraphqlRequester<T> {
   /// [Event] Send request query
   Future<T> request() async {
-    final options = QueryOptions(document: gql(document), variables: await getVariables());
+    final options = QueryOptions(document: getDocument(), variables: await getVariables());
     final client = await GraphqlConfig.getFromInstance(this);
     final result = await client.query(options);
 

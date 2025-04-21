@@ -17,7 +17,8 @@ class PipenPrimaryButton extends StatelessWidget {
     this.iconAlignment,
     required this.title,
     this.backgroundColor,
-  }) : _maxSize = true;
+    bool? maxSize,
+  }) : _maxSize = maxSize ?? true;
 
   const PipenPrimaryButton.min({
     super.key,
@@ -65,7 +66,7 @@ class PipenPrimaryButton extends StatelessWidget {
     width: _maxSize ? double.infinity : null,
     child: ElevatedButton.icon(
       onPressed: onPressed,
-      iconAlignment: IconAlignment.end,
+      iconAlignment: iconAlignment ?? IconAlignment.end,
       icon: !isLoading ? Icon(icon, color: textColor ?? context.themeColors.surface) : null,
       style: ElevatedButton.styleFrom(
         side: side,
