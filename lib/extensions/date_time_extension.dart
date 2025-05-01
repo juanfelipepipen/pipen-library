@@ -10,6 +10,9 @@ extension DateTimeExtension on DateTime {
   /// Get only date
   String get toDateLabel => DateFormat("dd/MM/yyyy").format(this);
 
+  /// Get date and time
+  String get toDateTimeLabel => '$toDateLabel $hourLabel';
+
   /// Get datetime hour formatted
   String get hourLabel => DateFormat("hh:mm aa").format(this);
 

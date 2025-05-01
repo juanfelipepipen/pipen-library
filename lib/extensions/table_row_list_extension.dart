@@ -38,7 +38,7 @@ extension TableExtension on List<TableRow> {
           (_) => Container(
             height: 1,
             width: double.infinity,
-            color: (color ?? Colors.black).withValues(alpha: 0.2),
+            color: (color ?? Colors.black.withValues(alpha: 0.2)),
           ),
         ),
       ],

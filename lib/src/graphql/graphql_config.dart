@@ -19,6 +19,7 @@ class GraphqlConfig {
     GraphQLClient? client;
     Duration? timeout;
 
+    /// Get client with auth or without
     if (instance is GraphqlAuthenticate) {
       client = await GraphqlConfig.withAuth?.call();
     } else {
@@ -31,6 +32,8 @@ class GraphqlConfig {
     /// Custom timeout duration
     if (instance case GraphqlTimeout graphqlTimeout) {
       timeout = graphqlTimeout.duration;
+    } else {
+      timeout = client.queryManager.requestTimeout;
     }
 
     return GraphQLClient(

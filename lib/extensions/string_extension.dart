@@ -23,6 +23,9 @@ extension StringExtension on String {
   DateTime toDateTime() => DateTime.parse(this);
 
   /// Convert string to datetime
+  DateTime toDateTimeLocal() => toDateTime().toLocal();
+
+  /// Convert string to datetime
   DateTime? tryDateTime() => DateTime.tryParse(this);
 
   /// Parse date by format

@@ -7,6 +7,7 @@ class PipenPrimaryButton extends StatelessWidget {
     super.key,
     this.icon,
     this.side,
+    this.title,
     this.state,
     this.shape,
     this.height,
@@ -15,7 +16,6 @@ class PipenPrimaryButton extends StatelessWidget {
     this.onPressed,
     this.borderRadius,
     this.iconAlignment,
-    required this.title,
     this.backgroundColor,
     bool? maxSize,
   }) : _maxSize = maxSize ?? true;
@@ -24,6 +24,7 @@ class PipenPrimaryButton extends StatelessWidget {
     super.key,
     this.icon,
     this.side,
+    this.title,
     this.state,
     this.shape,
     this.height,
@@ -32,7 +33,6 @@ class PipenPrimaryButton extends StatelessWidget {
     this.textStyle,
     this.borderRadius,
     this.iconAlignment,
-    required this.title,
     this.backgroundColor,
   }) : _maxSize = false;
 
@@ -47,7 +47,7 @@ class PipenPrimaryButton extends StatelessWidget {
   final double? height;
   final dynamic state;
   final bool _maxSize;
-  final String title;
+  final String? title;
 
   bool get isLoading => state is LoadingState;
 
@@ -77,7 +77,7 @@ class PipenPrimaryButton extends StatelessWidget {
       label:
           !isLoading
               ? Text(
-                title,
+                title ?? '',
                 style:
                     textStyle?.copyWith(color: textColor ?? context.themeColors.surface) ??
                     context.textTheme.titleMedium?.copyWith(
