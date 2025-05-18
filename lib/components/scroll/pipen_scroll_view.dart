@@ -7,6 +7,7 @@ class PipenScrollView extends StatefulWidget {
     super.key,
     this.child,
     this.children,
+    this.scrollDirection,
     this.bottomSafeArea = false,
     this.padding = EdgeInsets.zero,
   }) {
@@ -14,6 +15,7 @@ class PipenScrollView extends StatefulWidget {
   }
 
   final List<Widget>? children;
+  final Axis? scrollDirection;
   final bool bottomSafeArea;
   final EdgeInsets padding;
   final Widget? child;
@@ -33,6 +35,7 @@ class _PipenScrollViewState extends State<PipenScrollView> {
     child: PipenScrollOverride(
       child: SingleChildScrollView(
         controller: controller,
+        scrollDirection: widget.scrollDirection ?? Axis.vertical,
         child: Padding(
           padding: widget.padding,
           child: PipenColumn(
