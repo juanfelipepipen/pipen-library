@@ -1,5 +1,5 @@
 import 'package:pipen/src/graphql/base/graphql_requester.dart';
-import 'package:pipen/src/graphql/pipen_graphql_response.dart';
+import 'package:pipen/src/graphql/graphql_response_decoder.dart';
 import 'package:pipen/src/graphql/graphql_config.dart';
 import 'package:graphql/client.dart';
 
@@ -11,8 +11,8 @@ abstract class GraphqlMutation<T> extends GraphqlRequester<T> {
     final result = await client.mutate(options);
 
     try {
-      final response = PipenGraphqlResponse<T>(instance: this, result: result);
-      return await response.process(onSuccess);
+      final response = GraphqlResponseDecoder<T>(instance: this, result: result);
+      return await response.decode(onSuccess);
     } catch (e) {
       rethrow;
     }

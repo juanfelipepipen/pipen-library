@@ -22,10 +22,10 @@ export 'src/graphql/base/graphql_document_vars.dart';
 
 /// Exceptions
 export 'src/graphql/exceptions/graphql_client_not_found.dart';
-export 'src/graphql/exceptions/graphql_client_query_exception.dart';
 export 'src/graphql/exceptions/graphql_connectivity_exception.dart';
 export 'src/graphql/exceptions/graphql_resource_not_found.dart';
 export 'src/graphql/exceptions/graphql_result_exception.dart';
+export 'src/graphql/exceptions/graphql_error_code.dart';
 
 /// Client
 export 'src/graphql/graphql_config.dart';

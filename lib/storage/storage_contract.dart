@@ -4,10 +4,7 @@ import 'package:meta/meta.dart';
 
 abstract class StorageContract<T> {
   final _storage = const FlutterSecureStorage(
-    iOptions: IOSOptions(
-      synchronizable: true,
-      accessibility: KeychainAccessibility.unlocked_this_device,
-    ),
+    iOptions: IOSOptions(synchronizable: false, accessibility: KeychainAccessibility.unlocked),
   );
 
   FlutterSecureStorage get storage => _storage;

@@ -6,20 +6,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:graphql/client.dart';
 import 'dart:convert';
 
-class PipenGraphqlResponse<T> {
-  PipenGraphqlResponse({required this.result, required this.instance});
+class GraphqlResponseDecoder<T> {
+  GraphqlResponseDecoder({required this.result, required this.instance});
 
-  QueryResult result;
-  dynamic instance;
+  final QueryResult result;
+  final dynamic instance;
 
-  Future<T> process(GraphqlSuccessResponse<T> onSuccess) async {
+  Future<T> decode(GraphqlSuccessResponse<T> onSuccess) async {
     _process();
     return await onSuccess(result.data ?? {});
-  }
-
-  /// Process void
-  void processVoid() {
-    _process();
   }
 
   /// Handle result process
@@ -40,11 +35,7 @@ class PipenGraphqlResponse<T> {
   /// Output response
   void _output(Map<dynamic, dynamic>? response) {
     if (instance is GraphqlResponseOutput && response != null) {
-      debugPrint(
-        prettyPrintJson(
-          jsonEncode(response),
-        ),
-      );
+      debugPrint(prettyPrintJson(jsonEncode(response)));
     }
   }
 }

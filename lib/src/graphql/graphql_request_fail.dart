@@ -1,35 +1,38 @@
 import 'package:pipen/request_fail/pipen_request_fail_error.dart';
 import 'package:flutter/foundation.dart';
 import 'package:graphql/client.dart';
+import 'package:pipen/src/graphql/strategies/error_code_strategy.dart';
 
 class GraphqlRequestFail {
-  static List<PipenRequestFailError> errors = [];
+  /// List of error strategies
+  static final List<PipenRequestFailError> _errors = [ErrorCodeStrategy()];
+
+  /// Add errors decoders
+  static errors(List<PipenRequestFailError> errors) {
+    _errors.addAll(errors);
+  }
 
   /// Decode exception
-  static decode(Object exception) {
-    for (PipenRequestFailError error in errors) {
-      bool valid = error.isException(exception);
-      if (valid) {
-        try {
-          error.build(exception);
-          throw exception;
-        } catch (e) {
-          rethrow;
-        }
-      }
+  static decode(dynamic exception) {
+    try {
+      _errors.firstWhere((e) => e.isException(exception)).build(exception);
+    } catch (e) {
+      if (e is StateError) throw exception;
+      rethrow;
     }
-
-    throw exception;
   }
 
   /// Print error output
   static printOutError(OperationException exception) {
+    final dots = Iterable.generate(25, (_) => '-');
+    final String lines = dots.join() + dots.join();
+    final title = 'GraphQL Exception';
+
     if (kDebugMode) {
-      print('-------------------------------- GraphQL Exception --------------------------------');
-      print(DateTime.now().toIso8601String());
-      print(exception.linkException.toString());
-      print(exception.graphqlErrors);
-      print('-----------------------------------------------------------------------------------');
+      debugPrint('$lines $title $lines');
+      debugPrint(DateTime.now().toIso8601String());
+      debugPrint(exception.graphqlErrors.toString());
+      debugPrint(lines + lines);
     }
   }
 }
