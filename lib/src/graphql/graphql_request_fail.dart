@@ -1,7 +1,7 @@
+import 'package:pipen/src/graphql/strategies/error_code_strategy.dart';
 import 'package:pipen/request_fail/pipen_request_fail_error.dart';
 import 'package:flutter/foundation.dart';
 import 'package:graphql/client.dart';
-import 'package:pipen/src/graphql/strategies/error_code_strategy.dart';
 
 class GraphqlRequestFail {
   /// List of error strategies

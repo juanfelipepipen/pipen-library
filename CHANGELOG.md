@@ -1,3 +1,7 @@
+## 1.1.1
+
+* Support for scrollbar in pipen swipe
+
 ## 0.0.28
 
 * BlocListen and BlocListenFetch

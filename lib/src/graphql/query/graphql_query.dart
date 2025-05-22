@@ -1,5 +1,5 @@
-import 'package:pipen/src/graphql/base/graphql_requester.dart';
 import 'package:pipen/src/graphql/graphql_response_decoder.dart';
+import 'package:pipen/src/graphql/base/graphql_requester.dart';
 import 'package:pipen/src/graphql/graphql_config.dart';
 import 'package:graphql/client.dart';
 

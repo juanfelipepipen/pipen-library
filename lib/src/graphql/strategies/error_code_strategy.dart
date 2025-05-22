@@ -1,6 +1,6 @@
+import 'package:pipen/src/graphql/exceptions/graphql_error_code.dart';
 import 'package:pipen/request_fail/pipen_request_fail_error.dart';
 import 'package:graphql/client.dart';
-import 'package:pipen/src/graphql/exceptions/graphql_error_code.dart';
 
 class ErrorCodeStrategy extends PipenRequestFailError {
   @override

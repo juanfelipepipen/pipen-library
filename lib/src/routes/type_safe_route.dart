@@ -1,6 +1,6 @@
+import 'package:pipen/config/typedef.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/widgets.dart';
-import 'package:pipen/config/typedef.dart';
 
 abstract class TypeSafeRoute {
   @protected

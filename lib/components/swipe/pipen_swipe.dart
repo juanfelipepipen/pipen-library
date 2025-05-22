@@ -1,6 +1,7 @@
+import 'package:pipen/components/scroll/pipen_scroll_override.dart';
 import 'package:pipen/components/column/pipen_column.dart';
 import 'package:swipe_refresh/swipe_refresh.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'dart:async';
 
 class PipenSwipe extends StatefulWidget {
@@ -41,22 +42,25 @@ class _PipenSwipeState extends State<PipenSwipe> {
   }
 
   @override
-  Widget build(BuildContext context) => SwipeRefresh.cupertino(
+  Widget build(BuildContext context) => Scrollbar(
+    thumbVisibility: true,
+    controller: scrollController,
+    child: PipenScrollOverride(
+      child: SwipeRefresh.cupertino(
         stateStream: _stream,
-        scrollController: widget.controller,
+        scrollController: scrollController,
         onRefresh: () {
-          Future.delayed(const Duration(milliseconds: 300),
-              () => _controller.sink.add(SwipeRefreshState.hidden));
+          Future.delayed(
+            const Duration(milliseconds: 300),
+            () => _controller.sink.add(SwipeRefreshState.hidden),
+          );
           widget.onRefresh?.call();
         },
         children: [
-          PipenColumn(
-            margin: widget.padding,
-            children: widget.children ?? [widget.child!],
-          ),
-          SizedBox(
-            height: widget.gap,
-          )
+          PipenColumn(margin: widget.padding, children: widget.children ?? [widget.child!]),
+          SizedBox(height: widget.gap),
         ],
-      );
+      ),
+    ),
+  );
 }

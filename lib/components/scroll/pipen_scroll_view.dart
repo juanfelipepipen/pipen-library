@@ -35,12 +35,10 @@ class _PipenScrollViewState extends State<PipenScrollView> {
     child: PipenScrollOverride(
       child: SingleChildScrollView(
         controller: controller,
+        padding: widget.padding,
         scrollDirection: widget.scrollDirection ?? Axis.vertical,
-        child: Padding(
-          padding: widget.padding,
-          child: PipenColumn(
-            children: [...children, SizedBox(height: widget.bottomSafeArea ? 100 : 0)],
-          ),
+        child: PipenColumn(
+          children: [...children, SizedBox(height: widget.bottomSafeArea ? 100 : 0)],
         ),
       ),
     ),

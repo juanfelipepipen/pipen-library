@@ -1,7 +1,7 @@
-import 'package:gql/ast.dart';
-import 'package:graphql/client.dart';
 import 'package:pipen/config/typedef.dart';
+import 'package:graphql/client.dart';
 import 'package:pipen/graphql.dart';
+import 'package:gql/ast.dart';
 
 abstract class GraphqlRequester<T> extends GraphQlInterface<T> {
   /// Get request variables
