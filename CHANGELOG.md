@@ -1,6 +1,10 @@
-## 1.1.1
+## 2.1.0
 
-* Support for scrollbar in pipen swipe
+* Exports for extensions
+
+## 2.0.0
+
+* Exports for components
 
 ## 0.0.28
 
