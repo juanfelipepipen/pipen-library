@@ -1,7 +1,9 @@
 import 'package:swipe_refresh/swipe_refresh.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import '../../../components.dart';
+
+import '../scroll/pipen_scroll_override.dart';
+import '../column/pipen_column.dart';
 
 class PipenSwipe extends StatefulWidget {
   PipenSwipe({

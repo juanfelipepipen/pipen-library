@@ -46,8 +46,8 @@ class PipenColumn extends StatelessWidget {
     this.listable,
     this.spacing,
     this.children,
-    this.vertical = MainAxisAlignment.end,
-    this.horizontal = CrossAxisAlignment.end,
+    this.vertical = MainAxisAlignment.start,
+    this.horizontal = CrossAxisAlignment.start,
   }) : mainAxisSize = MainAxisSize.min;
 
   final CrossAxisAlignment? horizontal;

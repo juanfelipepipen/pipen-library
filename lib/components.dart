@@ -6,6 +6,10 @@ export 'src/components/builders/builder/pipen_builder_when.dart';
 export 'src/components/builders/builder/pipen_init_builder.dart';
 export 'src/components/builders/conditions/if.dart';
 export 'src/components/builders/conditions/pipen_build_if.dart';
+export 'src/components/builders/conditions/pipen_build_nullable.dart';
+
+/// App bar
+export 'src/components/app_bar/pipen_app_bar_color.dart';
 
 /// Buttons
 export 'src/components/buttons/pipen_primary_button.dart';
