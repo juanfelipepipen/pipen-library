@@ -1,14 +1,18 @@
+import 'package:pipen/src/graphql/request_fail/graphql_exception_strategy.dart';
+import 'package:pipen/src/graphql/strategies/input_errors_strategy.dart';
 import 'package:pipen/src/graphql/strategies/error_code_strategy.dart';
-import 'package:pipen/request_fail/pipen_request_fail_error.dart';
 import 'package:flutter/foundation.dart';
 import 'package:graphql/client.dart';
 
 class GraphqlRequestFail {
   /// List of error strategies
-  static final List<PipenRequestFailError> _errors = [ErrorCodeStrategy()];
+  static final List<GraphqlExceptionStrategy> _errors = [
+    ErrorCodeStrategy(),
+    InputErrorsStrategy(),
+  ];
 
   /// Add errors decoders
-  static errors(List<PipenRequestFailError> errors) {
+  static errors(List<GraphqlExceptionStrategy> errors) {
     _errors.addAll(errors);
   }
 

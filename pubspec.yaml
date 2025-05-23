@@ -35,7 +35,6 @@ dependencies:
   expandable_page_view: ^1.0.17
   flutter_secure_storage: ^9.0.0
   pipen_bloc: ^1.2.0
-
   uuid: ^4.5.1
   gql: ^1.0.1-alpha+1730759315362
 

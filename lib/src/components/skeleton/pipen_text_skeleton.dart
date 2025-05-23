@@ -1,7 +1,7 @@
 import 'package:flutter_skeleton_ui/flutter_skeleton_ui.dart';
-import 'package:pipen/extensions.dart';
 import 'package:pipen_bloc/cubit/cubit_fetch.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:pipen/extensions.dart';
 import '../../../components.dart';
 
 class PipenTextSkeleton extends StatefulWidget {

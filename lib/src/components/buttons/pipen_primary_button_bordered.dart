@@ -1,6 +1,6 @@
+import 'package:pipen/src/components/buttons/pipen_primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:pipen/extensions.dart';
-import 'package:pipen/src/components/buttons/pipen_primary_button.dart';
 
 class PipenPrimaryButtonBordered extends StatelessWidget {
   const PipenPrimaryButtonBordered({

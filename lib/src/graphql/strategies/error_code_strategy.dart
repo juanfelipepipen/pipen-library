@@ -1,8 +1,8 @@
+import 'package:pipen/src/graphql/request_fail/graphql_exception_strategy.dart';
 import 'package:pipen/src/graphql/exceptions/graphql_error_code.dart';
-import 'package:pipen/request_fail/pipen_request_fail_error.dart';
 import 'package:graphql/client.dart';
 
-class ErrorCodeStrategy extends PipenRequestFailError {
+class ErrorCodeStrategy extends GraphqlExceptionStrategy {
   @override
   bool isException(exception) {
     if (exception is! OperationException) return false;

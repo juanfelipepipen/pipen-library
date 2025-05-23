@@ -1,4 +1,4 @@
-abstract class PipenRequestFailError {
+abstract class GraphqlExceptionStrategy {
   /// Validate if exception is convertible
   bool isException(dynamic exception);
 
