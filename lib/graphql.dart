@@ -26,6 +26,7 @@ export 'src/graphql/exceptions/graphql_connectivity_exception.dart';
 export 'src/graphql/exceptions/graphql_resource_not_found.dart';
 export 'src/graphql/exceptions/graphql_result_exception.dart';
 export 'src/graphql/exceptions/graphql_error_code.dart';
+export 'src/graphql/exceptions/graphql_validation_errors.dart';
 
 /// Client
 export 'src/graphql/graphql_config.dart';

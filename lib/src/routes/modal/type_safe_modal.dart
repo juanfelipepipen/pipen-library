@@ -25,6 +25,12 @@ abstract class TypeSafeModalRoute {
 
   /// Navigate to modal route
   void go(BuildContext context) {
-    PipenModalsBuilders.modalBuilder(context, this);
+    RouterModalsBuilders.modalBuilder(context, this, ModalRouteTheme.fromRoute(this));
+  }
+
+  /// Replace current modal
+  void goReplace(BuildContext context) {
+    Navigator.of(context).pop();
+    go(context);
   }
 }

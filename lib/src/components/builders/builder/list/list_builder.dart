@@ -3,9 +3,9 @@ part of 'pipen_list_builder.dart';
 class ListBuilder<T> {
   ListBuilder({required this.items, required this.builder, this.skeletons = 3});
 
-  Widget Function(T? value) builder;
+  final Widget Function(T? value) builder;
   Iterable<T>? items;
-  int skeletons;
+  final int skeletons;
 
   /// Get items list or list with null values for skeleton items
   Iterable<T?> get generated {

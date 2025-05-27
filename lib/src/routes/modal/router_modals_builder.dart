@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pipen/src/routes/theme/modal_route_theme.dart';
 import 'modal_container.dart';
 
 part 'type_safe_modal.dart';
 
-class PipenModalsBuilders {
+class RouterModalsBuilders {
   /// Handle on navigate to modal route (go operation)
-  static Function(BuildContext, TypeSafeModalRoute) get modalBuilder => (context, modal) {
+  static Function(BuildContext context, TypeSafeModalRoute route, ModalRouteTheme theme)
+  modalBuilder = (context, modal, theme) {
     EdgeInsets padding = modal is RouteZeroPadding ? EdgeInsets.zero : EdgeInsets.all(25);
 
     if (modal case RoutePadding customPadding) {

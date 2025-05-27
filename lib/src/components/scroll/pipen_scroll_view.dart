@@ -5,6 +5,7 @@ class PipenScrollView extends StatefulWidget {
   PipenScrollView({
     super.key,
     this.child,
+    this.spacing,
     this.children,
     this.scrollDirection,
     this.bottomSafeArea = false,
@@ -17,6 +18,7 @@ class PipenScrollView extends StatefulWidget {
   final Axis? scrollDirection;
   final bool bottomSafeArea;
   final EdgeInsets padding;
+  final double? spacing;
   final Widget? child;
 
   @override
@@ -37,6 +39,7 @@ class _PipenScrollViewState extends State<PipenScrollView> {
         padding: widget.padding,
         scrollDirection: widget.scrollDirection ?? Axis.vertical,
         child: PipenColumn(
+          spacing: widget.spacing,
           children: [...children, SizedBox(height: widget.bottomSafeArea ? 100 : 0)],
         ),
       ),

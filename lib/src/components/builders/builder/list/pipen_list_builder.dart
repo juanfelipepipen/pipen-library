@@ -4,8 +4,9 @@ import 'package:flutter/cupertino.dart';
 part 'list_builder.dart';
 
 class PipenListBuilder extends StatefulWidget {
-  const PipenListBuilder({super.key, required this.builder});
+  const PipenListBuilder({super.key, required this.builder, this.spacing});
 
+  final double? spacing;
   final ListBuilder builder;
 
   @override
@@ -49,5 +50,5 @@ class _PipenListBuilderState extends State<PipenListBuilder> {
   }
 
   @override
-  Widget build(BuildContext context) => PipenColumn(listable: children);
+  Widget build(BuildContext context) => PipenColumn(spacing: widget.spacing, listable: children);
 }
