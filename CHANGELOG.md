@@ -1,3 +1,8 @@
+## 2.1.1
+
+* Pipen list builder support for rebuild on time and empty widget or text
+* Route modals builders in global instance
+
 ## 2.1.0
 
 * Exports for extensions

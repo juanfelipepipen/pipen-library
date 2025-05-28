@@ -4,10 +4,18 @@ import 'package:flutter/cupertino.dart';
 part 'list_builder.dart';
 
 class PipenListBuilder extends StatefulWidget {
-  const PipenListBuilder({super.key, required this.builder, this.spacing});
+  const PipenListBuilder({
+    super.key,
+    this.empty,
+    this.spacing,
+    this.emptyMessage,
+    required this.builder,
+  });
 
-  final double? spacing;
+  final String? emptyMessage;
   final ListBuilder builder;
+  final double? spacing;
+  final Widget? empty;
 
   @override
   State<PipenListBuilder> createState() => _PipenListBuilderState();
@@ -27,11 +35,8 @@ class _PipenListBuilderState extends State<PipenListBuilder> {
   @override
   void didUpdateWidget(covariant PipenListBuilder oldWidget) {
     super.didUpdateWidget(oldWidget);
-
-    if (maker.items != widget.builder.items) {
-      setState(() => maker.items = widget.builder.items);
-      widgets();
-    }
+    setState(() => maker = widget.builder);
+    widgets();
   }
 
   /// Generate skeletons
@@ -50,5 +55,11 @@ class _PipenListBuilderState extends State<PipenListBuilder> {
   }
 
   @override
-  Widget build(BuildContext context) => PipenColumn(spacing: widget.spacing, listable: children);
+  Widget build(BuildContext context) => PipenColumn(
+    spacing: widget.spacing,
+    children: [
+      ...children,
+      if (children.isEmpty) widget.empty ?? Center(child: Text(widget.emptyMessage ?? '')),
+    ],
+  );
 }

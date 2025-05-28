@@ -4,10 +4,18 @@ import 'modal_container.dart';
 
 part 'type_safe_modal.dart';
 
-class RouterModalsBuilders {
+class PipenRouterConfigs {
+  static RouterModalsBuilders modalBuilder = _PipenModalBuilder();
+}
+
+abstract class RouterModalsBuilders {
   /// Handle on navigate to modal route (go operation)
-  static Function(BuildContext context, TypeSafeModalRoute route, ModalRouteTheme theme)
-  modalBuilder = (context, modal, theme) {
+  Function(BuildContext context, TypeSafeModalRoute route, Widget modal, ModalRouteTheme theme)
+  get builder;
+
+  /// Default method for show a modal
+  @protected
+  void show(BuildContext context, TypeSafeModalRoute route, Widget modal, ModalRouteTheme theme) {
     EdgeInsets padding = modal is RouteZeroPadding ? EdgeInsets.zero : EdgeInsets.all(25);
 
     if (modal case RoutePadding customPadding) {
@@ -15,7 +23,7 @@ class RouterModalsBuilders {
     }
 
     double borderRadius =
-        modal is RouteBorderRadius ? (modal as RouteBorderRadius).borderRadius : 0;
+        route is RouteBorderRadius ? (route as RouteBorderRadius).borderRadius : 0;
 
     // Open modal
     showDialog<void>(
@@ -24,14 +32,14 @@ class RouterModalsBuilders {
       barrierDismissible: modal is! RouteFixed,
       builder: (context) {
         return modal is CustomContentModal
-            ? modal.page(context)
+            ? modal
             : Dialog(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
               ),
               // insetPadding: EdgeInsets.all(10),
               insetPadding: EdgeInsets.zero,
-              child: ModalContainer(padding: padding, child: modal.page(context)),
+              child: ModalContainer(padding: padding, child: modal),
               // child: SizedBox(
               //   width: context.width,
               //   child: ModalContainer(padding: padding, child: modal.page(context)),
@@ -39,5 +47,10 @@ class RouterModalsBuilders {
             );
       },
     );
-  };
+  }
+}
+
+class _PipenModalBuilder extends RouterModalsBuilders {
+  @override
+  get builder => show;
 }
