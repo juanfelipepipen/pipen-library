@@ -16,7 +16,7 @@ class ModalRouteTheme {
   final BorderRadius borderRadius;
   final bool barrierDismissible;
 
-  static ModalRouteTheme fromRoute(BuildContext context, TypeSafeModalRoute route) {
+  factory ModalRouteTheme.fromRoute(BuildContext context, TypeSafeModalRoute route) {
     final routeTheme = PipenTheme.of(context).themes.routeTheme;
 
     // Padding
@@ -27,7 +27,7 @@ class ModalRouteTheme {
     if (route case RoutePadding customPadding) padding = customPadding.padding;
 
     // Barrier dismissible
-    final barrierDismissible = route is RouteFixed ? true : routeTheme?.barrierDismissible ?? false;
+    final barrierDismissible = route is RouteFixed ? true : routeTheme?.barrierDismissible ?? true;
 
     // Border radius
     BorderRadius borderRadius = routeTheme?.borderRadius ?? BorderRadius.zero;
@@ -50,6 +50,20 @@ class ModalRouteTheme {
       barrierDismissible: barrierDismissible,
     );
   }
+
+  factory ModalRouteTheme.styleFrom({
+    EdgeInsets? padding,
+    EdgeInsets? insetPadding,
+    bool? barrierDismissible,
+    BorderRadius? borderRadius,
+    RouteTransitionBuilder? transition,
+  }) => ModalRouteTheme(
+    transition: transition,
+    padding: padding ?? EdgeInsets.zero,
+    insetPadding: insetPadding ?? EdgeInsets.zero,
+    barrierDismissible: barrierDismissible ?? true,
+    borderRadius: borderRadius ?? BorderRadius.circular(25),
+  );
 
   ModalRouteTheme copyWith({
     EdgeInsets? padding,
