@@ -48,12 +48,10 @@ class _PipenSliceFromUpState extends State<PipenSliceFromUp>
 
   @override
   Widget build(BuildContext context) => SizeTransition(
-        sizeFactor: controller.animation,
-        axis: widget.axis,
-        child: Container(
-          child: widget.child,
-        ),
-      );
+    sizeFactor: controller.animation,
+    axis: widget.axis,
+    child: Container(child: widget.child),
+  );
 
   /// Check widget status
   void check() {

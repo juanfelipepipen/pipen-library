@@ -18,6 +18,7 @@ abstract class RouterModalsBuilders {
   @protected
   void show(BuildContext context, TypeSafeModalRoute route, Widget modal, ModalRouteTheme theme) {
     // Open modal
+    print(theme.insetPadding.topRight);
     showGeneralDialog<void>(
       context: context,
       barrierLabel: 'Dismiss',
@@ -28,10 +29,13 @@ abstract class RouterModalsBuilders {
         return modal is CustomContentModal
             ? modal
             : Dialog(
-              backgroundColor: Colors.white,
               insetPadding: theme.insetPadding,
+              backgroundColor: Colors.white,
               shape: RoundedRectangleBorder(borderRadius: theme.borderRadius),
-              child: ModalContainer(padding: theme.padding, child: modal),
+              child: SizedBox(
+                width: theme.width,
+                child: ModalContainer(padding: theme.padding, child: modal),
+              ),
             );
       },
     );

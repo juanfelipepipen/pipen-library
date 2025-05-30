@@ -10,10 +10,10 @@ class PipenAppBarColor extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) => AppBar(
-        elevation: 0,
-        toolbarHeight: 0,
-        backgroundColor: color,
-        foregroundColor: color,
-        scrolledUnderElevation: 0,
-      );
+    elevation: 0,
+    toolbarHeight: 0,
+    backgroundColor: color,
+    foregroundColor: color,
+    scrolledUnderElevation: 0,
+  );
 }

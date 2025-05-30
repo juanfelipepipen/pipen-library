@@ -13,9 +13,9 @@ class PipenDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        height: 1,
-        margin: margin,
-        padding: padding,
-        color: color ?? Theme.of(context).colorScheme.secondary.withValues(alpha: 0.08),
-      );
+    height: 1,
+    margin: margin,
+    padding: padding,
+    color: color ?? Theme.of(context).colorScheme.secondary.withValues(alpha: 0.08),
+  );
 }

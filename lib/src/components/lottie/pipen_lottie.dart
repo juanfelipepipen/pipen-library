@@ -29,19 +29,19 @@ class _PipenLottieState extends State<PipenLottie> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) => Lottie.asset(
-        widget.asset,
-        height: widget.height,
-        controller: _controller,
-        onLoaded: (composition) {
-          if (widget.repeat) {
-            _controller
-              ..duration = composition.duration
-              ..repeat();
-          } else {
-            _controller
-              ..duration = composition.duration
-              ..forward();
-          }
-        },
-      );
+    widget.asset,
+    height: widget.height,
+    controller: _controller,
+    onLoaded: (composition) {
+      if (widget.repeat) {
+        _controller
+          ..duration = composition.duration
+          ..repeat();
+      } else {
+        _controller
+          ..duration = composition.duration
+          ..forward();
+      }
+    },
+  );
 }

@@ -3,10 +3,7 @@ import 'package:flutter/widgets.dart';
 
 class PipenPageRightToLeftTransition extends CustomTransitionPage {
   const PipenPageRightToLeftTransition({required this.page})
-      : super(
-          child: page,
-          transitionsBuilder: transitionsBuilderAnimation,
-        );
+    : super(child: page, transitionsBuilder: transitionsBuilderAnimation);
 
   final Widget page;
 

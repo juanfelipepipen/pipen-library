@@ -36,11 +36,8 @@ class PipenGestureTap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: _onTap,
-        behavior: HitTestBehavior.translucent,
-        child: Padding(
-          padding: margin,
-          child: child,
-        ),
-      );
+    onTap: _onTap,
+    behavior: HitTestBehavior.translucent,
+    child: Padding(padding: margin, child: child),
+  );
 }

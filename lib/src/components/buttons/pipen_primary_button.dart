@@ -11,6 +11,7 @@ class PipenPrimaryButton extends StatelessWidget {
     this.state,
     this.shape,
     this.height,
+    this.padding,
     this.textStyle,
     this.textColor,
     this.onPressed,
@@ -28,6 +29,7 @@ class PipenPrimaryButton extends StatelessWidget {
     this.state,
     this.shape,
     this.height,
+    this.padding,
     this.textColor,
     this.onPressed,
     this.textStyle,
@@ -42,6 +44,7 @@ class PipenPrimaryButton extends StatelessWidget {
   final OutlinedBorder? shape;
   final TextStyle? textStyle;
   final double? borderRadius;
+  final EdgeInsets? padding;
   final BorderSide? side;
   final IconData? icon;
   final double? height;
@@ -71,6 +74,7 @@ class PipenPrimaryButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         side: side,
         shape: border,
+        padding: padding,
         alignment: Alignment.center,
         backgroundColor: backgroundColor ?? context.themeColors.primary,
       ),

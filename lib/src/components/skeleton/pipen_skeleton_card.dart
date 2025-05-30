@@ -11,15 +11,12 @@ class PipenSkeletonCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => PipenSkeletonList(
-        number: total,
-        skeleton: Padding(
-          padding: padding ?? EdgeInsets.zero,
-          child: SkeletonLine(
-            style: SkeletonLineStyle(
-              height: height,
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        ),
-      );
+    number: total,
+    skeleton: Padding(
+      padding: padding ?? EdgeInsets.zero,
+      child: SkeletonLine(
+        style: SkeletonLineStyle(height: height, borderRadius: BorderRadius.circular(10)),
+      ),
+    ),
+  );
 }

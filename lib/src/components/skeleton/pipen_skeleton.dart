@@ -22,12 +22,8 @@ class PipenSkeleton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-        width: width,
-        height: height,
-        child: Skeleton(
-          isLoading: _isLoading,
-          skeleton: skeleton,
-          child: child,
-        ),
-      );
+    width: width,
+    height: height,
+    child: Skeleton(isLoading: _isLoading, skeleton: skeleton, child: child),
+  );
 }

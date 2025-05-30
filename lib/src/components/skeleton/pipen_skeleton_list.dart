@@ -23,12 +23,7 @@ class _PipenSkeletonListState extends State<PipenSkeletonList> {
   /// Get skeletons list
   void _skeletons() {
     for (int i = 0; i < widget.number; i++) {
-      skeletons.add(
-        Padding(
-          padding: widget.padding ?? EdgeInsets.zero,
-          child: widget.skeleton,
-        ),
-      );
+      skeletons.add(Padding(padding: widget.padding ?? EdgeInsets.zero, child: widget.skeleton));
     }
   }
 

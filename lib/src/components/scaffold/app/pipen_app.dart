@@ -11,8 +11,6 @@ class PipenApp extends StatelessWidget {
   final Widget child;
 
   @override
-  Widget build(BuildContext context) => PipenTheme(
-    themes: (componentsTheme: componentsTheme, routeTheme: routeTheme),
-    child: child,
-  );
+  Widget build(BuildContext context) =>
+      PipenTheme(themes: (componentsTheme: componentsTheme, routeTheme: routeTheme), child: child);
 }
