@@ -60,3 +60,6 @@ export 'src/components/text/pipen_text_icon.dart';
 /// Transitions
 export 'src/components/transitions/slice_from_up/pipen_slice_from_up.dart';
 export 'src/components/transitions/page_right_to_left/pipen_page_right_to_left_transition.dart';
+
+/// Scaffold
+export 'src/components/scaffold/app/pipen_app.dart';

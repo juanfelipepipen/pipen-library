@@ -16,6 +16,11 @@ abstract class RoutePadding {
   EdgeInsets get padding;
 }
 
+/// Custom insetPadding
+abstract class RouteTransition {
+  RouteTransitionBuilder get transitionBuilder;
+}
+
 /// Don't use default modal alert dialog scaffold
 interface class CustomContentModal {}
 
@@ -26,7 +31,7 @@ abstract class TypeSafeModalRoute {
   /// Navigate to modal route
   void go(BuildContext context) {
     final page = this.page(context);
-    final theme = ModalRouteTheme.fromRoute(this);
+    final theme = ModalRouteTheme.fromRoute(context, this);
     PipenRouterConfigs.modalBuilder.builder(context, this, page, theme);
   }
 

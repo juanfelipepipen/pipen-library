@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:pipen/src/routes/route_transition_builder.dart';
 import 'package:pipen/src/routes/theme/modal_route_theme.dart';
+import 'package:flutter/material.dart';
 import 'modal_container.dart';
 
 part 'type_safe_modal.dart';
@@ -16,40 +17,27 @@ abstract class RouterModalsBuilders {
   /// Default method for show a modal
   @protected
   void show(BuildContext context, TypeSafeModalRoute route, Widget modal, ModalRouteTheme theme) {
-    EdgeInsets padding = modal is RouteZeroPadding ? EdgeInsets.zero : EdgeInsets.all(25);
-
-    if (modal case RoutePadding customPadding) {
-      padding = customPadding.padding;
-    }
-
-    double borderRadius =
-        route is RouteBorderRadius ? (route as RouteBorderRadius).borderRadius : 0;
-
     // Open modal
-    showDialog<void>(
+    showGeneralDialog<void>(
       context: context,
+      barrierLabel: 'Dismiss',
       useRootNavigator: true,
-      barrierDismissible: modal is! RouteFixed,
-      builder: (context) {
+      transitionBuilder: theme.transition.builder,
+      barrierDismissible: theme.barrierDismissible,
+      pageBuilder: (context, animation, secondaryAnimation) {
         return modal is CustomContentModal
             ? modal
             : Dialog(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(borderRadius)),
-              ),
-              // insetPadding: EdgeInsets.all(10),
-              insetPadding: EdgeInsets.zero,
-              child: ModalContainer(padding: padding, child: modal),
-              // child: SizedBox(
-              //   width: context.width,
-              //   child: ModalContainer(padding: padding, child: modal.page(context)),
-              // ),
+              insetPadding: theme.insetPadding,
+              shape: RoundedRectangleBorder(borderRadius: theme.borderRadius),
+              child: ModalContainer(padding: theme.padding, child: modal),
             );
       },
     );
   }
 }
 
+/// Default modal builder
 class _PipenModalBuilder extends RouterModalsBuilders {
   @override
   get builder => show;
