@@ -28,6 +28,7 @@ abstract class RouterModalsBuilders {
         return modal is CustomContentModal
             ? modal
             : Dialog(
+              backgroundColor: Colors.white,
               insetPadding: theme.insetPadding,
               shape: RoundedRectangleBorder(borderRadius: theme.borderRadius),
               child: ModalContainer(padding: theme.padding, child: modal),

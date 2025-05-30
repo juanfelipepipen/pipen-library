@@ -36,7 +36,10 @@ class ModalRouteTheme {
     }
 
     // Inset padding
-    final insetPadding = routeTheme?.insetPadding ?? EdgeInsets.zero;
+    EdgeInsets insetPadding = routeTheme?.insetPadding ?? EdgeInsets.zero;
+    if (route case RouteInsetPadding routeInsetPadding) {
+      insetPadding = routeInsetPadding.insetPadding(context);
+    }
 
     // Transition
     RouteTransitionBuilder transition = routeTheme?.transition ?? FadeRouteTransition();

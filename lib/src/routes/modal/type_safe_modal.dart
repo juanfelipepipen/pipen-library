@@ -17,6 +17,11 @@ abstract class RoutePadding {
 }
 
 /// Custom insetPadding
+abstract class RouteInsetPadding {
+  EdgeInsets Function(BuildContext) get insetPadding;
+}
+
+/// Custom insetPadding
 abstract class RouteTransition {
   RouteTransitionBuilder get transitionBuilder;
 }
