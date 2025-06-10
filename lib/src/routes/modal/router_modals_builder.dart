@@ -18,7 +18,6 @@ abstract class RouterModalsBuilders {
   @protected
   void show(BuildContext context, TypeSafeModalRoute route, Widget modal, ModalRouteTheme theme) {
     // Open modal
-    print(theme.insetPadding.topRight);
     showGeneralDialog<void>(
       context: context,
       barrierLabel: 'Dismiss',

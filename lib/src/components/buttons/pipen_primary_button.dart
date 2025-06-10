@@ -1,4 +1,4 @@
-import 'package:pipen_bloc/abstract/loading_state.dart';
+import 'package:pipen_bloc/pipen_bloc.dart';
 import 'package:pipen/extensions.dart';
 import 'package:flutter/material.dart';
 

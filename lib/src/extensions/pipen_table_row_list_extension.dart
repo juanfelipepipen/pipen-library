@@ -1,5 +1,5 @@
 import 'package:flutter_skeleton_ui/flutter_skeleton_ui.dart';
-import 'package:pipen_bloc/cubit/cubit_fetch.dart';
+import 'package:pipen_bloc/pipen_bloc.dart';
 import 'package:flutter/material.dart';
 
 extension TableExtension on List<TableRow> {
