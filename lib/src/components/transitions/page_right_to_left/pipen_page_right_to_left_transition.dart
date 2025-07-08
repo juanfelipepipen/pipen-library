@@ -7,7 +7,7 @@ class PipenPageRightToLeftTransition extends CustomTransitionPage {
 
   final Widget page;
 
-  static Widget transitionsBuilderAnimation(context, animation, secondaryAnimation, child) {
+  static Widget transitionsBuilderAnimation(BuildContext context, animation, secondaryAnimation, Widget child) {
     const end = Offset.zero;
     const curve = Curves.ease;
     const begin = Offset(1, 0);
