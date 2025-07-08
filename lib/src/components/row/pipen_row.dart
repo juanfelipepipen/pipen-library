@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 
+part 'pipen_row_expanded.dart';
+
 class PipenRow extends StatelessWidget {
   PipenRow({
     super.key,
@@ -58,6 +60,10 @@ class PipenRow extends StatelessWidget {
   final EdgeInsets? padding;
   final double? spacing;
   final Widget? child;
+
+  /// Row with expanded in every widget in children
+  static Widget expanded({double spacing = 0, required List<Widget> children}) =>
+      _PipenRowExpanded(spacing: spacing, children: children);
 
   List<Widget> get _children {
     if (children case List<Widget> children) {

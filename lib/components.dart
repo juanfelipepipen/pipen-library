@@ -40,7 +40,6 @@ export 'src/components/lottie/pipen_lottie.dart';
 
 /// Row
 export 'src/components/row/pipen_row.dart';
-export 'src/components/row/pipen_row_expanded.dart';
 
 /// Scroll
 export 'src/components/scroll/pipen_scroll_override.dart';
