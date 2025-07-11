@@ -1,12 +1,23 @@
 part of 'pipen_row.dart';
 
 class _PipenRowExpanded extends StatelessWidget {
-  const _PipenRowExpanded({required this.spacing, required this.children});
+  const _PipenRowExpanded({
+    this.horizontal,
+    this.vertical,
+    required this.spacing,
+    required this.children,
+  });
 
-  final double spacing;
+  final MainAxisAlignment? horizontal;
+  final CrossAxisAlignment? vertical;
   final List<Widget> children;
+  final double spacing;
 
   @override
-  Widget build(BuildContext context) =>
-      PipenRow(spacing: spacing, listable: children.map((e) => Expanded(child: e)));
+  Widget build(BuildContext context) => PipenRow(
+    spacing: spacing,
+    vertical: vertical,
+    horizontal: horizontal,
+    listable: children.map((e) => Expanded(child: e)),
+  );
 }

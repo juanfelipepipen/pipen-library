@@ -1,3 +1,8 @@
+## 2.2.2
+
+* Android options added to secure storage
+* PipenRow with expanded constructor
+
 ## 2.2.0
 
 * Modal builder with new options for customize theming, animations and scaffold.

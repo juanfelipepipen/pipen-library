@@ -4,6 +4,7 @@ import 'package:meta/meta.dart';
 
 abstract class StorageContract<T> {
   final _storage = const FlutterSecureStorage(
+    aOptions: AndroidOptions(resetOnError: true),
     iOptions: IOSOptions(synchronizable: false, accessibility: KeychainAccessibility.unlocked),
   );
 
