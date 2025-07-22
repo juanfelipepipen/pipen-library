@@ -11,8 +11,9 @@ class PipenSwipe extends StatefulWidget {
     this.onInit,
     this.gap = 0,
     this.children,
-    this.controller,
     this.onRefresh,
+    this.controller,
+    this.spacing = 0,
     this.padding = EdgeInsets.zero,
   }) {
     assert(children != null || child != null);
@@ -21,9 +22,9 @@ class PipenSwipe extends StatefulWidget {
   final VoidCallback? onRefresh, onInit;
   final ScrollController? controller;
   final List<Widget>? children;
+  final double gap, spacing;
   final EdgeInsets padding;
   final Widget? child;
-  final double gap;
 
   @override
   State<PipenSwipe> createState() => _PipenSwipeState();
@@ -48,6 +49,7 @@ class _PipenSwipeState extends State<PipenSwipe> {
     child: PipenScrollOverride(
       child: SwipeRefresh.cupertino(
         stateStream: _stream,
+        padding: widget.padding,
         scrollController: scrollController,
         onRefresh: () {
           Future.delayed(
@@ -57,7 +59,7 @@ class _PipenSwipeState extends State<PipenSwipe> {
           widget.onRefresh?.call();
         },
         children: [
-          PipenColumn(padding: widget.padding, children: widget.children ?? [widget.child!]),
+          PipenColumn(spacing: widget.spacing, children: widget.children ?? [widget.child!]),
           SizedBox(height: widget.gap),
         ],
       ),

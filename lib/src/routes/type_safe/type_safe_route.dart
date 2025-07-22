@@ -2,6 +2,8 @@ import 'package:pipen/config/typedef.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/widgets.dart';
 
+part 'type_safe_extra_route.dart';
+
 abstract class TypeSafeRoute {
   @protected
   late JsonMap queryParameters;
