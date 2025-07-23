@@ -1,43 +1,71 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import '../../../../components.dart';
 
-class PipenFiller extends StatelessWidget {
-  PipenFiller({
-    super.key,
-    this.top,
-    this.bottom,
-    this.padding,
-    this.topSpacing,
-    this.topPadding,
-    this.topChildren,
-    this.bottomChildren,
-  }) {
-    assert(top != null || topChildren != null);
-    assert(bottom != null || bottom != null);
+class FillerArea {
+  FillerArea({this.children, this.child, this.padding, this.spacing}) {
+    assert(child != null || children != null);
   }
 
-  final List<Widget>? topChildren, bottomChildren;
-  final EdgeInsets? padding, topPadding;
-  final Widget? top, bottom;
-  final double? topSpacing;
+  final List<Widget>? children;
+  final EdgeInsets? padding;
+  final double? spacing;
+  final Widget? child;
+}
+
+class PipenFiller extends StatefulWidget {
+  const PipenFiller({
+    super.key,
+    this.padding,
+    this.controller,
+    required this.top,
+    required this.bottom,
+  });
+
+  final ScrollController? controller;
+  final FillerArea top, bottom;
+  final EdgeInsets? padding;
 
   @override
-  Widget build(BuildContext context) => CustomScrollView(
-    physics: const ClampingScrollPhysics(),
-    slivers: [
-      SliverToBoxAdapter(
-        child: PipenColumn(
-          child: top,
-          padding: topPadding,
-          spacing: topSpacing,
-          children: topChildren,
+  State<PipenFiller> createState() => _PipenFillerState();
+}
+
+class _PipenFillerState extends State<PipenFiller> {
+  ScrollController scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) => Scrollbar(
+    thumbVisibility: true,
+    controller: scrollController,
+    child: CustomScrollView(
+      controller: scrollController,
+      physics: const ClampingScrollPhysics(),
+      slivers: [
+        SliverToBoxAdapter(
+          child: PipenColumn(
+            child: widget.top.child,
+            spacing: widget.top.spacing,
+            padding: widget.padding ?? widget.top.padding,
+            children: widget.top.children,
+          ),
         ),
-      ),
-      SliverFillRemaining(
-        hasScrollBody: false,
-        fillOverscroll: false,
-        child: PipenColumn.end(padding: padding, children: bottomChildren, child: bottom),
-      ),
-    ],
+        SliverFillRemaining(
+          hasScrollBody: false,
+          fillOverscroll: false,
+          child: PipenColumn(
+            vertical: MainAxisAlignment.end,
+            child: widget.bottom.child,
+            spacing: widget.bottom.spacing,
+            padding: widget.padding ?? widget.bottom.padding,
+            children: widget.bottom.children,
+          ),
+        ),
+      ],
+    ),
   );
 }

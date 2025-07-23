@@ -45,12 +45,12 @@ class _PipenSwipeState extends State<PipenSwipe> {
   @override
   Widget build(BuildContext context) => Scrollbar(
     thumbVisibility: true,
-    controller: scrollController,
+    controller: widget.controller ?? scrollController,
     child: PipenScrollOverride(
       child: SwipeRefresh.cupertino(
         stateStream: _stream,
         padding: widget.padding,
-        scrollController: scrollController,
+        scrollController: widget.controller ?? scrollController,
         onRefresh: () {
           Future.delayed(
             const Duration(milliseconds: 300),

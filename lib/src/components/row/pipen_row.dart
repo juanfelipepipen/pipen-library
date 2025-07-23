@@ -65,11 +65,13 @@ class PipenRow extends StatelessWidget {
   static Widget expanded({
     Widget? child,
     double spacing = 0,
+    EdgeInsets? padding,
     List<Widget>? children,
     CrossAxisAlignment? vertical,
     MainAxisAlignment? horizontal,
   }) => _PipenRowExpanded(
     spacing: spacing,
+    padding: padding,
     vertical: vertical,
     horizontal: horizontal,
     children: [...?children, if (child case Widget child) child],
