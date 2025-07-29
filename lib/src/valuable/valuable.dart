@@ -16,14 +16,21 @@ class Valuable {
 
   Valuable copyWith() => Valuable(title: title, value: value);
 
-  String title, value;
+  final String title, value;
 
   bool get isPending => value.startsWith('pending-');
 
-  static Valuable fromJson(JsonMap params, {String titleKey = 'name', String valueKey = 'id'}) {
+  /// Create valuable from json map
+  factory Valuable.fromJson(JsonMap params, {String titleKey = 'name', String valueKey = 'id'}) {
     return Valuable.glass(params[titleKey].toString(), params[valueKey].toString());
   }
 
+  /// Create a valuable with a same title & value
+  factory Valuable.equality(String value) {
+    return Valuable.glass(value, value);
+  }
+
+  /// Get list of valuables from a dynamic list
   static ValuableList fromList(List<dynamic>? list, {String title = 'name', String value = 'id'}) {
     if (list == null) return [];
     return list.map((e) => Valuable(title: e[title], value: e[value].toString())).toList();

@@ -12,12 +12,12 @@ class GraphqlRequestFail {
   ];
 
   /// Add errors decoders
-  static errors(List<GraphqlExceptionStrategy> errors) {
+  static void errors(List<GraphqlExceptionStrategy> errors) {
     _errors.addAll(errors);
   }
 
   /// Decode exception
-  static decode(dynamic exception) {
+  static void decode(dynamic exception) {
     try {
       _errors.firstWhere((e) => e.isException(exception)).build(exception);
     } catch (e) {
@@ -27,7 +27,7 @@ class GraphqlRequestFail {
   }
 
   /// Print error output
-  static printOutError(OperationException exception) {
+  static void printOutError(OperationException exception) {
     final dots = Iterable.generate(25, (_) => '-');
     final String lines = dots.join() + dots.join();
     final title = 'GraphQL Exception';

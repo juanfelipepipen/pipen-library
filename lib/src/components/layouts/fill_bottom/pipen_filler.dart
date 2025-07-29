@@ -16,6 +16,7 @@ class FillerArea {
 class PipenFiller extends StatefulWidget {
   const PipenFiller({
     super.key,
+    this.physics,
     this.padding,
     this.controller,
     required this.top,
@@ -23,6 +24,7 @@ class PipenFiller extends StatefulWidget {
   });
 
   final ScrollController? controller;
+  final ScrollPhysics? physics;
   final FillerArea top, bottom;
   final EdgeInsets? padding;
 
@@ -44,7 +46,7 @@ class _PipenFillerState extends State<PipenFiller> {
     controller: scrollController,
     child: CustomScrollView(
       controller: scrollController,
-      physics: const ClampingScrollPhysics(),
+      physics: widget.physics ?? const ClampingScrollPhysics(),
       slivers: [
         SliverToBoxAdapter(
           child: PipenColumn(
