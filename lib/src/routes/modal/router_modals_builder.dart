@@ -11,14 +11,24 @@ class PipenRouterConfigs {
 
 abstract class RouterModalsBuilders {
   /// Handle on navigate to modal route (go operation)
-  Function(BuildContext context, TypeSafeModalRoute route, Widget modal, ModalRouteTheme theme)
+  Future<T?> Function<T>(
+    BuildContext context,
+    TypeSafeModalRoute route,
+    Widget modal,
+    ModalRouteTheme theme,
+  )
   get builder;
 
   /// Default method for show a modal
   @protected
-  void show(BuildContext context, TypeSafeModalRoute route, Widget modal, ModalRouteTheme theme) {
+  Future<T?> show<T>(
+    BuildContext context,
+    TypeSafeModalRoute route,
+    Widget modal,
+    ModalRouteTheme theme,
+  ) {
     // Open modal
-    showGeneralDialog<void>(
+    return showGeneralDialog<T>(
       context: context,
       barrierLabel: 'Dismiss',
       useRootNavigator: true,

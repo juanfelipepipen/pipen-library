@@ -6,7 +6,9 @@ class PipenScrollView extends StatefulWidget {
     super.key,
     this.child,
     this.spacing,
+    this.physics,
     this.children,
+    this.controller,
     this.scrollDirection,
     this.bottomSafeArea = false,
     this.padding = EdgeInsets.zero,
@@ -14,6 +16,8 @@ class PipenScrollView extends StatefulWidget {
     assert(children != null || child != null);
   }
 
+  final ScrollController? controller;
+  final ScrollPhysics? physics;
   final List<Widget>? children;
   final Axis? scrollDirection;
   final bool bottomSafeArea;
@@ -32,11 +36,12 @@ class _PipenScrollViewState extends State<PipenScrollView> {
   @override
   Widget build(BuildContext context) => Scrollbar(
     thumbVisibility: true,
-    controller: controller,
+    controller: widget.controller ?? controller,
     child: PipenScrollOverride(
       child: SingleChildScrollView(
-        controller: controller,
+        physics: widget.physics,
         padding: widget.padding,
+        controller: widget.controller ?? controller,
         scrollDirection: widget.scrollDirection ?? Axis.vertical,
         child: PipenColumn(
           spacing: widget.spacing,

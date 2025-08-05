@@ -30,14 +30,14 @@ abstract class RouteTransition {
 interface class CustomContentModal {}
 
 /// Route of modal type
-abstract class TypeSafeModalRoute {
+abstract class TypeSafeModalRoute<T> {
   Widget Function(BuildContext) get page;
 
   /// Navigate to modal route
-  void go(BuildContext context) {
+  Future<T?> go(BuildContext context) {
     final page = this.page(context);
     final theme = ModalRouteTheme.fromRoute(context, this);
-    PipenRouterConfigs.modalBuilder.builder(context, this, page, theme);
+    return PipenRouterConfigs.modalBuilder.builder<T>(context, this, page, theme);
   }
 
   /// Replace current modal

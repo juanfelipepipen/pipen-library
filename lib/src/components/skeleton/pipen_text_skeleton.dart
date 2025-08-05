@@ -45,6 +45,7 @@ class PipenTextSkeleton extends StatefulWidget {
     if (builder != null && value != null) {
       return builder!(value!);
     }
+
     return value ?? defaultValue;
   }
 
