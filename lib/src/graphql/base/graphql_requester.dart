@@ -24,16 +24,21 @@ abstract class GraphqlRequester<T> extends GraphQlInterface<T> {
   DocumentNode getDocument() {
     String document = this.document;
 
-    if (this case GraphqlDocumentVars vars) {
-      final params = vars.documentVars;
-      final regex = RegExp(r'\[\[(.*?)\]\]');
-      final parsedDocument = document.replaceAllMapped(regex, (match) {
-        final key = match.group(1);
-        return params[key] ?? match.group(0)!;
-      });
-      return gql(parsedDocument);
+    if (this case GraphqlDocumentVars documentVars) {
+      return documentFrom(document: document, vars: documentVars.documentVars);
     }
 
     return gql(document);
+  }
+
+  /// Parse document with including document variables
+  static DocumentNode documentFrom({required String document, JsonMap? vars}) {
+    final params = vars ?? {};
+    final regex = RegExp(r'\[\[(.*?)\]\]');
+    final parsedDocument = document.replaceAllMapped(regex, (match) {
+      final key = match.group(1);
+      return params[key] ?? match.group(0)!;
+    });
+    return gql(parsedDocument);
   }
 }

@@ -17,8 +17,8 @@ abstract class RoutePadding {
 }
 
 /// Custom insetPadding
-abstract class RouteInsetPadding {
-  EdgeInsets Function(BuildContext) get insetPadding;
+abstract class RouteMargin {
+  EdgeInsets Function(BuildContext) get margin;
 }
 
 /// Custom insetPadding

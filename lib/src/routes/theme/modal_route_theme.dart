@@ -5,15 +5,15 @@ import 'package:pipen/routes.dart';
 class ModalRouteTheme {
   ModalRouteTheme({
     this.width,
+    required this.margin,
     required this.padding,
     required this.borderRadius,
-    required this.insetPadding,
     required this.barrierDismissible,
     RouteTransitionBuilder? transition,
   }) : transition = transition ?? FadeRouteTransition();
 
   final RouteTransitionBuilder transition;
-  final EdgeInsets padding, insetPadding;
+  final EdgeInsets padding, margin;
   final BorderRadius borderRadius;
   final bool barrierDismissible;
   final double? width;
@@ -35,10 +35,10 @@ class ModalRouteTheme {
       borderRadius = BorderRadius.circular(routeBorderRadius.borderRadius);
     }
 
-    // Inset padding
-    EdgeInsets insetPadding = routeTheme.insetPadding;
-    if (route case RouteInsetPadding routeInsetPadding) {
-      insetPadding = routeInsetPadding.insetPadding(context);
+    // Margin
+    EdgeInsets margin = routeTheme.margin;
+    if (route case RouteMargin routeInsetPadding) {
+      margin = routeInsetPadding.margin(context);
     }
 
     // Transition
@@ -52,7 +52,7 @@ class ModalRouteTheme {
       width: width,
       padding: padding,
       transition: transition,
-      insetPadding: insetPadding,
+      margin: margin,
       borderRadius: borderRadius,
       barrierDismissible: barrierDismissible,
     );
@@ -68,7 +68,7 @@ class ModalRouteTheme {
   }) => ModalRouteTheme(
     width: width,
     padding: padding ?? EdgeInsets.zero,
-    insetPadding: insetPadding ?? EdgeInsets.zero,
+    margin: insetPadding ?? EdgeInsets.zero,
     barrierDismissible: barrierDismissible ?? true,
     transition: transition ?? FadeRouteTransition(),
     borderRadius: borderRadius ?? BorderRadius.circular(25),
@@ -85,7 +85,7 @@ class ModalRouteTheme {
     borderRadius: borderRadius,
     padding: padding ?? this.padding,
     transition: transition ?? this.transition,
-    insetPadding: insetPadding ?? this.insetPadding,
+    margin: insetPadding ?? this.margin,
     barrierDismissible: barrierDismissible ?? this.barrierDismissible,
   );
 }

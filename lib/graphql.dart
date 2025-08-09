@@ -19,6 +19,7 @@ export 'src/graphql/base/graphql_types.dart';
 export 'src/graphql/graphql_interface.dart';
 export 'src/graphql/graphql_request_fail.dart';
 export 'src/graphql/base/graphql_document_vars.dart';
+export 'src/graphql/graphql_response_decoder.dart';
 
 /// Exceptions
 export 'src/graphql/exceptions/graphql_client_not_found.dart';
@@ -30,3 +31,4 @@ export 'src/graphql/exceptions/graphql_validation_errors.dart';
 
 /// Client
 export 'src/graphql/graphql_config.dart';
+export 'src/graphql/base/graphql_requester.dart';
