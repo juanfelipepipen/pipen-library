@@ -35,4 +35,11 @@ class Valuable {
     if (list == null) return [];
     return list.map((e) => Valuable(title: e[title], value: e[value].toString())).toList();
   }
+
+  @override
+  bool operator ==(Object other) =>
+      other is Valuable && other.runtimeType == runtimeType && other.value == value;
+
+  @override
+  int get hashCode => value.hashCode;
 }
