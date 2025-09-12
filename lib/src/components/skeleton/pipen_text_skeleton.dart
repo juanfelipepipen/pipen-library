@@ -1,6 +1,5 @@
-import 'package:flutter_skeleton_ui/flutter_skeleton_ui.dart';
+import 'package:flutter/material.dart';
 import 'package:pipen_bloc/pipen_bloc.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:pipen/extensions.dart';
 import '../../../components.dart';
 
@@ -12,6 +11,7 @@ class PipenTextSkeleton extends StatefulWidget {
     this.state,
     this.builder,
     this.loading,
+    this.fromValue,
     this.minHeight,
     this.borderRadius,
     this.skeletonWith,
@@ -26,6 +26,7 @@ class PipenTextSkeleton extends StatefulWidget {
     this.state,
     this.builder,
     this.loading,
+    this.fromValue,
     this.minHeight,
     this.borderRadius,
     this.skeletonWith,
@@ -35,11 +36,11 @@ class PipenTextSkeleton extends StatefulWidget {
   final String Function(String value)? builder;
   final double? skeletonWith, minHeight;
   final String? value, defaultValue;
+  final bool? loading, fromValue;
   final double? borderRadius;
   final Alignment alignment;
   final FetchState? state;
   final TextStyle? style;
-  final bool? loading;
 
   String? get _value {
     if (builder != null && value != null) {
@@ -50,7 +51,7 @@ class PipenTextSkeleton extends StatefulWidget {
   }
 
   bool get _loading {
-    return state is FetchLoading || loading == true;
+    return state is FetchLoading || loading == true || (fromValue == true && value == null);
   }
 
   @override
@@ -86,12 +87,13 @@ class _PipenTextSkeletonState extends State<PipenTextSkeleton> {
             minHeight: height! + 3,
             alignment: widget.alignment,
             value: widget._loading ? null : widget._value,
-            skeleton: SkeletonLine(
-              style: SkeletonLineStyle(
-                height: height,
-                width: widget.skeletonWith,
-                alignment: widget.alignment,
-                borderRadius: BorderRadius.circular(widget.borderRadius ?? 10),
+            skeleton: Container(
+              alignment: widget.alignment,
+              height: height,
+              width: widget.skeletonWith ?? double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(widget.borderRadius ?? (height ?? 20) / 2),
               ),
             ),
             child: (value) => Text(value, style: widget.style ?? context.textTheme.bodyMedium),

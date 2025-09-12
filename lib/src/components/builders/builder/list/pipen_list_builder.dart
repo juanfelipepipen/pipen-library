@@ -59,7 +59,10 @@ class _PipenListBuilderState extends State<PipenListBuilder> {
     spacing: widget.spacing,
     children: [
       ...children,
-      if (children.isEmpty) widget.empty ?? Center(child: Text(widget.emptyMessage ?? '')),
+
+      /// Empty case
+      if (children.isEmpty && widget.empty != null) Center(child: Text(widget.emptyMessage ?? '')),
+      if (children.isEmpty && widget.empty != null) widget.empty!,
     ],
   );
 }

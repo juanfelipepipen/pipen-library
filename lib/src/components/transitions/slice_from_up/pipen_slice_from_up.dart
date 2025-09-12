@@ -4,12 +4,14 @@ import 'package:flutter/widgets.dart';
 class PipenSliceFromUp extends StatefulWidget {
   const PipenSliceFromUp({
     super.key,
+    this.padding,
     required this.child,
     this.show = false,
     this.axis = Axis.vertical,
     this.duration = const Duration(milliseconds: 200),
   });
 
+  final EdgeInsets? padding;
   final Duration duration;
   final Widget child;
   final Axis axis;
@@ -48,9 +50,9 @@ class _PipenSliceFromUpState extends State<PipenSliceFromUp>
 
   @override
   Widget build(BuildContext context) => SizeTransition(
-    sizeFactor: controller.animation,
     axis: widget.axis,
-    child: Container(child: widget.child),
+    sizeFactor: controller.animation,
+    child: Container(padding: widget.padding, child: widget.child),
   );
 
   /// Check widget status

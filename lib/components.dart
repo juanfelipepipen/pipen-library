@@ -50,6 +50,7 @@ export 'src/components/skeleton/pipen_skeleton.dart';
 export 'src/components/skeleton/pipen_skeleton_card.dart';
 export 'src/components/skeleton/pipen_skeleton_list.dart';
 export 'src/components/skeleton/pipen_text_skeleton.dart';
+export 'src/components/skeleton/pipen_skeletonizer.dart';
 
 /// Swipe
 export 'src/components/swipe/pipen_swipe.dart';

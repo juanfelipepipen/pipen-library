@@ -21,9 +21,6 @@ class PipenSkeleton extends StatelessWidget {
   bool get _isLoading => isLoading == true || state is LoadingState;
 
   @override
-  Widget build(BuildContext context) => SizedBox(
-    width: width,
-    height: height,
-    child: Skeleton(isLoading: _isLoading, skeleton: skeleton, child: child),
-  );
+  Widget build(BuildContext context) =>
+      Skeleton(isLoading: _isLoading, skeleton: skeleton, child: child);
 }
