@@ -23,11 +23,11 @@ class PipenSkeletonizer extends StatefulWidget {
 class _PipenSkeletonizerState extends State<PipenSkeletonizer> {
   @override
   Widget build(BuildContext context) => Align(
-        alignment: widget.alignment ?? Alignment.topLeft,
-        child: Skeleton(
-          isLoading: widget.state is LoadingState || widget.loading == true,
-          skeleton: widget.child,
-          child: widget.child,
-        ),
-      );
+    alignment: widget.alignment ?? Alignment.topLeft,
+    child: Skeleton(
+      isLoading: (widget.state != null && widget.state is! FetchSuccess) || widget.loading == true,
+      skeleton: widget.child,
+      child: widget.child,
+    ),
+  );
 }

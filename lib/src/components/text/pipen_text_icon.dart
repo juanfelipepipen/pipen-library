@@ -7,6 +7,7 @@ enum IconSide { left, right }
 class PipenTextIcon extends StatelessWidget {
   const PipenTextIcon({
     super.key,
+    this.textAlign,
     this.horizontal,
     this.spacing = 4,
     required this.icon,
@@ -16,6 +17,7 @@ class PipenTextIcon extends StatelessWidget {
 
   const PipenTextIcon.right({
     super.key,
+    this.textAlign,
     this.horizontal,
     this.spacing = 4,
     required this.icon,
@@ -24,6 +26,7 @@ class PipenTextIcon extends StatelessWidget {
   }) : side = IconSide.right;
 
   final MainAxisAlignment? horizontal;
+  final TextAlign? textAlign;
   final TextStyle? style;
   final double spacing;
   final IconSide side;
@@ -43,9 +46,9 @@ class PipenTextIcon extends StatelessWidget {
     mainAxisSize: MainAxisSize.min,
     vertical: CrossAxisAlignment.center,
     children: [
-      if (side == IconSide.left) Padding(padding: EdgeInsets.only(right: 10), child: _icon),
-      Flexible(child: Text(text, style: style)),
-      if (side == IconSide.right) Padding(padding: EdgeInsets.only(left: 10), child: _icon),
+      if (side == IconSide.left) Padding(padding: EdgeInsets.only(right: spacing), child: _icon),
+      Flexible(child: Text(text, style: style, textAlign: textAlign)),
+      if (side == IconSide.right) Padding(padding: EdgeInsets.only(left: spacing), child: _icon),
     ],
   );
 }

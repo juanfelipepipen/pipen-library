@@ -11,6 +11,7 @@ class PipenTextSkeleton extends StatefulWidget {
     this.state,
     this.builder,
     this.loading,
+    this.textAlign,
     this.fromValue,
     this.minHeight,
     this.borderRadius,
@@ -26,6 +27,7 @@ class PipenTextSkeleton extends StatefulWidget {
     this.state,
     this.builder,
     this.loading,
+    this.textAlign,
     this.fromValue,
     this.minHeight,
     this.borderRadius,
@@ -37,6 +39,7 @@ class PipenTextSkeleton extends StatefulWidget {
   final double? skeletonWith, minHeight;
   final String? value, defaultValue;
   final bool? loading, fromValue;
+  final TextAlign? textAlign;
   final double? borderRadius;
   final Alignment alignment;
   final FetchState? state;
@@ -96,7 +99,12 @@ class _PipenTextSkeletonState extends State<PipenTextSkeleton> {
                 borderRadius: BorderRadius.circular(widget.borderRadius ?? (height ?? 20) / 2),
               ),
             ),
-            child: (value) => Text(value, style: widget.style ?? context.textTheme.bodyMedium),
+            child:
+                (value) => Text(
+                  value,
+                  textAlign: widget.textAlign,
+                  style: widget.style ?? context.textTheme.bodyMedium,
+                ),
           )
           : SizedBox.shrink();
 }

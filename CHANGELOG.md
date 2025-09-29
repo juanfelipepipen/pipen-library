@@ -1,3 +1,7 @@
+## 2.2.3
+
+* Skeletonizer improvements
+
 ## 2.2.2
 
 * Android options added to secure storage
