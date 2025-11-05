@@ -5,7 +5,10 @@ import 'package:meta/meta.dart';
 abstract class StorageContract<T> {
   final _storage = const FlutterSecureStorage(
     aOptions: AndroidOptions(resetOnError: true),
-    iOptions: IOSOptions(synchronizable: false, accessibility: KeychainAccessibility.unlocked),
+    iOptions: IOSOptions(
+      synchronizable: false,
+      accessibility: KeychainAccessibility.unlocked_this_device,
+    ),
   );
 
   FlutterSecureStorage get storage => _storage;
@@ -21,7 +24,13 @@ abstract class StorageContract<T> {
   Future<void> update(T value);
 
   /// Delete raw value
-  Future<void> clear() async => await storage.delete(key: key);
+  Future<void> clear() async => await storage.delete(
+    key: key,
+    iOptions: IOSOptions(
+      synchronizable: false,
+      accessibility: KeychainAccessibility.unlocked_this_device,
+    ),
+  );
 
   @protected
   Future<String?> read() => storage.read(key: key);

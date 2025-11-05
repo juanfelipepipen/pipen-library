@@ -22,14 +22,15 @@ class PipenListBuilder extends StatefulWidget {
 }
 
 class _PipenListBuilderState extends State<PipenListBuilder> {
-  late ListBuilder maker;
   Iterable<Widget> children = [];
+  late ListBuilder maker;
 
   @override
   void initState() {
     super.initState();
     maker = widget.builder;
     skeletons();
+    widgets();
   }
 
   @override
@@ -61,7 +62,7 @@ class _PipenListBuilderState extends State<PipenListBuilder> {
       ...children,
 
       /// Empty case
-      if (children.isEmpty && widget.empty != null) Center(child: Text(widget.emptyMessage ?? '')),
+      if (children.isEmpty && widget.empty == null) Center(child: Text(widget.emptyMessage ?? '')),
       if (children.isEmpty && widget.empty != null) widget.empty!,
     ],
   );

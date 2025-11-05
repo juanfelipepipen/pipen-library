@@ -53,58 +53,36 @@ class PipenTextSkeleton extends StatefulWidget {
     return value ?? defaultValue;
   }
 
-  bool get _loading {
-    return state is FetchLoading || loading == true || (fromValue == true && value == null);
-  }
+  bool get _loading =>
+      state is FetchLoading ||
+      loading == true ||
+      (fromValue == true && value == null) ||
+      value == null;
 
   @override
   State<PipenTextSkeleton> createState() => _PipenTextSkeletonState();
 }
 
 class _PipenTextSkeletonState extends State<PipenTextSkeleton> {
-  TextStyle? textStyle;
-  double? height;
-
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    textStyle = widget.style ?? context.textTheme.bodyMedium;
-    calculateSize();
-  }
-
-  /// Calculate text height
-  void calculateSize() {
-    final painter = TextPainter(
-      maxLines: 1,
-      textDirection: TextDirection.ltr,
-      text: TextSpan(text: 'A', style: textStyle),
-    )..layout();
-
-    setState(() => height = painter.height);
-  }
-
-  @override
-  Widget build(BuildContext context) =>
-      height != null
-          ? When<String>(
-            minHeight: height! + 3,
+  Widget build(BuildContext context) => PipenSkeletonizer(
+    loading: widget._loading,
+    alignment: widget.alignment,
+    builder:
+        (isLoading) => IntrinsicHeight(
+          child: Container(
             alignment: widget.alignment,
-            value: widget._loading ? null : widget._value,
-            skeleton: Container(
-              alignment: widget.alignment,
-              height: height,
-              width: widget.skeletonWith ?? double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(widget.borderRadius ?? (height ?? 20) / 2),
-              ),
+            width: isLoading ? widget.skeletonWith ?? double.infinity : null,
+            decoration: BoxDecoration(
+              color: isLoading ? Colors.black : null,
+              borderRadius: BorderRadius.circular(100),
             ),
-            child:
-                (value) => Text(
-                  value,
-                  textAlign: widget.textAlign,
-                  style: widget.style ?? context.textTheme.bodyMedium,
-                ),
-          )
-          : SizedBox.shrink();
+            child: Text(
+              widget._value ?? '',
+              textAlign: widget.textAlign,
+              style: widget.style ?? context.textTheme.bodyMedium,
+            ),
+          ),
+        ),
+  );
 }

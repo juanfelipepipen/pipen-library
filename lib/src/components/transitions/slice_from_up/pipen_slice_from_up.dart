@@ -5,12 +5,14 @@ class PipenSliceFromUp extends StatefulWidget {
   const PipenSliceFromUp({
     super.key,
     this.padding,
+    this.alignment,
     required this.child,
     this.show = false,
     this.axis = Axis.vertical,
     this.duration = const Duration(milliseconds: 200),
   });
 
+  final Alignment? alignment;
   final EdgeInsets? padding;
   final Duration duration;
   final Widget child;
@@ -52,7 +54,11 @@ class _PipenSliceFromUpState extends State<PipenSliceFromUp>
   Widget build(BuildContext context) => SizeTransition(
     axis: widget.axis,
     sizeFactor: controller.animation,
-    child: Container(padding: widget.padding, child: widget.child),
+    child: Container(
+      alignment: widget.alignment,
+      padding: widget.padding,
+      child: widget.child,
+    ),
   );
 
   /// Check widget status

@@ -2,7 +2,12 @@ import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
 
 class PipenLottie extends StatefulWidget {
-  const PipenLottie({super.key, this.repeat = false, required this.asset, this.height});
+  const PipenLottie({
+    super.key,
+    this.repeat = false,
+    required this.asset,
+    this.height,
+  });
 
   final double? height;
   final String asset;
@@ -12,7 +17,8 @@ class PipenLottie extends StatefulWidget {
   State<PipenLottie> createState() => _PipenLottieState();
 }
 
-class _PipenLottieState extends State<PipenLottie> with TickerProviderStateMixin {
+class _PipenLottieState extends State<PipenLottie>
+    with TickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override

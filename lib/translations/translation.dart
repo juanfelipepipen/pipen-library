@@ -12,5 +12,8 @@ class Translation {
     return null;
   }
 
-  List<String> get values => translations.entries.map<String>((e) => e.value.toString()).toList();
+  List<String> get values =>
+      translations.entries.map<String>((e) => e.value.toString()).toList();
+
+  List<String> get keys => translations.keys.map<String>((e) => e).toList();
 }

@@ -13,6 +13,7 @@ class PipenRow extends StatelessWidget {
     this.listable,
     this.horizontal,
     this.mainAxisSize,
+    this.intrinsicHeight,
   }) {
     assert(child != null || children != null || listable != null);
   }
@@ -25,6 +26,7 @@ class PipenRow extends StatelessWidget {
     this.spacing,
     this.children,
     this.mainAxisSize,
+    this.intrinsicHeight,
     this.vertical = CrossAxisAlignment.end,
     this.horizontal = MainAxisAlignment.end,
   });
@@ -37,6 +39,7 @@ class PipenRow extends StatelessWidget {
     this.spacing,
     this.listable,
     this.mainAxisSize,
+    this.intrinsicHeight,
     this.vertical = CrossAxisAlignment.center,
     this.horizontal = MainAxisAlignment.center,
   });
@@ -48,6 +51,7 @@ class PipenRow extends StatelessWidget {
     this.listable,
     this.spacing,
     this.children,
+    this.intrinsicHeight,
     this.vertical = CrossAxisAlignment.start,
     this.horizontal = MainAxisAlignment.start,
   }) : mainAxisSize = MainAxisSize.min;
@@ -57,6 +61,7 @@ class PipenRow extends StatelessWidget {
   final Iterable<Widget>? listable;
   final MainAxisSize? mainAxisSize;
   final List<Widget>? children;
+  final bool? intrinsicHeight;
   final EdgeInsets? padding;
   final double? spacing;
   final Widget? child;
@@ -66,6 +71,7 @@ class PipenRow extends StatelessWidget {
     Widget? child,
     double spacing = 0,
     EdgeInsets? padding,
+    bool? intrinsicHeight,
     List<Widget>? children,
     CrossAxisAlignment? vertical,
     MainAxisAlignment? horizontal,
@@ -74,6 +80,7 @@ class PipenRow extends StatelessWidget {
     padding: padding,
     vertical: vertical,
     horizontal: horizontal,
+    intrinsicHeight: intrinsicHeight,
     children: [...?children, if (child case Widget child) child],
   );
 
@@ -87,15 +94,17 @@ class PipenRow extends StatelessWidget {
     }
   }
 
+  Widget get _row => Row(
+    spacing: spacing ?? 0,
+    mainAxisSize: mainAxisSize ?? MainAxisSize.max,
+    crossAxisAlignment: vertical ?? CrossAxisAlignment.start,
+    mainAxisAlignment: horizontal ?? MainAxisAlignment.start,
+    children: _children,
+  );
+
   @override
   Widget build(BuildContext context) => Padding(
     padding: padding ?? EdgeInsets.zero,
-    child: Row(
-      spacing: spacing ?? 0,
-      mainAxisSize: mainAxisSize ?? MainAxisSize.max,
-      crossAxisAlignment: vertical ?? CrossAxisAlignment.start,
-      mainAxisAlignment: horizontal ?? MainAxisAlignment.start,
-      children: _children,
-    ),
+    child: intrinsicHeight == true ? IntrinsicHeight(child: _row) : _row,
   );
 }
