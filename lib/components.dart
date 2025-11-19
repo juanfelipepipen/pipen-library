@@ -66,3 +66,7 @@ export 'src/components/transitions/page_right_to_left/pipen_page_right_to_left_t
 
 /// Scaffold
 export 'src/components/scaffold/app/pipen_app.dart';
+
+/// Slivers
+export 'src/components/slivers/presentation/pipen_sliver.dart';
+export 'src/components/slivers/domain/models/pipen_slivers.dart';

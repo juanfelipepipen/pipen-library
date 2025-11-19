@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:pipen/controllers/context_controller.dart';
+import 'package:pipen/tools.dart';
 
 extension PipenContextExtension on BuildContext {
-  /// Context height
+  /// Context media query height
   double get height => MediaQuery.sizeOf(this).height;
 
-  /// Context width
+  /// Context media query width
   double get width => MediaQuery.sizeOf(this).width;
 
   /// Check if current theme is dark mode
@@ -18,4 +20,10 @@ extension PipenContextExtension on BuildContext {
 
   /// Get the theme colors scheme
   ColorScheme get themeColors => Theme.of(this).colorScheme;
+
+  /// Find value provided on context
+  T value<T>() => ValueProvider.of<T>(this);
+
+  /// Get a context controller provided on scope
+  T controller<T extends ContextController>() => ControllerProvider.of<T>(this);
 }
