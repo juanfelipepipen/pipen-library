@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:pipen/components.dart';
+import 'package:pipen/config/typedef.dart';
 
 class PipenColumn extends StatelessWidget {
   PipenColumn({
@@ -50,6 +52,14 @@ class PipenColumn extends StatelessWidget {
     this.horizontal = CrossAxisAlignment.start,
   }) : mainAxisSize = MainAxisSize.min;
 
+  Widget filled() => _PipenColumnFilled(
+    horizontal: horizontal,
+    vertical: vertical,
+    spacing: spacing,
+    padding: padding,
+    children: _children,
+  );
+
   final CrossAxisAlignment? horizontal;
   final MainAxisAlignment? vertical;
   final Iterable<Widget>? listable;
@@ -79,5 +89,34 @@ class PipenColumn extends StatelessWidget {
       crossAxisAlignment: horizontal ?? CrossAxisAlignment.start,
       children: _children,
     ),
+  );
+}
+
+class _PipenColumnFilled extends StatelessWidget {
+  const _PipenColumnFilled({
+    required this.children,
+    this.horizontal,
+    this.vertical,
+    this.padding,
+    this.spacing,
+  });
+
+  final CrossAxisAlignment? horizontal;
+  final MainAxisAlignment? vertical;
+  final EdgeInsets? padding;
+  final WidgetList children;
+  final double? spacing;
+
+  @override
+  Widget build(BuildContext context) => PipenSliver(
+    slivers: [
+      PipenSliversColumnFill(
+        spacing: spacing,
+        padding: padding,
+        vertical: vertical,
+        horizontal: horizontal,
+        children: children,
+      ),
+    ],
   );
 }

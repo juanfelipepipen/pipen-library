@@ -1,8 +1,8 @@
-import 'package:pipen/src/graphql/request_fail/graphql_exception_strategy.dart';
+import 'package:pipen/src/graphql/request_fail/graphql_exception_converter.dart';
 import 'package:pipen/src/graphql/exceptions/graphql_error_code.dart';
 import 'package:graphql/client.dart';
 
-class ErrorCodeStrategy extends GraphqlExceptionStrategy {
+class ErrorCodeStrategy extends GraphqlExceptionConverter {
   @override
   bool isException(exception) {
     if (exception is! OperationException) return false;
@@ -11,9 +11,9 @@ class ErrorCodeStrategy extends GraphqlExceptionStrategy {
   }
 
   @override
-  void build(exception) {
+  Exception build(exception) {
     exception = exception as OperationException;
     String errorCode = exception.graphqlErrors.first.message;
-    throw GraphqlErrorCode(errorCode);
+    return GraphqlErrorCode(errorCode);
   }
 }

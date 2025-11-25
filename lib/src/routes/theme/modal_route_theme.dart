@@ -18,16 +18,22 @@ class ModalRouteTheme {
   final bool barrierDismissible;
   final double? width;
 
-  factory ModalRouteTheme.fromRoute(BuildContext context, TypeSafeModalRoute route) {
+  factory ModalRouteTheme.fromRoute(
+    BuildContext context,
+    TypeSafeModalRoute route,
+  ) {
     final routeTheme =
-        PipenTheme.maybeOf(context)?.themes.routeTheme ?? ModalRouteTheme.styleFrom();
+        PipenTheme.maybeOf(context)?.themes.routeTheme ??
+        ModalRouteTheme.styleFrom();
 
     // Padding
-    EdgeInsets padding = route is RouteZeroPadding ? EdgeInsets.zero : routeTheme.padding;
+    EdgeInsets padding =
+        route is RouteZeroPadding ? EdgeInsets.zero : routeTheme.padding;
     if (route case RoutePadding customPadding) padding = customPadding.padding;
 
     // Barrier dismissible
-    final barrierDismissible = route is RouteFixed ? true : routeTheme.barrierDismissible;
+    final barrierDismissible =
+        route is RouteFixed ? true : routeTheme.barrierDismissible;
 
     // Border radius
     BorderRadius borderRadius = routeTheme.borderRadius;
@@ -43,7 +49,9 @@ class ModalRouteTheme {
 
     // Transition
     RouteTransitionBuilder transition = routeTheme.transition;
-    if (route case RouteTransition routeTransition) transition = routeTransition.transitionBuilder;
+    if (route case RouteTransition routeTransition) {
+      transition = routeTransition.transitionBuilder;
+    }
 
     // Width
     final width = routeTheme.width;
@@ -83,9 +91,9 @@ class ModalRouteTheme {
   }) => ModalRouteTheme(
     width: width ?? this.width,
     borderRadius: borderRadius,
+    margin: insetPadding ?? margin,
     padding: padding ?? this.padding,
     transition: transition ?? this.transition,
-    margin: insetPadding ?? this.margin,
     barrierDismissible: barrierDismissible ?? this.barrierDismissible,
   );
 }

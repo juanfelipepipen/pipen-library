@@ -41,4 +41,12 @@ abstract class GraphqlRequester<T> extends GraphQlInterface<T> {
     });
     return gql(parsedDocument);
   }
+
+  /// Decode operation result or throw exception
+  Future<T> decode(QueryResult result) async {
+    return GraphqlResponseDecoder<T>(
+      instance: this,
+      result: result,
+    ).decode(onSuccess);
+  }
 }
