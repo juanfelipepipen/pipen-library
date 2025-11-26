@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:pipen/graphql.dart';
 import 'package:pipen/src/graphql/request_fail/graphql_exception_converter.dart';
 import 'package:pipen/src/graphql/strategies/input_errors_strategy.dart';
 import 'package:pipen/src/graphql/strategies/error_code_strategy.dart';
@@ -5,6 +8,11 @@ import 'package:flutter/foundation.dart';
 import 'package:graphql/client.dart';
 
 class GraphqlRequestFail {
+  static final StreamController<Object> _controller =
+      StreamController<Object>();
+
+  static Stream<Object> get stream => _controller.stream;
+
   /// List of error strategies
   static final List<GraphqlExceptionConverter> _errors = [
     ErrorCodeStrategy(),
@@ -24,6 +32,7 @@ class GraphqlRequestFail {
           .build(exception);
     } catch (e) {
       if (e is StateError) throw exception;
+      _controller.add(e);
       rethrow;
     }
   }
