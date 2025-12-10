@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pipen/components.dart';
 import 'package:pipen/controllers/context_controller.dart';
 import 'package:pipen/tools.dart';
 
@@ -26,4 +27,10 @@ extension PipenContextExtension on BuildContext {
 
   /// Get a context controller provided on scope
   T controller<T extends ContextController>() => ControllerProvider.of<T>(this);
+
+  /// Bottom safe padding
+  EdgeInsets get bottom {
+    final bottom = MediaQuery.of(this).padding.bottom;
+    return EdgeInsets.only(bottom: bottom > 0 ? bottom : PipenGap.smallSize);
+  }
 }

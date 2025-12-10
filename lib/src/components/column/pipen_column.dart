@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pipen/components.dart';
 import 'package:pipen/config/typedef.dart';
@@ -92,7 +93,7 @@ class PipenColumn extends StatelessWidget {
   );
 }
 
-class _PipenColumnFilled extends StatelessWidget {
+class _PipenColumnFilled extends StatefulWidget {
   const _PipenColumnFilled({
     required this.children,
     this.horizontal,
@@ -108,15 +109,33 @@ class _PipenColumnFilled extends StatelessWidget {
   final double? spacing;
 
   @override
-  Widget build(BuildContext context) => PipenSliver(
-    slivers: [
-      PipenSliversColumnFill(
-        spacing: spacing,
-        padding: padding,
-        vertical: vertical,
-        horizontal: horizontal,
-        children: children,
-      ),
-    ],
+  State<_PipenColumnFilled> createState() => _PipenColumnFilledState();
+}
+
+class _PipenColumnFilledState extends State<_PipenColumnFilled> {
+  late ScrollController scrollController;
+
+  @override
+  void initState() {
+    scrollController = ScrollController();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) => Scrollbar(
+    controller: scrollController,
+    thumbVisibility: true,
+    child: PipenSliver(
+      controller: scrollController,
+      slivers: [
+        PipenSliversColumnFill(
+          spacing: widget.spacing,
+          padding: widget.padding,
+          vertical: widget.vertical,
+          horizontal: widget.horizontal,
+          children: widget.children,
+        ),
+      ],
+    ),
   );
 }

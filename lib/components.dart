@@ -34,6 +34,7 @@ export 'src/components/gesture/pipen_gesture_tap.dart';
 /// Layouts
 export 'src/components/layouts/fill_bottom/pipen_fill_bottom.dart';
 export 'src/components/layouts/fill_bottom/pipen_filler.dart';
+export 'src/components/layouts/pipen_expand.dart';
 
 /// Lottie
 export 'src/components/lottie/pipen_lottie.dart';
@@ -70,3 +71,6 @@ export 'src/components/scaffold/app/pipen_app.dart';
 /// Slivers
 export 'src/components/slivers/presentation/pipen_sliver.dart';
 export 'src/components/slivers/domain/models/pipen_slivers.dart';
+
+/// Table
+export 'src/components/table/pipen_table.dart';

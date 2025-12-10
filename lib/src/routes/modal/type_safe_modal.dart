@@ -35,9 +35,15 @@ abstract class TypeSafeModalRoute<T> {
 
   /// Navigate to modal route
   Future<T?> go(BuildContext context) {
+    FocusScope.of(context).unfocus();
     final page = this.page(context);
     final theme = ModalRouteTheme.fromRoute(context, this);
-    return PipenRouterConfigs.modalBuilder.builder<T>(context, this, page, theme);
+    return PipenRouterConfigs.modalBuilder.builder<T>(
+      context,
+      this,
+      page,
+      theme,
+    );
   }
 
   /// Replace current modal
