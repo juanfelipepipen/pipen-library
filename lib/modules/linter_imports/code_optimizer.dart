@@ -15,7 +15,8 @@ class _CodeOptimizer {
       }
     }
 
-    List<String> importOrders = List.from(imports)..sort((a, b) => b.length.compareTo(a.length));
+    List<String> importOrders = List.from(imports)
+      ..sort((a, b) => b.length.compareTo(a.length));
 
     if (importOrders != imports) {
       for (String import in importOrders) {

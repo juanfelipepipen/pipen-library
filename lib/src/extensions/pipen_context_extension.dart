@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pipen/components.dart';
 import 'package:pipen/controllers/context_controller.dart';
+import 'package:pipen/src/routes/modal/pipen_modals_handler.dart';
 import 'package:pipen/tools.dart';
 
 extension PipenContextExtension on BuildContext {
@@ -25,6 +26,9 @@ extension PipenContextExtension on BuildContext {
   /// Find value provided on context
   T value<T>() => ValueProvider.of<T>(this);
 
+  /// Find value provided on context
+  T? maybeValue<T>() => ValueProvider.maybeOf<T>(this);
+
   /// Get a context controller provided on scope
   T controller<T extends ContextController>() => ControllerProvider.of<T>(this);
 
@@ -33,4 +37,8 @@ extension PipenContextExtension on BuildContext {
     final bottom = MediaQuery.of(this).padding.bottom;
     return EdgeInsets.only(bottom: bottom > 0 ? bottom : PipenGap.smallSize);
   }
+
+  /// Pipen modal controller
+  PipenModalController? get modalController =>
+      maybeValue()<PipenModalController>();
 }

@@ -38,12 +38,21 @@ abstract class TypeSafeModalRoute<T> {
     FocusScope.of(context).unfocus();
     final page = this.page(context);
     final theme = ModalRouteTheme.fromRoute(context, this);
-    return PipenRouterConfigs.modalBuilder.builder<T>(
-      context,
-      this,
-      page,
-      theme,
+    final controller = context.maybeValue<PipenModalController>();
+    final completer = Completer<T?>();
+    final creator = PipenModalCreator<T>(
+      page: page,
+      route: this,
+      theme: theme,
+      completer: completer,
     );
+
+    if (controller != null) {
+      controller.show<T>(creator);
+      return completer.future;
+    }
+
+    return creator.open(context);
   }
 
   /// Replace current modal

@@ -9,7 +9,9 @@ class PipenLinterImports {
 
   /// Optimize imports
   void optimize() {
-    directory.list(recursive: true, followLinks: false).listen((FileSystemEntity entity) {
+    directory.list(recursive: true, followLinks: false).listen((
+      FileSystemEntity entity,
+    ) {
       if (entity is File && entity.path.endsWith('.dart')) {
         _CodeOptimizer(file: entity).process();
       }
