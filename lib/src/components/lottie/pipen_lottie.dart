@@ -9,6 +9,9 @@ class PipenLottie extends StatefulWidget {
     this.height,
   });
 
+  const PipenLottie.repeat({super.key, required this.asset, this.height})
+    : repeat = true;
+
   final double? height;
   final String asset;
   final bool repeat;

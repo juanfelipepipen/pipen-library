@@ -5,6 +5,7 @@ import 'package:pipen/routes.dart';
 class ModalRouteTheme {
   ModalRouteTheme({
     this.width,
+    this.backgroundColor,
     required this.margin,
     required this.padding,
     required this.borderRadius,
@@ -16,6 +17,7 @@ class ModalRouteTheme {
   final EdgeInsets padding, margin;
   final BorderRadius borderRadius;
   final bool barrierDismissible;
+  final Color? backgroundColor;
   final double? width;
 
   factory ModalRouteTheme.fromRoute(
@@ -56,11 +58,15 @@ class ModalRouteTheme {
     // Width
     final width = routeTheme.width;
 
+    // Background color
+    final backgroundColor = routeTheme.backgroundColor;
+
     return ModalRouteTheme(
       width: width,
       padding: padding,
       transition: transition,
       margin: margin,
+      backgroundColor: backgroundColor,
       borderRadius: borderRadius,
       barrierDismissible: barrierDismissible,
     );
@@ -69,12 +75,14 @@ class ModalRouteTheme {
   factory ModalRouteTheme.styleFrom({
     double? width,
     EdgeInsets? padding,
+    Color? backgroundColor,
     EdgeInsets? insetPadding,
     bool? barrierDismissible,
     BorderRadius? borderRadius,
     RouteTransitionBuilder? transition,
   }) => ModalRouteTheme(
     width: width,
+    backgroundColor: backgroundColor,
     padding: padding ?? EdgeInsets.zero,
     margin: insetPadding ?? EdgeInsets.zero,
     barrierDismissible: barrierDismissible ?? true,
@@ -87,12 +95,14 @@ class ModalRouteTheme {
     EdgeInsets? padding,
     EdgeInsets? insetPadding,
     bool? barrierDismissible,
+    Color? backgroundColor,
     RouteTransitionBuilder? transition,
   }) => ModalRouteTheme(
     width: width ?? this.width,
     borderRadius: borderRadius,
     margin: insetPadding ?? margin,
     padding: padding ?? this.padding,
+    backgroundColor: backgroundColor,
     transition: transition ?? this.transition,
     barrierDismissible: barrierDismissible ?? this.barrierDismissible,
   );

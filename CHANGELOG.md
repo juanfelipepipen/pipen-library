@@ -1,3 +1,7 @@
+## 2.2.4
+
+* Route system providers fixes
+
 ## 2.2.3
 
 * Skeletonizer improvements

@@ -1,4 +1,3 @@
-import 'package:http_parser/http_parser.dart';
 import 'package:cross_file/cross_file.dart';
 import 'package:http/http.dart';
 import 'package:mime/mime.dart';

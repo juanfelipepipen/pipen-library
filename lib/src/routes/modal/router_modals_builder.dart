@@ -43,7 +43,7 @@ abstract class RouterModalsBuilders {
             ? modal
             : Dialog(
               insetPadding: theme.margin,
-              backgroundColor: Colors.white,
+              surfaceTintColor: theme.backgroundColor,
               shape: RoundedRectangleBorder(borderRadius: theme.borderRadius),
               child: SizedBox(
                 width: theme.width,
