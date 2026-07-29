@@ -28,7 +28,7 @@ class PipenGestureTap extends StatelessWidget {
     if (!disabled) {
       onTap?.call();
 
-      if (vibrate) {
+      if (vibrate && onTap != null) {
         Vibration.vibrate(duration: 50);
       }
     }

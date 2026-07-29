@@ -21,14 +21,14 @@ class PipenInkWellContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: margin ?? EdgeInsets.zero,
+    padding: margin ?? .zero,
     child: InkWell(
       borderRadius: borderRadius,
       onTap: disabled ? null : onTap,
       child: SizedBox(
         width: size,
         height: size,
-        child: Padding(padding: padding ?? EdgeInsets.zero, child: child),
+        child: Padding(padding: padding ?? .zero, child: child),
       ),
     ),
   );

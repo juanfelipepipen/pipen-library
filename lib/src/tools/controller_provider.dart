@@ -1,25 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pipen/controllers/context_controller.dart';
+import 'package:pipen/extensions.dart';
+
+abstract interface class ControllerDispose {
+  void close();
+}
 
 class _ControllerProvider<T extends ContextController> extends InheritedWidget {
-  final T contextController;
-
   const _ControllerProvider({
     super.key,
-    required this.contextController,
+    required this.controller,
     required super.child,
   });
+
+  final T controller;
 
   static T of<T extends ContextController>(BuildContext context) {
     final provider = context
         .dependOnInheritedWidgetOfExactType<_ControllerProvider<T>>();
     assert(provider != null, 'No ContextProvider<$T> found in context');
-    return provider!.contextController;
+    return provider!.controller;
   }
 
   @override
   bool updateShouldNotify(covariant _ControllerProvider<T> oldWidget) {
-    return oldWidget.contextController != contextController;
+    return oldWidget.controller != controller;
   }
 }
 
@@ -30,7 +35,7 @@ class ControllerProvider<T extends ContextController> extends StatelessWidget {
     required this.controller,
   });
 
-  final Function(BuildContext context) builder;
+  final Function(BuildContext context, T controller) builder;
   final T Function(BuildContext context) controller;
 
   static T of<T extends ContextController>(BuildContext context) {
@@ -39,7 +44,44 @@ class ControllerProvider<T extends ContextController> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => _ControllerProvider<T>(
-    contextController: controller(context),
-    child: builder(context),
+    controller: controller(context),
+    child: _ControllerProviderLayout<T>(builder: builder),
   );
+}
+
+class _ControllerProviderLayout<T extends ContextController>
+    extends StatefulWidget {
+  const _ControllerProviderLayout({super.key, required this.builder});
+
+  final Function(BuildContext context, T controller) builder;
+
+  @override
+  State<_ControllerProviderLayout<T>> createState() =>
+      _ControllerProviderLayoutState<T>();
+}
+
+class _ControllerProviderLayoutState<T extends ContextController>
+    extends State<_ControllerProviderLayout<T>> {
+  VoidCallback? closeController;
+
+  @override
+  void didChangeDependencies() {
+    final controller = context.controller<T>();
+
+    if (controller case ControllerDispose controller) {
+      closeController = controller.close;
+    }
+
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    closeController?.call();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) =>
+      widget.builder(context, context.controller<T>());
 }

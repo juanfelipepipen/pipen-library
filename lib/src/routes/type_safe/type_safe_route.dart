@@ -1,16 +1,20 @@
 import 'package:pipen/config/typedef.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pipen/src/routes/previous_check_route.dart';
 
 part 'type_safe_extra_route.dart';
 
-abstract class TypeSafeRoute {
+abstract class TypeSafeRoute<T> {
   @protected
   late JsonMap queryParameters;
+
   @protected
   late Map<String, String> pathParameters;
+
   @protected
-  String name, path;
+  final String name, path;
+
   @protected
   Object? extra;
 
@@ -31,36 +35,76 @@ abstract class TypeSafeRoute {
   }
 
   /// Go to the route
-  void go(BuildContext context) => context.goNamed(
-    name,
-    extra: extra,
-    pathParameters: pathParameters,
-    queryParameters: queryParameters,
-  );
+  void go(BuildContext context) {
+    _previousCheck(context, () {
+      context.goNamed(
+        name,
+        extra: extra,
+        pathParameters: pathParameters,
+        queryParameters: queryParameters,
+      );
+    });
+  }
+
+  /// Go to the route
+  void replace(BuildContext context) {
+    _previousCheck(context, () {
+      context.replaceNamed(
+        name,
+        extra: extra,
+        pathParameters: pathParameters,
+        queryParameters: queryParameters,
+      );
+    });
+  }
 
   /// Push the route
-  void push(BuildContext context) => context.pushNamed(
-    name,
-    extra: extra,
-    pathParameters: pathParameters,
-    queryParameters: queryParameters,
-  );
+  void push(BuildContext context) {
+    _previousCheck(context, () {
+      context.pushNamed(
+        name,
+        extra: extra,
+        pathParameters: pathParameters,
+        queryParameters: queryParameters,
+      );
+    });
+  }
 
   /// Push and replace the route
-  void pushReplacementNamed(BuildContext context) => context.pushReplacementNamed(
-    name,
-    extra: extra,
-    pathParameters: pathParameters,
-    queryParameters: queryParameters,
-  );
+  void pushReplacementNamed(BuildContext context) async {
+    _previousCheck(
+      context,
+      () => context.pushReplacementNamed(
+        name,
+        extra: extra,
+        pathParameters: pathParameters,
+        queryParameters: queryParameters,
+      ),
+    );
+  }
 
   /// Push and pop the current route
   void pushAndPop(BuildContext context) {
-    Navigator.of(context).pop();
-    push(context);
+    _previousCheck(context, () {
+      Navigator.of(context).pop();
+      push(context);
+    });
   }
 
   /// Back or go
-  void back(BuildContext context) =>
-      Navigator.of(context).canPop() ? Navigator.of(context).pop() : go(context);
+  void back(BuildContext context) => Navigator.of(context).canPop()
+      ? Navigator.of(context).pop()
+      : go(context);
+
+  /// Check route previous to handle
+  Future<void> _previousCheck(
+    BuildContext context,
+    VoidCallback callback,
+  ) async {
+    if (this case PreviousCheckRoute<T> previousCheckRoute) {
+      final isValid = await previousCheckRoute.checks(context, extra);
+      if (!isValid) return;
+    }
+    callback();
+  }
 }

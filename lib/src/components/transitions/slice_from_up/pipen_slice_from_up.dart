@@ -8,9 +8,25 @@ class PipenSliceFromUp extends StatefulWidget {
     this.alignment,
     required this.child,
     this.show = false,
-    this.axis = Axis.vertical,
-    this.duration = const Duration(milliseconds: 200),
-  });
+    Axis? axis,
+    Duration? duration,
+  }) : axis = axis ?? .vertical,
+       duration = duration ?? const Duration(milliseconds: 350);
+
+  factory PipenSliceFromUp.show({
+    Alignment? alignment,
+    EdgeInsets? padding,
+    Duration? duration,
+    required Widget child,
+    Axis? axis,
+  }) => PipenSliceFromUp(
+    show: true,
+    padding: padding,
+    alignment: alignment,
+    axis: axis,
+    duration: duration,
+    child: child,
+  );
 
   final Alignment? alignment;
   final EdgeInsets? padding;

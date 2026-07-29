@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pipen/routes.dart';
-import 'package:pipen/src/tools/value_provider.dart';
+import 'package:pipen/src/tools/value_provider/value_provider.dart';
 
 class PipenModalsHandler extends StatefulWidget {
   const PipenModalsHandler({super.key, required this.child});

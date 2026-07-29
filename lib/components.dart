@@ -7,6 +7,7 @@ export 'src/components/builders/builder/pipen_init_builder.dart';
 export 'src/components/builders/conditions/if.dart';
 export 'src/components/builders/conditions/pipen_build_if.dart';
 export 'src/components/builders/conditions/pipen_build_nullable.dart';
+export 'src/components/builders/multi_inherited_provider.dart';
 
 /// App bar
 export 'src/components/app_bar/pipen_app_bar_color.dart';
@@ -18,8 +19,9 @@ export 'src/components/buttons/pipen_primary_button_bordered.dart';
 /// Columns
 export 'src/components/column/pipen_column.dart';
 
-/// Ink well
+/// Containers
 export 'src/components/containers/pipen_ink_well_container.dart';
+export 'src/components/containers/pipen_circle_container.dart';
 
 /// Divider
 export 'src/components/divider/pipen_divider.dart';
