@@ -15,22 +15,22 @@ class SliceFromUpTransitionController extends AnimationGeneration {
   final Function()? onFinished;
 
   /// [Constructor]
-  SliceFromUpTransitionController(super.ticker, super.duration, [this.onFinished]) {
+  SliceFromUpTransitionController(
+    super.ticker,
+    super.duration, [
+    this.onFinished,
+  ]) {
     controllerAnimation = generateAnimationController();
     animation = generateAnimation(controllerAnimation);
   }
 
   /// Show animation
   void show() {
-    if (controllerAnimation.status == AnimationStatus.dismissed) {
-      controllerAnimation.forward().whenComplete(onFinished ?? () => null);
-    }
+    controllerAnimation.forward().whenComplete(onFinished ?? () => null);
   }
 
   /// Hide animation
   void hide() {
-    if (controllerAnimation.status == AnimationStatus.completed) {
-      controllerAnimation.animateBack(0, duration: super.duration).whenComplete(onFinished ?? () => null);
-    }
+    controllerAnimation.reverse().whenComplete(onFinished ?? () => null);
   }
 }

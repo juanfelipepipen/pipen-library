@@ -43,44 +43,60 @@ class _PipenSliceFromUpState extends State<PipenSliceFromUp>
     with TickerProviderStateMixin<PipenSliceFromUp> {
   late SliceFromUpTransitionController controller;
 
+  bool get _childTickersEnabled =>
+      controller.controllerAnimation.status != AnimationStatus.dismissed;
+
   @override
   void initState() {
-    controller = SliceFromUpTransitionController(this, widget.duration, check);
+    super.initState();
+
+    controller = SliceFromUpTransitionController(this, widget.duration);
+    controller.controllerAnimation.addStatusListener(_onStatusChanged);
 
     if (widget.show) {
       controller.show();
     }
-
-    super.initState();
   }
 
   @override
-  dispose() {
+  void dispose() {
+    controller.controllerAnimation.removeStatusListener(_onStatusChanged);
     controller.controllerAnimation.dispose();
     super.dispose();
   }
 
   @override
   void didUpdateWidget(covariant PipenSliceFromUp oldWidget) {
-    check();
     super.didUpdateWidget(oldWidget);
+
+    if (widget.duration != oldWidget.duration) {
+      controller.controllerAnimation
+        ..duration = widget.duration
+        ..reverseDuration = widget.duration;
+    }
+
+    if (widget.show != oldWidget.show) {
+      widget.show ? controller.show() : controller.hide();
+    }
   }
 
   @override
   Widget build(BuildContext context) => SizeTransition(
     axis: widget.axis,
     sizeFactor: controller.animation,
-    child: Container(
-      alignment: widget.alignment,
-      padding: widget.padding,
-      child: widget.child,
+    child: TickerMode(
+      enabled: _childTickersEnabled,
+      child: Container(
+        alignment: widget.alignment,
+        padding: widget.padding,
+        child: widget.child,
+      ),
     ),
   );
 
-  /// Check widget status
-  void check() {
-    if (widget.show != controller.showing) {
-      setState(() => widget.show ? controller.show() : controller.hide());
+  void _onStatusChanged(AnimationStatus status) {
+    if (status == AnimationStatus.dismissed) {
+      setState(() {});
     }
   }
 }

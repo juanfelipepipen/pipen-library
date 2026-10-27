@@ -14,7 +14,8 @@ extension PipenPlatformFileExtension on PlatformFile {
   }
 
   /// Create a Multipart from file bytes
-  MultipartFile multipartFromBytes(String field) {
+  Future<MultipartFile> multipartFromBytes(String field) async {
+    final bytes = await readAsBytes();
     String? mediaType;
 
     if (extension case String extension) {
@@ -27,13 +28,9 @@ extension PipenPlatformFileExtension on PlatformFile {
       throw Exception('MIME type not found');
     }
 
-    if (bytes == null) {
-      throw Exception('File bytes empty');
-    }
-
     return MultipartFile.fromBytes(
       field,
-      bytes!,
+      bytes,
       filename: name,
       contentType: MediaType.parse(mediaType),
     );

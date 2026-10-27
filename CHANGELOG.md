@@ -1,3 +1,11 @@
+## 3.0.0
+
+* **Breaking:** `PlatformFile.multipartFromBytes` now returns `Future<MultipartFile>` and reads file contents with `readAsBytes()`. Await calls to this method when migrating.
+* Update file_picker to ^13.3.0, go_router to ^18.1.1, and flutter_secure_storage to ^11.2.0.
+* Pause child tickers when PipenSliceFromUp is hidden, support reversing active transitions, and apply duration updates.
+* Add widget tests for hidden child tickers and transition reversal.
+* Exclude generated build files from analysis and document the library release workflow.
+
 ## 2.2.4
 
 * Route system providers fixes
