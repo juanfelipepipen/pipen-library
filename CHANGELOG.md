@@ -1,3 +1,7 @@
+## 2.3.0
+
+* Raise the minimum supported Dart SDK to 3.13.0 and Flutter SDK to 3.47.0. Applications using older SDKs must upgrade before adopting this release.
+
 ## 2.2.5
 
 * **Breaking:** `PlatformFile.multipartFromBytes` now returns `Future<MultipartFile>` and reads file contents with `readAsBytes()`. Await calls to this method when migrating.
