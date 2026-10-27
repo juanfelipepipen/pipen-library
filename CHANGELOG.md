@@ -1,4 +1,4 @@
-## 3.0.0
+## 2.2.5
 
 * **Breaking:** `PlatformFile.multipartFromBytes` now returns `Future<MultipartFile>` and reads file contents with `readAsBytes()`. Await calls to this method when migrating.
 * Update file_picker to ^13.3.0, go_router to ^18.1.1, and flutter_secure_storage to ^11.2.0.
